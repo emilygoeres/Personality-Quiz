@@ -3,7 +3,21 @@ module.exports = function(sequelize, DataTypes) {
       answer: DataTypes.STRING,
     });
     answer.associate = function(models) {
-        answer
+        answer.belongsTo(models.question, {
+          foreignKey: {
+            allowNull: false
+          }
+        } )
     }
+        answer.belongsTo(models.quizzes_taken, {
+          foreignKey: {
+            allowNull: false
+          }
+        })
+        answer.belongsTo(models.personality, {
+          foreignKey: {
+            allowNull: false
+          }
+        })
     return answer;
   };
