@@ -1,0 +1,9 @@
+module.exports = function(sequelize, DataTypes) {
+    var answer = sequelize.define("answer", {
+      answer: DataTypes.STRING,
+    });
+    answer.associate = function(models) {
+        answer
+    }
+    return answer;
+  };
