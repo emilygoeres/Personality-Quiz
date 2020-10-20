@@ -1,0 +1,22 @@
+<h2>PERSONALITY COMPOSITE</h2>
+
+<ul>
+    {{#each quizResults}}
+    <li>
+        <p>TRAIT{{this.trait}}</p>
+        <div>Number of results/Number of Tests{{this.results}} {{this.test}}</div>
+    </li>
+    {{/each}}
+</ul>
+
+<h2>QUIZ HISTORY</h2>
+
+<ul>
+    {{#each quizHistory}}
+    <li>
+        <p>Quiz{{this.history}}</p>
+        <button id = "retakeButton">RETAKE</button>
+        <button id = "deleterButton">DELETE</button>
+    </li>
+    {{/each}}
+</ul>
