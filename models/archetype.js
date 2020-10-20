@@ -11,12 +11,18 @@ module.exports = function(sequelize, DataTypes) {
     });
 
     archetype.associate = function(models) {
-      archetype.hasMany(models.archetype, {
+      archetype.hasMany(models.personality, {
         foreignKey: {
           allowNull: false
         }
       } )
+    
+    archetype.hasMany(models.answer, {
+      foreignKey: {
+        allowNull: false
+      }
+    })
     }
     return archetype;
-  };
+  }
   
