@@ -1,7 +1,20 @@
 module.exports = function(sequelize, DataTypes) {
     var User = sequelize.define("user", {
-      user_name: DataTypes.STRING,
-      password: DataTypes.STRING,
+      user_name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true,
+        validate: {
+          len: [8,16]
+        }
+      },
+      password: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          len: [8,16]
+        }
+      },
       first_name: DataTypes.STRING,
       last_name: DataTypes.STRING,
       email: {
@@ -22,6 +35,16 @@ module.exports = function(sequelize, DataTypes) {
           allowNull: false
         }
     })
+      User.hasMany(models.friends, {
+        foreignKey: {
+          allowNull: false
+        }
+    })
+    User.belongsTo(models.friends, {
+      foreignKey: {
+        allowNull: false
+      }
+  })
   }
     return User;
   };
