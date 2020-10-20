@@ -1,0 +1,19 @@
+<form id="searchQuiz">
+    <h2>SEARCH FOR A QUIZ</h2>
+</form>
+
+<ul id="featuredQuizzes">
+    {{#each featuredQuizzes}}
+    <li>
+        <a href="#">QUIZ{{this.quiz}}<img src="http://placekitten.com/g/200/300" data-quizId="{{quizId}}"></a>
+    </li>
+    {{/each}}
+</ul>
+
+<ul id="allQuizzes">
+    {{#each allQuizzes}}
+    <li>
+        <a data-quizId="{{quizId}}" href="#">QUIZ{{this.quiz}}></a>
+    </li>
+    {{/each}}
+</ul>
