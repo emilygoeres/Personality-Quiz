@@ -1,7 +1,9 @@
 <form id="searchQuiz">
     <h2>SEARCH FOR A QUIZ</h2>
+    <textarea id="quizSearch"></textarea>
 </form>
 
+{{!-- a tags should link to appropriate quiz route --}}
 <ul id="featuredQuizzes">
     {{#each featuredQuizzes}}
     <li>
@@ -13,7 +15,9 @@
 <ul id="allQuizzes">
     {{#each allQuizzes}}
     <li>
-        <a data-quizId="{{quizId}}" href="#">QUIZ{{this.quiz}}></a>
+        <a data-quizId="{{this.quizId}}" href="#">QUIZ{{this.quiz}}></a>
     </li>
     {{/each}}
 </ul>
+
+<ul id="searchedQuizzes" style="display: none;"></ul>
