@@ -3,6 +3,10 @@ module.exports = function(sequelize, DataTypes) {
       answer: {
         type: DataTypes.STRING,
         allowNull: false
+      },
+      points: {
+        type: DataTypes.INTEGER,
+        defaultVale: 1
       }
     });
     answer.associate = function(models) {
