@@ -10,12 +10,13 @@ module.exports = function(sequelize, DataTypes) {
         foreignKey: {
           allowNull: false
         }})
-    }
-      question.hasMany(models.answers,{
+
+      question.hasMany(models.answer,{
         foreignKey: {
           allowNull: false
         }}
       )
+    }
     return question;
   };
   
