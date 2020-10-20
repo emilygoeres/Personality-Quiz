@@ -11,12 +11,12 @@
 
 <h2>QUIZ HISTORY</h2>
 
-<ul>
+<ul id="history">
     {{#each quizHistory}}
     <li>
         <p>Quiz{{this.history}}</p>
-        <button id = "retakeButton">RETAKE</button>
-        <button id = "deleterButton">DELETE</button>
+        <button data-next = "retakeButton" data-quizID={{this.quizID}}>RETAKE</button>
+        <button data-next= "deleterButton" data-quizID={{this.quizID}}>DELETE</button>
     </li>
     {{/each}}
 </ul>
