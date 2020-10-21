@@ -22,7 +22,7 @@ module.exports = function(sequelize, DataTypes) {
           }
         }
         );
-        answer.belongsTo(models.archetype, {
+        answer.belongsTo(models.personality, {
           foreignKey: {
             allowNull: false
           }

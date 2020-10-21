@@ -12,6 +12,11 @@ module.exports = function(sequelize, DataTypes) {
           allowNull: false
         }
       } )
+      personality.belongsTo(models.archetype, {
+        foreignKey: {
+          allowNull: false
+        }
+      }
     }
     return personality;
   };
