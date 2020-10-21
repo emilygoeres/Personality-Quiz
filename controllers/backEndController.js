@@ -146,7 +146,46 @@ router.get("/api/questions/:id", function(req, res){
 // POST questions
 router.post("/api/questions", function(req, res){
     db.question.create({
-        question: req.body.question
+        question: req.body.question,
+        quizId: req.body.quizId
+    }).then(result => {
+        res.json(result);
+    }).catch(err => {
+        res.status(500).end();
+    })
+})
+
+// POST answers
+router.post("/api/answers", function(req, res){
+    db.answer.create({
+        answer: req.body.answer,
+        points: req.body.points,
+        questionId: req.body.questionId,
+        personalityId: req.body.personalityId
+    }).then(result => {
+        res.json(result);
+    }).catch(err => {
+        res.status(500).end();
+    })
+})
+
+// POST personalities
+router.post("/api/personalities", function(req, res){
+    db.personality.create({
+        personality_type: req.body.personality_type,
+        archetypeId: req.body.archetypeId
+    }).then(result => {
+        res.json(result);
+    }).catch(err => {
+        res.status(500).end();
+    })
+})
+
+// POST archetypes
+router.post("/api/archetypes", function(req, res){
+    db.archetype.create({
+        archetype: req.body.archetype,
+        archetype_description: req.body.archetype_description
     }).then(result => {
         res.json(result);
     }).catch(err => {
