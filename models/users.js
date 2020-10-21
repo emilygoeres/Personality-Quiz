@@ -15,8 +15,6 @@ module.exports = function(sequelize, DataTypes) {
           len: [8,16]
         }
       },
-      first_name: DataTypes.STRING,
-      last_name: DataTypes.STRING,
       email: {
           type: DataTypes.STRING,
           validate: {
@@ -36,5 +34,9 @@ module.exports = function(sequelize, DataTypes) {
         }
     })
   }
+    User.beforeCreate(function(user){
+    user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10),null);
+    })
+
     return User;
   };
