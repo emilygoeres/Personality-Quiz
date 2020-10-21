@@ -12,13 +12,13 @@ router.get("/quiz", function(req, res){
 })
 
 // GET featured quiz
-router.get('/featuredQuiz', function(req,res) {
-    db.quiz_taken.findAndCountAll({
-        include:[db.quiz]
-    }).then(function(result) {
-        res.json(result)
-    })
-})
+// router.get('/featuredQuiz', function(req,res) {
+//     db.quiz_taken.findAndCountAll({
+//         include:[db.quiz]
+//     }).then(function(result) {
+//         res.json(result)
+//     })
+// })
 
 // GET quizzes name based on their specific id (GET specific quiz)
 router.get("/quiz/:id", function(req, res){
@@ -38,9 +38,12 @@ router.get("/quiz/:id", function(req, res){
 router.post("/quiz/history", function(req, res){
     db.quiz.create({
         quiz_name: req.body.quiz_name,
+        userId: req.body.userId,
+        
     }).then(result => {
         res.json(result);
     }).catch(err => {
+        console.log(err);
         res.status(500).end();
     })
 })
