@@ -25,7 +25,7 @@ module.exports = function(sequelize, DataTypes) {
       }
     });
     User.associate = function(models) {
-      User.hasMany(models.result, {
+      User.hasMany(models.quizTaken, {
         foreignKey: {
           allowNull: false
         }
@@ -35,16 +35,6 @@ module.exports = function(sequelize, DataTypes) {
           allowNull: false
         }
     })
-      User.hasMany(models.friends, {
-        foreignKey: {
-          allowNull: false
-        }
-    })
-    User.belongsTo(models.friends, {
-      foreignKey: {
-        allowNull: false
-      }
-  })
   }
     return User;
   };

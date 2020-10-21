@@ -1,6 +1,6 @@
 const questionBlock = $("#questionBlock");
 const answerBlock = $("#answerBlock");
-const nextButton = $("#next");
+const nextButton = $("#nextButton");
 
 //These collect results as the quiz iterates, and are eventually passed in to a function 
 let current;
