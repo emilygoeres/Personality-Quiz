@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "password",
+    "password": "Joseph96-",
     "database": "personality_quiz",
     "host": "127.0.0.1",
     "port": 3306,
