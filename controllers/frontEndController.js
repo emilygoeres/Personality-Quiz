@@ -2,12 +2,6 @@ const express = require("express");
 const router = express.Router();
 const db = require("../models");
 
-// Display the login page
-// router.get("/", function(req, res) {
-//     
-//     res.render("index", hbsObject);
-// });
-  
 // Display the home page
 // router.get("/:id", function(req, res) {
 //     db.quiz.findAll({
