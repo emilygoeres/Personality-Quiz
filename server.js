@@ -21,8 +21,8 @@ app.engine("handlebars", handlebar({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // Import routes and give the server access to them.
-// var frontEndRoutes = require("./controllers/frontEndController");
-// app.use(frontEndRoutes);
+var frontEndRoutes = require("./controllers/frontEndController");
+app.use(frontEndRoutes);
 
 // Import routes and give the server access to them.
 var backEndRoutes = require("./controllers/backEndController");
