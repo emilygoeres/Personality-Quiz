@@ -34,6 +34,21 @@ router.get("/api/quiz/:id", function(req, res){
     })
 })
 
+// GET quizzes name based on search 
+router.get("/api/quiz/:search", function(req, res){
+    // var search = quiz.quiz_name.replace(/\s+/g, "").toLowerCase();
+    db.quiz.findAll({
+        where:{
+            quiz_name: req.params.search,
+            // $or: [{category: req.params.search}]
+        }
+    }).then(result => {
+        res.json(result);
+    }).catch(err => {
+        res.status(500).end();
+    })
+})
+
 // POST create a quiz name
 router.post("/api/quiz", function(req, res){
     db.quiz.create({
@@ -88,7 +103,7 @@ router.put("/api/quiz", function(req, res){
 
 // GET specific profile based on their ID and pulling their quiz taken information
 router.get("/api/profile/:id", function(req, res){
-    db.user.findOne({
+    db.User.findOne({
         where:{
             id: req.params.id
         },
@@ -101,7 +116,7 @@ router.get("/api/profile/:id", function(req, res){
 
 // POST profile to our database (Create profile)
 router.post("/api/profile", function(req, res){
-    db.user.create({
+    db.User.create({
         user_name: req.body.user_name,
         password: req.body.password,
         first_name: req.body.first_name,
@@ -116,19 +131,19 @@ router.post("/api/profile", function(req, res){
 })
 
 // UPDATE profile in database
-router.put("/api/profile", function(req, res){
-    db.user.update({
-        user_name: req.body.user_name,
-        password: req.body.password,
-        first_name: req.body.first_name,
-        last_name: req.body.last_name,
-        email: req.body.email
-    }).then(result => {
-        res.json(result);
-    }).catch(err => {
-        res.status(500).end();
-    })
-})
+// router.put("/api/profile", function(req, res){
+//     db.user.update({
+//         user_name: req.body.user_name,
+//         password: req.body.password,
+//         first_name: req.body.first_name,
+//         last_name: req.body.last_name,
+//         email: req.body.email
+//     }).then(result => {
+//         res.json(result);
+//     }).catch(err => {
+//         res.status(500).end();
+//     })
+// })
 
 // GET specific questions based on their ID
 router.get("/api/questions/:id", function(req, res){
@@ -182,6 +197,18 @@ router.post("/api/personalities", function(req, res){
     })
 })
 
+// PUT request to update the archetype
+router.put("/api/archetype", function(req, res){
+    db.archetype.update({
+        archetype: req.body.archetype,
+        archetype_description: req.body.archetype
+    }).then(result => {
+        res.json(result);
+    }).catch(err => {
+        res.status(500).end();
+    })
+})
+
 // POST archetype
 router.post("/api/archetypes", function(req, res){
     db.archetype.create({
@@ -211,7 +238,6 @@ router.get("/api/quiztaken/:id", function(req, res){
 router.post("/api/quiztaken", function(req, res){
     db.quizTaken.create({
         quizTaken: req.body.quizTaken,
-        answerId: req.body.answerId,
         quizId: req.body.quizId,
         userId: req.body.userId
     }).then(result => {
@@ -221,7 +247,6 @@ router.post("/api/quiztaken", function(req, res){
     })
 })
 
-// TODO: Route for Quiz Taken (Get and Post)
 
 // TODO: route that takes a quizId and returns an object with all the questions and answers and personalities for that quiz 
 // router.get("/api/quizrequest/:id") or something. Maybe think of something better than quizrequest :)

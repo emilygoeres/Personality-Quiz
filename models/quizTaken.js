@@ -14,13 +14,11 @@ module.exports = function(sequelize, DataTypes) {
           allowNull: false
         }
       })
-      
       quizTaken.belongsTo(models.personality, {
         foreignKey: {
           allowNull: false
         }
       })
-      
     }
     return quizTaken;
   };
