@@ -4,7 +4,9 @@ const db = require("../models");
 
 // Display Home Page
 router.get("/", function (req, res) {
+    console.log("at least we got here")
     db.quiz.findAll({}).then(result => {
+        console.log(result)
         let resultJSON = result.map(obj => obj.toJSON());
         let homeObj = {
             // Find All quizzes that match our featured criteria
@@ -15,6 +17,7 @@ router.get("/", function (req, res) {
         }
         res.render("home", homeObj)
     }).catch(err => {
+        console.log("EEP Not working")
         res.status(500).end();
     })
 })

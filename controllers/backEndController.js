@@ -39,6 +39,7 @@ router.post("/api/quiz", function(req, res){
     db.quiz.create({
         quiz_name: req.body.quiz_name,
         userId: req.body.userId,
+        image_tile: req.body.image_tile,
     }).then(result => {
         res.json(result);
     }).catch(err => {

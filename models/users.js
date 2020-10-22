@@ -26,40 +26,52 @@ module.exports = function(sequelize, DataTypes) {
           }
       },
       archetype_1: {
-        type:DataTypes.INTEGER
+        type:DataTypes.INTEGER,
+        defaultValue: 0
       },
       archetype_2: {
-        type:DataTypes.INTEGER
+        type:DataTypes.INTEGER,
+        defaultValue: 0
       },
       archetype_3: {
-        type:DataTypes.INTEGER
+        type:DataTypes.INTEGER,
+        defaultValue: 0
       },
       archetype_4: {
-        type:DataTypes.INTEGER
+        type:DataTypes.INTEGER,
+        defaultValue: 0
       },
       archetype_5: {
-        type:DataTypes.INTEGER
+        type:DataTypes.INTEGER,
+        defaultValue: 0
       },
       archetype_6: {
-        type:DataTypes.INTEGER
+        type:DataTypes.INTEGER,
+        defaultValue: 0
       },
       archetype_7: {
-        type:DataTypes.INTEGER
+        type:DataTypes.INTEGER,
+        defaultValue: 0
       },
       archetype_8: {
-        type:DataTypes.INTEGER
+        type:DataTypes.INTEGER,
+        defaultValue: 0
       },
       archetype_9: {
-        type:DataTypes.INTEGER
+        type:DataTypes.INTEGER,
+        defaultValue: 0
       },
       archetype_10: {
-        type:DataTypes.INTEGER
+        type:DataTypes.INTEGER,
+        defaultValue: 0
       },
       archetype_11: {
-        type:DataTypes.INTEGER
+        type:DataTypes.INTEGER,
+        defaultValue: 0
       },
       archetype_12: {
-        type:DataTypes.INTEGER
+        type:DataTypes.INTEGER,
+        defaultValue: 0
       }
 
     });
