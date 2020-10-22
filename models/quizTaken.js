@@ -16,6 +16,12 @@ module.exports = function(sequelize, DataTypes) {
       })
     }
 
+      quizTaken.belongsTo(models.personality, {
+        foreignKey: {
+          allowNull: false
+        }
+      })
+
     return quizTaken;
   };
   

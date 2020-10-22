@@ -21,6 +21,11 @@ module.exports = function(sequelize, DataTypes) {
           allowNull: false
         }
       })
+      personality.hasMany(models.quizTaken, {
+        foreignKey: {
+          allowNull: true
+        }
+      })
     }
     return personality;
   };
