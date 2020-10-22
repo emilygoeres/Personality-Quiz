@@ -3,6 +3,10 @@ module.exports = function(sequelize, DataTypes) {
       personality_type: {
         type: DataTypes.STRING,
         allowNull: false
+      },
+      personality_description: {
+        type: DataTypes.TEXT,
+        allowNull: flase
       }
     });
 
@@ -16,7 +20,7 @@ module.exports = function(sequelize, DataTypes) {
         foreignKey: {
           allowNull: false
         }
-      }
+      })
     }
     return personality;
   };
