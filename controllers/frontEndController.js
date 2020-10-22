@@ -4,9 +4,7 @@ const db = require("../models");
 
 // Display Home Page
 router.get("/", function (req, res) {
-    console.log("at least we got here")
     db.quiz.findAll({}).then(result => {
-        console.log(result)
         let resultJSON = result.map(obj => obj.toJSON());
         let homeObj = {
             // Find All quizzes that match our featured criteria
@@ -17,7 +15,6 @@ router.get("/", function (req, res) {
         }
         res.render("home", homeObj)
     }).catch(err => {
-        console.log("EEP Not working")
         res.status(500).end();
     })
 })
@@ -42,15 +39,33 @@ router.get("/quiz/:id", function (req, res) {
 
 // Display the profile page
 router.get("/profile/:id", function (req, res) {
-    db.quizTaken.findAll({
+    db.user.findOne({
         where: {
-            userId: req.params.id
+            id: req.params.id
         }
-        // include: [{ models: db.answer, include: {models: db.archetype, include: {models:db.personality}}}, {models: db.quiz}]
-    }).then(profile => {
-        let profileJSON = profile.map(obj => obj.toJSON());
-        console.log(profileJSON);
-        // res.render("profile", profileJSON);
+    }).then(user=> {
+
+        let userJSON = user.toJSON();
+
+        db.quizTaken.findAll({
+            where: {
+                userId: req.params.id
+            },
+            include: {model: db.personality}
+        }).then(quizHistory => {
+            let quizHistoryJSON = quizHistory.map(obj => obj.toJSON());
+                let userObj = {
+                    user:userJSON,
+                    quizHistory: quizHistoryJSON
+                }
+            console.log(userObj);
+            res.render("profile", userObj);
+        }).catch(err => {
+            console.log(err)
+            res.status(500).end();
+        })
+    }).catch(err => {
+        res.status(500).end();
     })
 });
 
