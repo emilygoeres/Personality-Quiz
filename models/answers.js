@@ -16,12 +16,7 @@ module.exports = function(sequelize, DataTypes) {
           }
         } 
         );
-        answer.hasMany(models.quizTaken, {
-          foreignKey: {
-            allowNull: false
-          }
-        }
-        );
+
         answer.belongsTo(models.personality, {
           foreignKey: {
             allowNull: false
