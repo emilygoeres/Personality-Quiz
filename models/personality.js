@@ -3,6 +3,10 @@ module.exports = function(sequelize, DataTypes) {
       personality_type: {
         type: DataTypes.STRING,
         allowNull: false
+      },
+      personality_description: {
+        type: DataTypes.TEXT,
+        allowNull: false
       }
     });
 
