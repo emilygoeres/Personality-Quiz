@@ -8,7 +8,7 @@
 <ul id="featuredQuizzes">
     {{#each featuredQuizzes}}
     <li>
-        <a href="#">{{this.quiz_name}}<img src="http://placekitten.com/g/200/300" data-quizId="{{this.id}}"></a>
+        <a href="/quiz/{{this.id}}">{{this.quiz_name}}<img src="http://placekitten.com/g/200/300"></a>
     </li>
     {{/each}}
 </ul>
@@ -17,7 +17,7 @@
 <ul id="allQuizzes">
     {{#each allQuizzes}}
     <li>
-        <a data-quizId="{{this.id}}" href="#">{{this.quiz_name}}</a>
+        <a href="/quiz/{{this.id}}">{{this.quiz_name}}</a>
     </li>
     {{/each}}
 </ul>
