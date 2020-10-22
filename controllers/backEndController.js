@@ -222,4 +222,16 @@ router.post("/api/quiztaken", function(req, res){
 
 // TODO: Route for Quiz Taken (Get and Post)
 
+// TODO: route that takes a quizId and returns an object with all the questions and answers and personalities for that quiz 
+// router.get("/api/quizrequest/:id") or something. Maybe think of something better than quizrequest :)
+// NOTE: This could be 2 different routes if needed
+// ex: search for a quiz id 1
+// returns:
+// quizObj {
+//     Personalities: [],
+//     Questions: [],
+//     Answers: []
+// }
+
+
 module.exports = router;
