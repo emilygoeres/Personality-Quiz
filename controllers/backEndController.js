@@ -1,4 +1,5 @@
 const express = require("express");
+const { sequelize } = require("../models");
 const router = express.Router();
 const db = require("../models");
 
@@ -21,21 +22,21 @@ router.get('/api/quiz/featured', function(req,res) {
 })
 
 // GET quizzes name based on their specific id (GET specific quiz)
-router.get("/api/quiz/:id", function(req, res){
-    db.quiz.findOne({
-        where:{
-            id: req.params.id
-        },
-        include:[db.quizTaken]
-    }).then(result => {
-        res.json(result);
-    }).catch(err => {
-        res.status(500).end();
-    })
-})
+// router.get("/api/quiz/:id", function(req, res){
+//     db.quiz.findOne({
+//         where:{
+//             id: req.params.id
+//         },
+//         include:[db.quizTaken]
+//     }).then(result => {
+//         res.json(result);
+//     }).catch(err => {
+//         res.status(500).end();
+//     })
+// })
 
 // GET quizzes name based on search 
-router.get("/api/quiz/:search", function(req, res){
+router.get("/api/quizzes/:search", function(req, res){
     // var search = quiz.quiz_name.replace(/\s+/g, "").toLowerCase();
     db.quiz.findAll({
         where:{
@@ -53,6 +54,7 @@ router.get("/api/quiz/:search", function(req, res){
 router.post("/api/quiz", function(req, res){
     db.quiz.create({
         quiz_name: req.body.quiz_name,
+        quiz_category: req.body.quiz_category,
         userId: req.body.userId,
     }).then(result => {
         res.json(result);
@@ -62,29 +64,29 @@ router.post("/api/quiz", function(req, res){
     })
 })
 
-// DELETE specific quiz based on their ID (Delete)
-router.delete("/api/quiz/:id", function(req, res){
-    db.quiz.destroy({
-        id: req.params.id
-    }).then(result => {
-        res.json(result);
-    }).catch(err => {
-        res.status(500).end();
-    })
-})
+// DELETE specific quiz based on their ID (Delete) Visit this later
+// router.delete("/api/quiz/:id", function(req, res){
+//     db.quiz.destroy({
+//         id: req.params.id
+//     }).then(result => {
+//         res.json(result);
+//     }).catch(err => {
+//         res.status(500).end();
+//     })
+// })
 
-// UPDATE specific quiz based on their ID (Retaking)
-router.put("/api/quiz", function(req, res){
-    db.quiz.update({
-        quiz_name: req.body.quiz_name
-    },{
-        include:[{models: db.quizTaken, include:{models: db.answer}}]
-    }).then(result => {
-        res.json(result);
-    }).catch(err => {
-        res.status(500).end();
-    })
-})
+// UPDATE specific quiz based on their ID (Retaking) Visit this later
+// router.put("/api/quiz", function(req, res){
+//     db.quiz.update({
+//         quiz_name: req.body.quiz_name
+//     },{
+//         include:[{models: db.quizTaken, include:{models: db.answer}}]
+//     }).then(result => {
+//         res.json(result);
+//     }).catch(err => {
+//         res.status(500).end();
+//     })
+// })
 
 // Test
 // router.get("/api/profile/:id", function(req, res){
@@ -101,11 +103,30 @@ router.put("/api/quiz", function(req, res){
 // })
 
 // GET specific profile based on their ID and pulling their quiz taken information
-router.get("/api/profile/:id", function(req, res){
-    db.User.findOne({
+router.get("/api/quizTakenAndUser/:id", function(req, res){
+    db.user.findOne({
         where:{
             id: req.params.id
-        },
+        }
+    }).then(result =>{
+        db.quizTaken.findAll({
+            where:{
+                userId: req.params.id
+            }
+        }).then(result2 => {
+            res.json({archetypeResult: result, quizHistory: result2});
+        })
+    }).catch(err => {
+        res.status(500).end();
+    })
+})
+
+// GET routes
+router.get("/api/profile/:id", function(req, res){
+    db.user.findOne({
+        where:{
+            id: req.params.id
+        }
     }).then(result =>{
         res.json(result);
     }).catch(err => {
@@ -115,12 +136,24 @@ router.get("/api/profile/:id", function(req, res){
 
 // POST profile to our database (Create profile)
 router.post("/api/profile", function(req, res){
-    db.User.create({
+    db.user.create({
         user_name: req.body.user_name,
         password: req.body.password,
         first_name: req.body.first_name,
         last_name: req.body.last_name,
-        email: req.body.email
+        email: req.body.email,
+        archetype_1: 0,
+        archetype_2: 0,
+        archetype_3: 0,
+        archetype_4: 0,
+        archetype_5: 0,
+        archetype_6: 0,
+        archetype_7: 0,
+        archetype_8: 0,
+        archetype_9: 0,
+        archetype_10: 0,
+        archetype_11: 0,
+        archetype_12: 0
     }).then(result => {
         res.json(result);
     }).catch(err => {
@@ -143,6 +176,34 @@ router.post("/api/profile", function(req, res){
 //         res.status(500).end();
 //     })
 // })
+
+// GET route for quiz question
+router.get("/api/quizQuestion/:id", function(req, res){
+    db.quiz.findOne({
+        where:{
+            id: req.params.id
+        },
+        include:
+        [{ model: db.question, 
+
+            include: 
+            [{model: db.answer, 
+
+                include: 
+                [{model:db.personality, 
+
+                    include:
+                    [{model:db.archetype}]} 
+                ]}
+            ]}
+        ]
+    }).then(result => {
+        res.json(result);
+    }).catch(err => {
+        console.log(err);
+        res.status(500).end();
+    })
+})
 
 // GET specific questions based on their ID
 router.get("/api/questions/:id", function(req, res){
@@ -180,6 +241,7 @@ router.post("/api/answer", function(req, res){
     }).then(result => {
         res.json(result);
     }).catch(err => {
+        console.log(err);
         res.status(500).end();
     })
 })
@@ -187,8 +249,9 @@ router.post("/api/answer", function(req, res){
 // POST personality
 router.post("/api/personalities", function(req, res){
     db.personality.create({
-        personality: req.body.personality,
-        archetypeId: req.body.archetypeId
+        personality_type: req.body.personality_type,
+        personality_description: req.body.personality_description,
+        archetypeId: req.body.archetypeId,
     }).then(result => {
         res.json(result);
     }).catch(err => {
@@ -196,26 +259,42 @@ router.post("/api/personalities", function(req, res){
     })
 })
 
-// PUT request to update the archetype
-router.put("/api/archetype", function(req, res){
-    db.archetype.update({
-        archetype: req.body.archetype,
-        archetype_description: req.body.archetype
-    }).then(result => {
-        res.json(result);
-    }).catch(err => {
-        res.status(500).end();
-    })
-})
-
-// POST archetype
-router.post("/api/archetypes", function(req, res){
+// POST request to create the archetype
+router.post("/api/archetype", function(req, res){
     db.archetype.create({
         archetype: req.body.archetype,
         archetype_description: req.body.archetype_description
     }).then(result => {
         res.json(result);
     }).catch(err => {
+        res.status(500).end();
+    })
+})
+
+// PUT route for user to update their archetype
+router.put("/api/user/:id", function(req, res){
+    db.user.update({
+        archetype_1: sequelize.literal(`archetype_1 + ${req.body.archetype_1}`),
+        archetype_2: sequelize.literal(`archetype_2 + ${req.body.archetype_2}`),
+        archetype_3: sequelize.literal(`archetype_3 + ${req.body.archetype_3}`),
+        archetype_4: sequelize.literal(`archetype_4 + ${req.body.archetype_4}`),
+        archetype_5: sequelize.literal(`archetype_5 + ${req.body.archetype_5}`),
+        archetype_6: sequelize.literal(`archetype_6 + ${req.body.archetype_6}`),
+        archetype_7: sequelize.literal(`archetype_7 + ${req.body.archetype_7}`),
+        archetype_8: sequelize.literal(`archetype_8 + ${req.body.archetype_8}`),
+        archetype_9: sequelize.literal(`archetype_9 + ${req.body.archetype_9}`),
+        archetype_10: sequelize.literal(`archetype_10 + ${req.body.archetype_10}`),
+        archetype_11: sequelize.literal(`archetype_11 + ${req.body.archetype_11}`),
+        archetype_12: sequelize.literal(`archetype_12 + ${req.body.archetype_12}`)
+        }, {
+            where:{
+                id: req.params.id
+            }
+        }
+    ).then(result => {
+        res.json(result);
+    }).catch(err => {
+        console.log(err);
         res.status(500).end();
     })
 })
@@ -234,11 +313,11 @@ router.get("/api/quiztaken/:id", function(req, res){
 })
 
 // POST routes for quiztaken
-router.post("/api/quiztaken", function(req, res){
+router.post("/api/quizTaken", function(req, res){
     db.quizTaken.create({
-        quizTaken: req.body.quizTaken,
         quizId: req.body.quizId,
-        userId: req.body.userId
+        userId: req.body.userId,
+        personalityId: req.body.personalityId
     }).then(result => {
         res.json(result);
     }).catch(err => {

@@ -39,30 +39,34 @@ router.get("/quiz/:id", function (req, res) {
 
 // Display the profile page
 router.get("/profile/:id", function (req, res) {
-    db.quizTaken.findAll({
-        where: {
-            userId: req.params.id
+    db.user.findOne({
+        where:{
+            id: req.params.id
         }
-        // include: [{ models: db.answer, include: {models: db.archetype, include: {models:db.personality}}}, {models: db.quiz}]
-    }).then(profile => {
-        let profileJSON = profile.map(obj => obj.toJSON());
-        console.log(profileJSON);
-        // res.render("profile", profileJSON);
+    }).then(result =>{
+        db.quizTaken.findAll({
+            where:{
+                userId: req.params.id
+            }
+        }).then(result2 => {
+            // {archetypeResult: result, quizHistory: result2}
+            console.log({archetypeResult: result, quizHistory: result2});
+            // res.render("profile", );
+        })
+    }).catch(err => {
+        res.status(500).end();
     })
+    // db.quizTaken.findAll({
+    //     where: {
+    //         userId: req.params.id
+    //     },
+    //     include: [{ models: db.answer, include: {models: db.archetype, include: {models:db.personality}}}, {models: db.quiz}]
+    // }).then(profile => {
+    //     let profileJSON = profile.map(obj => obj.toJSON());
+    //     console.log(profileJSON);
+    //     // res.render("profile", profileJSON);
+    // })
 });
 
-// Display the questions page
-// router.get("/question/:id", function(req, res) {
-//     db.quiz.findOne({
-//         where:{
-//             id: req.params.id
-//         },
-//         include:[db.answer, db.quiz]
-//     }).then(result => {
-//         const questionJSON = quiz.toJSON();
-//         console.log(questionJSON);
-//         res.render("quiz", questionJSON);
-//     })
-// });
 
 module.exports = router;
