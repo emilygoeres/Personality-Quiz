@@ -11,11 +11,11 @@ module.exports = function(sequelize, DataTypes) {
     });
     
     quiz.associate = function(models) {
-      // quiz.belongsTo(models.user, {
-      // foreignKey: {
-      //   allowNull: false
-      // }
-      // })
+      quiz.belongsTo(models.user, {
+      foreignKey: {
+        allowNull: true
+      }
+      })
       quiz.hasMany(models.quizTaken, {
         foreignKey: {
           allowNull: false
