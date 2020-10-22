@@ -28,6 +28,59 @@ app.use(frontEndRoutes);
 var backEndRoutes = require("./controllers/backEndController");
 app.use(backEndRoutes);
 
+
+//=======================================================================
+const personalities = {
+  "Confident":"You are like Pikachu!",
+  "Calm":"You are like Bulbasaur!",
+  "Quirky": "You are like Squirtle!",
+  "Sad": "You are like Charmander!",
+  "Fierce": "You are like Pidgeotto!",
+  "Spooky": "You are like Psyduck!",
+  "Proud": "You are like Caterpie!"
+};
+
+
+
+const quiz = [
+  {
+      question: "Which pokemon is your favorite?",
+      answers: ["Pikachu","Bulbasaur","Squirtle","Charmander"],
+      type: ["Confident","Calm","Quirky","Sad"],
+      points: [1,1,1,1]
+  },
+  {
+      question: "Which trainer is your favorite?",
+      answers: ["Ash","Misty","Brock","Gary"],
+      type: ["Quirky","Fierce","Calm","Sad"],
+      points: [1,1,1,1]
+  },
+  {
+      question: "Which type is your favorite?",
+      answers: ["Psychic","Ghost","Dark","Dragon"],
+      type: ["Quirky","Spooky","Sad","Proud"],
+      points: [1,1,1,1]
+  },
+  {
+      question: "Which gym is your favorite?",
+      answers: ["Pewter","Cerulean","Cinnabar","Viridian"],
+      type: ["Calm","Proud","Fierce","Sad"],
+      points: [1,1,1,1]
+  }
+];
+
+// Routes to GET personality
+app.get("/api/samplePersonality", function(req, res){
+  res.json({personalities: personalities})
+})
+
+// Routes to GET quiz
+app.get("/api/sampleQuiz", function(req, res){
+  res.json({quiz: quiz})
+})
+
+// ==================================================================
+
 // Start our server so that it can begin listening to client requests.
 db.sequelize.sync({force: false}).then(function() {
   app.listen(PORT, function() {

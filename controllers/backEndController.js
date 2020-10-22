@@ -155,13 +155,13 @@ router.post("/api/questions", function(req, res){
     })
 })
 
-// POST answers
-router.post("/api/answers", function(req, res){
+// POST answer
+router.post("/api/answer", function(req, res){
     db.answer.create({
-        answer: req.body.answer,
-        points: req.body.points,
-        questionId: req.body.questionId,
-        personalityId: req.body.personalityId
+       answer: req.body.answer,
+       points: req.body.points,
+       questionId: req.body.questionId,
+       personalityId: req.body.personalityId
     }).then(result => {
         res.json(result);
     }).catch(err => {
@@ -169,10 +169,10 @@ router.post("/api/answers", function(req, res){
     })
 })
 
-// POST personalities
+// POST personality
 router.post("/api/personalities", function(req, res){
     db.personality.create({
-        personality_type: req.body.personality_type,
+        personality: req.body.personality,
         archetypeId: req.body.archetypeId
     }).then(result => {
         res.json(result);
@@ -181,11 +181,38 @@ router.post("/api/personalities", function(req, res){
     })
 })
 
-// POST archetypes
+// POST archetype
 router.post("/api/archetypes", function(req, res){
     db.archetype.create({
         archetype: req.body.archetype,
         archetype_description: req.body.archetype_description
+    }).then(result => {
+        res.json(result);
+    }).catch(err => {
+        res.status(500).end();
+    })
+})
+
+// GET routes for quiztaken
+router.get("/api/quiztaken/:id", function(req, res){
+    db.question.findOne({
+        where:{
+            id:req.params.id
+        }
+    }).then(result => {
+        res.json(result);
+    }).catch(err => {
+        res.status(500).end();
+    })
+})
+
+// POST routes for quiztaken
+router.post("/api/quiztaken", function(req, res){
+    db.quizTaken.create({
+        quizTaken: req.body.quizTaken,
+        answerId: req.body.answerId,
+        quizId: req.body.quizId,
+        userId: req.body.userId
     }).then(result => {
         res.json(result);
     }).catch(err => {
