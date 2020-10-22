@@ -6,7 +6,7 @@ module.exports = function(sequelize, DataTypes) {
       },
       personality_description: {
         type: DataTypes.TEXT,
-        allowNull: flase
+        allowNull: false
       }
     });
 
