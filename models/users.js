@@ -69,11 +69,11 @@ module.exports = function(sequelize, DataTypes) {
           allowNull: false
         }
       })
-    //   User.hasMany(models.quiz, {
-    //     foreignKey: {
-    //       allowNull: false
-    //     }
-    // })
+      User.hasMany(models.quiz, {
+        foreignKey: {
+          allowNull: true
+        }
+    })
   }
     // User.beforeCreate(function(user){
     // user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10),null);
