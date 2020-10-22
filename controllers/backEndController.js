@@ -193,4 +193,6 @@ router.post("/api/archetypes", function(req, res){
     })
 })
 
+// TODO: Route for Quiz Taken (Get and Post)
+
 module.exports = router;

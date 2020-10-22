@@ -2,45 +2,17 @@ const express = require("express");
 const router = express.Router();
 const db = require("../models");
 
-// Display the home page
-// router.get("/", function(req, res) {
-//     db.quiz.findAll({
-//         include:[db.user, db.quizTaken]
-//     }).then(result => {
-//         const homeJSON = quiz.toJSON();
-//         console.log(homeJSON);
-//         res.render("home", homeJSON);
-//     }).catch(err => {
-//         res.status(500).end();
-//     })
-// });
-
 // Display Home Page
 router.get("/", function (req, res) {
-    db.quiz.findAll({
-
-    }).then(result => {
-
-        let resultJSON = result.map(obj=> obj.toJSON());
+    db.quiz.findAll({}).then(result => {
+        let resultJSON = result.map(obj => obj.toJSON());
         let homeObj = {
             // Find All quizzes that match our featured criteria
-            featuredQuizzes: resultJSON,
+            featuredQuizzes: resultJSON.slice(resultJSON.length - 4, 3),
             // All Quizzes
-            allQuizzes: 
-            [
-                { id: "1", quiz_name: "Harry Potter" },
-                { id: "2", quiz_name: "Pokemon" },
-                { id: "3", quiz_name: "Friends" },
-                { id: "4", quiz_name: "A" },
-                { id: "5", quiz_name: "AB" },
-                { id: "6", quiz_name: "AC" },
-                { id: "7", quiz_name: "AL" },
-                { id: "8", quiz_name: "AD" },
-                { id: "9", quiz_name: "AE" },
-                { id: "10", quiz_name: "FA" },
-            ]
+            // Maybe future release (exlcude the featured quizzes from All Quizzes)
+            allQuizzes: resultJSON
         }
-        console.log(resultJSON);
         res.render("home", homeObj)
     }).catch(err => {
         res.status(500).end();
@@ -66,18 +38,18 @@ router.get("/quiz/:id", function (req, res) {
 })
 
 // Display the profile page
-// router.get("/profile/:id", function(req, res) {
-//     db.quizTaken.findOne({
-//         where:{
-//             userId: req.params.id
-//         },
-//         include: [{ models: db.answer, include: {models: db.archetype, include: {models:db.personality}}}, {models: db.quiz}]
-//     }).then(result => {
-//         const profileJSON = quizTaken.toJSON();
-//         console.log(profileJSON);
-//         res.render("profile", profileJSON);
-//     })
-// });
+router.get("/profile/:id", function (req, res) {
+    db.quizTaken.findAll({
+        where: {
+            userId: req.params.id
+        }
+        // include: [{ models: db.answer, include: {models: db.archetype, include: {models:db.personality}}}, {models: db.quiz}]
+    }).then(profile => {
+        let profileJSON = profile.map(obj => obj.toJSON());
+        console.log(profileJSON);
+        // res.render("profile", profileJSON);
+    })
+});
 
 // Display the questions page
 // router.get("/question/:id", function(req, res) {
