@@ -1,7 +1,7 @@
 <h2>PERSONALITY COMPOSITE</h2>
 
 <ul>
-    {{#each quizResults}}
+    {{#each archetypes}}
     <li>
         <p>TRAIT{{this.trait}}</p>
         <div>Number of results/Number of Tests{{this.results}} {{this.test}}</div>
@@ -11,12 +11,12 @@
 
 <h2>QUIZ HISTORY</h2>
 
-<ul>
+<ul id="history">
     {{#each quizHistory}}
     <li>
-        <p>Quiz{{this.history}}</p>
-        <button id = "retakeButton">RETAKE</button>
-        <button id = "deleterButton">DELETE</button>
+        <p>Quiz{{this.history}} {{this.personalityResult}}</p>
+        <button data-next = "retakeButton" data-quizID={{this.quizID}}>RETAKE</button>
+        <button data-next= "deleterButton" data-quizID={{this.quizID}}>DELETE</button>
     </li>
     {{/each}}
 </ul>

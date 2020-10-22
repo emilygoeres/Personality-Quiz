@@ -1,0 +1,25 @@
+<form id="searchQuiz">
+    <h2>SEARCH FOR A QUIZ</h2>
+    <textarea id="quizSearch"></textarea>
+</form>
+
+{{!-- a tags should link to appropriate quiz route --}}
+<h2>FEATURED QUIZZES</h2>
+<ul id="featuredQuizzes">
+    {{#each featuredQuizzes}}
+    <li>
+        <a href="#">{{this.quiz_name}}<img src="http://placekitten.com/g/200/300" data-quizId="{{this.id}}"></a>
+    </li>
+    {{/each}}
+</ul>
+
+<h2>ALL QUIZZES</h2>
+<ul id="allQuizzes">
+    {{#each allQuizzes}}
+    <li>
+        <a data-quizId="{{this.id}}" href="#">{{this.quiz_name}}</a>
+    </li>
+    {{/each}}
+</ul>
+
+<ul id="searchedQuizzes" style="display: none;"></ul>
