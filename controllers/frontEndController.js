@@ -40,18 +40,29 @@ router.get("/quiz/:id", function (req, res) {
 // Display the profile page
 router.get("/profile/:id", function (req, res) {
     db.user.findOne({
-        where:{
+        where: {
             id: req.params.id
         }
-    }).then(result =>{
+    }).then(user=> {
+
+        let userJSON = user.toJSON();
+
         db.quizTaken.findAll({
-            where:{
+            where: {
                 userId: req.params.id
-            }
-        }).then(result2 => {
-            // {archetypeResult: result, quizHistory: result2}
-            console.log({archetypeResult: result, quizHistory: result2});
-            // res.render("profile", );
+            },
+            include: {model: db.personality}
+        }).then(quizHistory => {
+            let quizHistoryJSON = quizHistory.map(obj => obj.toJSON());
+                let userObj = {
+                    user:userJSON,
+                    quizHistory: quizHistoryJSON
+                }
+            console.log(userObj);
+            res.render("profile", userObj);
+        }).catch(err => {
+            console.log(err)
+            res.status(500).end();
         })
     }).catch(err => {
         res.status(500).end();

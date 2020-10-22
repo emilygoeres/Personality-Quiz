@@ -1,22 +1,29 @@
 <h2>PERSONALITY COMPOSITE</h2>
 
 <ul>
-    {{#each archetypes}}
-    <li>
-        <p>TRAIT{{this.trait}}</p>
-        <div>Number of results/Number of Tests{{this.results}} {{this.test}}</div>
-    </li>
-    {{/each}}
+    <li>Joker: {{this.user.archetype_1}}</li>
+    <li>{{this.user.archetype_2}}</li>
+    <li>{{this.user.archetype_3}}</li>
+    <li>{{this.user.archetype_4}}</li>
+    <li>{{this.user.archetype_5}}</li>
+    <li>{{this.user.archetype_6}}</li>
+    <li>{{this.user.archetype_7}}</li>
+    <li>{{this.user.archetype_8}}</li>
+    <li>{{this.user.archetype_9}}</li>
+    <li>{{this.user.archetype_10}}</li>
+    <li>{{this.user.archetype_11}}</li>
+    <li>{{this.user.archetype_12}}</li>
 </ul>
 
 <h2>QUIZ HISTORY</h2>
 
 <ul id="history">
-    {{#each quizHistory}}
+    {{#each this.quizHistory}}
     <li>
-        <p>Quiz{{this.history}} {{this.personalityResult}}</p>
-        <button data-next = "retakeButton" data-quizID={{this.quizID}}>RETAKE</button>
-        <button data-next= "deleterButton" data-quizID={{this.quizID}}>DELETE</button>
+        {{!-- We will need to replace the personality id with the personality using a join --}}
+        <p>Quiz NAME PERSONALITY ID:{{this.personalityId}}</p>
+        <button data-next = "retakeButton" data-quizID={{this.id}}>RETAKE</button>
+        <button data-next= "deleterButton" data-quizID={{this.id}}>DELETE</button>
     </li>
     {{/each}}
 </ul>

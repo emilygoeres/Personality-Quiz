@@ -56,6 +56,7 @@ router.post("/api/quiz", function(req, res){
         quiz_name: req.body.quiz_name,
         quiz_category: req.body.quiz_category,
         userId: req.body.userId,
+        image_tile: req.body.image_tile,
     }).then(result => {
         res.json(result);
     }).catch(err => {
@@ -130,6 +131,7 @@ router.get("/api/profile/:id", function(req, res){
     }).then(result =>{
         res.json(result);
     }).catch(err => {
+        console.log("are we here though?")
         res.status(500).end();
     })
 })
