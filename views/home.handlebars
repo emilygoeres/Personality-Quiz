@@ -8,7 +8,7 @@
 <ul id="featuredQuizzes">
     {{#each featuredQuizzes}}
     <li>
-        <a href="/quiz/{{this.id}}">{{this.quiz_name}}<img src="http://placekitten.com/g/200/300"></a>
+        <a href="/quiz/{{this.id}}">{{this.quiz_name}}<img src={{this.image_tile}}></a>
     </li>
     {{/each}}
 </ul>

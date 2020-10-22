@@ -54,6 +54,7 @@ router.post("/api/quiz", function(req, res){
     db.quiz.create({
         quiz_name: req.body.quiz_name,
         userId: req.body.userId,
+        image_tile: req.body.image_tile,
     }).then(result => {
         res.json(result);
     }).catch(err => {
@@ -102,13 +103,14 @@ router.put("/api/quiz", function(req, res){
 
 // GET specific profile based on their ID and pulling their quiz taken information
 router.get("/api/profile/:id", function(req, res){
-    db.User.findOne({
+    db.user.findOne({
         where:{
             id: req.params.id
-        },
+        }
     }).then(result =>{
         res.json(result);
     }).catch(err => {
+        console.log("are we here though?")
         res.status(500).end();
     })
 })
@@ -187,7 +189,8 @@ router.post("/api/answer", function(req, res){
 // POST personality
 router.post("/api/personalities", function(req, res){
     db.personality.create({
-        personality: req.body.personality,
+        personality_type: req.body.personality_type,
+        personality_description: req.body.personality_description,
         archetypeId: req.body.archetypeId
     }).then(result => {
         res.json(result);
@@ -236,9 +239,9 @@ router.get("/api/quiztaken/:id", function(req, res){
 // POST routes for quiztaken
 router.post("/api/quiztaken", function(req, res){
     db.quizTaken.create({
-        quizTaken: req.body.quizTaken,
         quizId: req.body.quizId,
-        userId: req.body.userId
+        userId: req.body.userId,
+        personalityId: req.body.personalityId
     }).then(result => {
         res.json(result);
     }).catch(err => {
