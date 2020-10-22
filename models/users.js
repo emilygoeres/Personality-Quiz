@@ -78,7 +78,7 @@ module.exports = function(sequelize, DataTypes) {
     User.associate = function(models) {
       User.hasMany(models.quizTaken, {
         foreignKey: {
-          allowNull: false
+          allowNull: true
         }
       })
       User.hasMany(models.quiz, {

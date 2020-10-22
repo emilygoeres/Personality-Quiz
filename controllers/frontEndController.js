@@ -67,20 +67,17 @@ router.get("/profile/:id", function (req, res) {
     }).catch(err => {
         res.status(500).end();
     })
+    // db.quizTaken.findAll({
+    //     where: {
+    //         userId: req.params.id
+    //     },
+    //     include: [{ models: db.answer, include: {models: db.archetype, include: {models:db.personality}}}, {models: db.quiz}]
+    // }).then(profile => {
+    //     let profileJSON = profile.map(obj => obj.toJSON());
+    //     console.log(profileJSON);
+    //     // res.render("profile", profileJSON);
+    // })
 });
 
-// Display the questions page
-// router.get("/question/:id", function(req, res) {
-//     db.quiz.findOne({
-//         where:{
-//             id: req.params.id
-//         },
-//         include:[db.answer, db.quiz]
-//     }).then(result => {
-//         const questionJSON = quiz.toJSON();
-//         console.log(questionJSON);
-//         res.render("quiz", questionJSON);
-//     })
-// });
 
 module.exports = router;
