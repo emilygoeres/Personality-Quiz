@@ -44,8 +44,19 @@ router.get("/profile/:id", function (req, res) {
             id: req.params.id
         }
     }).then(user=> {
-
         let userJSON = user.toJSON();
+        userJSON.archetypeSum = userJSON.archetype_1 
+        + userJSON.archetype_2
+        + userJSON.archetype_3
+        + userJSON.archetype_4
+        + userJSON.archetype_5
+        + userJSON.archetype_6
+        + userJSON.archetype_7
+        + userJSON.archetype_8
+        + userJSON.archetype_9
+        + userJSON.archetype_10
+        + userJSON.archetype_11
+        + userJSON.archetype_12;
 
         db.quizTaken.findAll({
             where: {
@@ -58,7 +69,7 @@ router.get("/profile/:id", function (req, res) {
                 user:userJSON,
                 quizHistory: quizHistoryJSON
             }
-            console.log(userObj.quizHistory[0]);
+            console.log(userObj);
             res.render("profile", userObj);
         }).catch(err => {
             console.log(err)
