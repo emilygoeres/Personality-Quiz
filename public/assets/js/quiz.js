@@ -37,10 +37,8 @@ function generateNext() {
         nextAnswer.data("personality", element.personality.personality_type);
         nextAnswer.data("archetype",element.personality.archetypeId);
         
-        if (`${element.personality.personality_type}` in personalities) {
-            console.log("Already here!");
-        } else {
-            personalities[`${element.personality.personality_type}`] = element.personality.personality_description
+        if (!(`${element.personality.personality_type}` in personalities)) {
+            personalities[`${element.personality.personality_type}`] = element.personality.personality_description;
         }
 
 
