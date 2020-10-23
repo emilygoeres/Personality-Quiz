@@ -4,23 +4,19 @@ const db = require("../models");
 
 // Display Home Page
 router.get("/", function (req, res) {
-    if(req.session.user){
-        db.quiz.findAll({}).then(result => {
-            let resultJSON = result.map(obj => obj.toJSON());
-            let homeObj = {
-                // Find All quizzes that match our featured criteria
-                featuredQuizzes: resultJSON.slice(resultJSON.length - 4, 3),
-                // All Quizzes
-                // Maybe future release (exlcude the featured quizzes from All Quizzes)
-                allQuizzes: resultJSON
-            }
-            res.render("home", homeObj)
-        }).catch(err => {
-            res.status(500).end();
-        })
-    } else {
-        res.status(401).send("You need to login first")
-    }
+    db.quiz.findAll({}).then(result => {
+        let resultJSON = result.map(obj => obj.toJSON());
+        let homeObj = {
+            // Find All quizzes that match our featured criteria
+            featuredQuizzes: resultJSON.slice(resultJSON.length - 4, 3),
+            // All Quizzes
+            // Maybe future release (exlcude the featured quizzes from All Quizzes)
+            allQuizzes: resultJSON
+        }
+        res.render("home", homeObj)
+    }).catch(err => {
+        res.status(500).end();
+    })
 })
 
 // Display a quiz by ID
@@ -43,24 +39,24 @@ router.get("/quiz/:id", function (req, res) {
 
 // Display the profile page
 router.get("/profile/:id", function (req, res) {
-    if(req.session.user){
+    if (req.session.user) {
         db.user.findOne({
             where: {
                 id: req.params.id
             }
-        }).then(user=> {
-    
+        }).then(user => {
+
             let userJSON = user.toJSON();
-    
+
             db.quizTaken.findAll({
                 where: {
                     userId: req.params.id
                 },
-                include: [{model: db.personality},{model: db.quiz}]
+                include: [{ model: db.personality }, { model: db.quiz }]
             }).then(quizHistory => {
                 let quizHistoryJSON = quizHistory.map(obj => obj.toJSON());
                 let userObj = {
-                    user:userJSON,
+                    user: userJSON,
                     quizHistory: quizHistoryJSON
                 }
                 console.log(userObj.quizHistory[0]);
@@ -73,7 +69,7 @@ router.get("/profile/:id", function (req, res) {
             res.status(500).end();
         })
     } else {
-        res.status(401).send("You need to login first")
+        res.status(401).redirect("/login")
     }
 });
 
