@@ -1,8 +1,5 @@
 -- USE personality_quiz;
 
---Insert User --
-INSERT INTO personality_quiz.users(user_name, first_name, last_name, password, email, archetype_1, archetype_2, archetype_3, archetype_4, archetype_5, archetype_6, archetype_7, archetype_8, archetype_9, archetype_10, archetype_11, archetype_12, createdAt, updatedAt) 
-VALUES ("SrLucky", "Joshua", "Jainga","password", "jjainga@gmail.com",0,0,0,0,0,0,0,0,0,0,0,0, now(), now());
 -- Insert quiz --
 INSERT INTO personality_quiz.quizzes(quiz_name, quiz_category, image_tile,createdAt, updatedAt,userId) 
 VALUES ("Friend's Quiz", "tv show", "https://images.app.goo.gl/Bm1btRA8eKASoRCa6", now(),now(),1);
@@ -17,7 +14,6 @@ INSERT INTO personality_quiz.questions(question,createdAt, updatedAt,quizId)
 VALUES("Who is your favorite couple",now(), now(),4);
 INSERT INTO personality_quiz.questions(question,createdAt, updatedAt,quizId)
 VALUES("What is the funniest parts of the show?",now(), now(),4);
-INSERT INTO personality_quiz.questions(question,createdAt, updatedAt,quizId)
 
 
 INSERT INTO personality_quiz.personalities(personality_type, personality_description,createdAt,updatedAt,archetypeId)
