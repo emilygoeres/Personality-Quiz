@@ -39,46 +39,57 @@ router.get("/quiz/:id", function (req, res) {
 
 // Display the profile page
 router.get("/profile/:id", function (req, res) {
-    db.user.findOne({
-        where: {
-            id: req.params.id
-        }
-    }).then(user=> {
-        let userJSON = user.toJSON();
-        userJSON.archetypeSum = userJSON.archetype_1 
-        + userJSON.archetype_2
-        + userJSON.archetype_3
-        + userJSON.archetype_4
-        + userJSON.archetype_5
-        + userJSON.archetype_6
-        + userJSON.archetype_7
-        + userJSON.archetype_8
-        + userJSON.archetype_9
-        + userJSON.archetype_10
-        + userJSON.archetype_11
-        + userJSON.archetype_12;
-
-        db.quizTaken.findAll({
+    if (req.session.user) {
+        db.user.findOne({
             where: {
-                userId: req.params.id
-            },
-            include: [{model: db.personality},{model: db.quiz}]
-        }).then(quizHistory => {
-            let quizHistoryJSON = quizHistory.map(obj => obj.toJSON());
-            let userObj = {
-                user:userJSON,
-                quizHistory: quizHistoryJSON
+                id: req.params.id
             }
-            console.log(userObj);
-            res.render("profile", userObj);
+        }).then(user => {
+            let userJSON = user.toJSON();
+            userJSON.archetypeSum = userJSON.archetype_1
+                + userJSON.archetype_2
+                + userJSON.archetype_3
+                + userJSON.archetype_4
+                + userJSON.archetype_5
+                + userJSON.archetype_6
+                + userJSON.archetype_7
+                + userJSON.archetype_8
+                + userJSON.archetype_9
+                + userJSON.archetype_10
+                + userJSON.archetype_11
+                + userJSON.archetype_12;
+
+            db.quizTaken.findAll({
+                where: {
+                    userId: req.params.id
+                },
+                include: [{ model: db.personality }, { model: db.quiz }]
+            }).then(quizHistory => {
+                let quizHistoryJSON = quizHistory.map(obj => obj.toJSON());
+                let userObj = {
+                    user: userJSON,
+                    quizHistory: quizHistoryJSON
+                }
+                console.log(userObj.quizHistory[0]);
+                res.render("profile", userObj);
+            }).catch(err => {
+                console.log(err)
+                res.status(500).end();
+            })
         }).catch(err => {
-            console.log(err)
             res.status(500).end();
         })
-    }).catch(err => {
-        res.status(500).end();
-    })
+    } else {
+        res.status(401).redirect("/login")
+    }
 });
 
+router.get("/login", (req, res) => {
+    res.render("login", { user: req.session.user })
+})
+
+router.get("/signup", (req, res) => {
+    res.render("signup", { user: req.session.user })
+})
 
 module.exports = router;
