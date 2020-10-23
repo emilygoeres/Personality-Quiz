@@ -9,40 +9,16 @@ const personalityResults = {};
 //
 let personalities;
 
+let quiz;
 
-
-const quiz = [
-    {
-        question: "Which pokemon is your favorite?",
-        answers: ["Pikachu","Bulbasaur","Squirtle","Charmander"],
-        type: ["Confident passionate","Calm confident","Quirky energetic","serious intent"],
-        points: [1,1,1,1]
-    },
-    {
-        question: "Which trainer is your favorite?",
-        answers: ["Ash","Misty","Brock","Gary"],
-        type: ["Quirky","Fierce","Calm","Sad"],
-        points: [1,1,1,1]
-    },
-    {
-        question: "Which type is your favorite?",
-        answers: ["Psychic","Ghost","Dark","Dragon"],
-        type: ["Quirky","Spooky","Sad","Proud"],
-        points: [1,1,1,1]
-    },
-    {
-        question: "Which gym is your favorite?",
-        answers: ["Pewter","Cerulean","Cinnabar","Viridian"],
-        type: ["Calm","Proud","Fierce","Sad"],
-        points: [1,1,1,1]
-    }
-];
 
 nextButton.on("click",function(event) {
     nextButton.hide();
     current = 0;
 
-    generateNext()
+    // $.get()
+
+    generateNext();
     
 })
 
