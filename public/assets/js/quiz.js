@@ -72,7 +72,6 @@ answerBlock.on("click", function (event) {
             method: "POST",
             data: {
                 quizId: quizID,
-                //userId: 1, //Comment out when user auth set up
                 personalityId: personalities[result][1]
             }
         }).then(function(response){
