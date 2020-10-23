@@ -1,5 +1,6 @@
 -- USE personality_quiz;
---Create archetypes:
+
+--Archetypes Seed - 12 Archetypes:
 INSERT INTO personality_quiz.archetypes(archetype, archetype_description,createdAt,updatedAt) 
 VALUES ("Warrior","The warrior appreciates the fight--whether or not they actually enjoy conflict and competition, they create strife wherever they go. Most of the time, it's for a good cause, but the less empathetic can be terrifying to innocent passerby. Their strengths are courage and drive, their weaknesses are overconfidence and pride.",now(),now());
 INSERT INTO personality_quiz.archetypes(archetype, archetype_description,createdAt,updatedAt) 
@@ -23,15 +24,15 @@ VALUES ("Rebel","Rebels fight back. When someone tries to tell them what to do, 
 INSERT INTO personality_quiz.archetypes(archetype, archetype_description,createdAt,updatedAt) 
 VALUES ("Romantic","The romantic prioritizes love and romantic relationships above all else. While their love makes them interesting people and of great service to the object of their attentions, they can become callous to other concerns in their obsession.  Their strengths are passion and loyalty, their weaknesses are willingness to sacrifice other concerns and an over-investment in a love not guaranteed to be returned.",now(),now());
 
-
-
---Insert User --
+--User Seed --
 INSERT INTO personality_quiz.users(user_name, first_name, last_name, password, email, archetype_1, archetype_2, archetype_3, archetype_4, archetype_5, archetype_6, archetype_7, archetype_8, archetype_9, archetype_10, archetype_11, archetype_12, createdAt, updatedAt) 
 VALUES ("SrLucky", "Joshua", "Jainga","password", "jjainga@gmail.com",0,0,0,0,0,0,0,0,0,0,0,0, now(), now());
--- Insert quiz --
+
+-- Quiz Seed --
 INSERT INTO personality_quiz.quizzes(quiz_name, quiz_category, image_tile,createdAt, updatedAt,userId) 
 VALUES ("Pokemon Quiz", "tv show", "https://images.app.goo.gl/Bm1btRA8eKASoRCa6", now(),now(),1);
--- Questions
+
+-- Questions Seed
 INSERT INTO personality_quiz.questions(question,createdAt, updatedAt,quizId)
 VALUES("Which pokemon is your favorite?",now(), now(),1);
 INSERT INTO personality_quiz.questions(question,createdAt, updatedAt,quizId)
@@ -55,7 +56,7 @@ VALUES("You caught a shiny pokemon! What next?",now(), now(),1);
 INSERT INTO personality_quiz.questions(question,createdAt, updatedAt,quizId)
 VALUES("You beat the game! What now?P",now(), now(),1);
 
-
+-- Personality Seed 
 INSERT INTO personality_quiz.personalities(personality_type, personality_description,createdAt,updatedAt,archetypeId)
 VALUES("Pikachu","You are confident, passionate, and wrestle WAY above your weight class. Your pokemon is Pikachu!",now(),now(),1);
 INSERT INTO personality_quiz.personalities(personality_type, personality_description,createdAt,updatedAt,archetypeId)
@@ -65,56 +66,67 @@ VALUES("Squirtle","You are quirky, energetic, and always ready for a good shidin
 INSERT INTO personality_quiz.personalities(personality_type, personality_description,createdAt,updatedAt,archetypeId)
 VALUES("Charmander","You are serious, intent, and laser focused on your goals. Your pokemon is Charmander!",now(),now(),10);
 
+-- Answers Seed - Question 1
 INSERT INTO personality_quiz.answers(answer,points,createdAt,updatedAt,questionId,personalityId) VALUES("Pidgey",1,now(),now(),1,3);
 INSERT INTO personality_quiz.answers(answer,points,createdAt,updatedAt,questionId,personalityId) VALUES("Spearow",1,now(),now(),1,1);
 INSERT INTO personality_quiz.answers(answer,points,createdAt,updatedAt,questionId,personalityId) VALUES( "Caterpie",1,now(),now(),1,2);
 INSERT INTO personality_quiz.answers(answer,points,createdAt,updatedAt,questionId,personalityId) VALUES("Weedle",1,now(),now(),1,4);
 
+-- Answers Seed - Question 2
 INSERT INTO personality_quiz.answers(answer,points,createdAt,updatedAt,questionId,personalityId) VALUES("Ash",1,now(),now(),2,1);
 INSERT INTO personality_quiz.answers(answer,points,createdAt,updatedAt,questionId,personalityId) VALUES("Misty",1,now(),now(),2,4);
 INSERT INTO personality_quiz.answers(answer,points,createdAt,updatedAt,questionId,personalityId) VALUES( "Brock",1,now(),now(),2,2);
 INSERT INTO personality_quiz.answers(answer,points,createdAt,updatedAt,questionId,personalityId) VALUES("Gary",1,now(),now(),2,3);
 
+-- Answers Seed - Question 3
 INSERT INTO personality_quiz.answers(answer,points,createdAt,updatedAt,questionId,personalityId) VALUES("Psychic",1,now(),now(),3,2);
 INSERT INTO personality_quiz.answers(answer,points,createdAt,updatedAt,questionId,personalityId) VALUES("Ghost",1,now(),now(),3,3);
 INSERT INTO personality_quiz.answers(answer,points,createdAt,updatedAt,questionId,personalityId) VALUES( "Dark",1,now(),now(),3,4);
 INSERT INTO personality_quiz.answers(answer,points,createdAt,updatedAt,questionId,personalityId) VALUES("Dragon",1,now(),now(),3,1);
 
+-- Answers Seed - Question 4
 INSERT INTO personality_quiz.answers(answer,points,createdAt,updatedAt,questionId,personalityId) VALUES("Pewter",1,now(),now(),4,1);
 INSERT INTO personality_quiz.answers(answer,points,createdAt,updatedAt,questionId,personalityId) VALUES("Cerulean",1,now(),now(),4,4);
 INSERT INTO personality_quiz.answers(answer,points,createdAt,updatedAt,questionId,personalityId) VALUES( "Cinnabar",1,now(),now(),4,3);
 INSERT INTO personality_quiz.answers(answer,points,createdAt,updatedAt,questionId,personalityId) VALUES("Viridian",1,now(),now(),4,2);
 
+-- Answers Seed - Question 5
 INSERT INTO personality_quiz.answers(answer,points,createdAt,updatedAt,questionId,personalityId) VALUES("I played it, it was a lot of fun!",1,now(),now(),5,1);
 INSERT INTO personality_quiz.answers(answer,points,createdAt,updatedAt,questionId,personalityId) VALUES("Oh, there's a new game out already?",1,now(),now(),5,2);
 INSERT INTO personality_quiz.answers(answer,points,createdAt,updatedAt,questionId,personalityId) VALUES("It was funny watching people fight about it on twitter :)",1,now(),now(),5,3);
 INSERT INTO personality_quiz.answers(answer,points,createdAt,updatedAt,questionId,personalityId) VALUES("DEXIT DEXIT DEXIT",1,now(),now(),5,4);
 
+-- Answers Seed - Question 6
 INSERT INTO personality_quiz.answers(answer,points,createdAt,updatedAt,questionId,personalityId) VALUES("I like the newer ones better.",1,now(),now(),6,1);
 INSERT INTO personality_quiz.answers(answer,points,createdAt,updatedAt,questionId,personalityId) VALUES("Those are the only ones I have played!",1,now(),now(),6,2);
 INSERT INTO personality_quiz.answers(answer,points,createdAt,updatedAt,questionId,personalityId) VALUES("Lol missingno lol",1,now(),now(),6,3);
 INSERT INTO personality_quiz.answers(answer,points,createdAt,updatedAt,questionId,personalityId) VALUES("Everything that came later was a pale imitation. Final.",1,now(),now(),6,4);
 
+-- Answers Seed - Question 7
 INSERT INTO personality_quiz.answers(answer,points,createdAt,updatedAt,questionId,personalityId) VALUES("Pikachu is cute and friendly! What's NOT to like?",1,now(),now(),7,2);
 INSERT INTO personality_quiz.answers(answer,points,createdAt,updatedAt,questionId,personalityId) VALUES("Uh, it's a little overexposed...",1,now(),now(),7,1);
 INSERT INTO personality_quiz.answers(answer,points,createdAt,updatedAt,questionId,personalityId) VALUES("Please. Show me another pokemon. ANY other pokemon.",1,now(),now(),7,4);
 INSERT INTO personality_quiz.answers(answer,points,createdAt,updatedAt,questionId,personalityId) VALUES("Mimikyu for the win!",1,now(),now(),7,3);
 
+-- Answers Seed - Question 8
 INSERT INTO personality_quiz.answers(answer,points,createdAt,updatedAt,questionId,personalityId) VALUES("Charizard is tough! It's great!",1,now(),now(),8,2);
 INSERT INTO personality_quiz.answers(answer,points,createdAt,updatedAt,questionId,personalityId) VALUES("Uh, it's a little overexposed...",1,now(),now(),8,1);
 INSERT INTO personality_quiz.answers(answer,points,createdAt,updatedAt,questionId,personalityId) VALUES("But what about bulbasaur?",1,now(),now(),8,3);
 INSERT INTO personality_quiz.answers(answer,points,createdAt,updatedAt,questionId,personalityId) VALUES("Why isn't it dragon-type?",1,now(),now(),8,4);
 
+-- Answers Seed - Question 9
 INSERT INTO personality_quiz.answers(answer,points,createdAt,updatedAt,questionId,personalityId) VALUES("The games are the crux of the franchise!",1,now(),now(),9,4);
 INSERT INTO personality_quiz.answers(answer,points,createdAt,updatedAt,questionId,personalityId) VALUES("I watched the anime as a child or with my current children, it's pretty fun.",1,now(),now(),9,2);
 INSERT INTO personality_quiz.answers(answer,points,createdAt,updatedAt,questionId,personalityId) VALUES("Manga has the best plot and worldbuilding, even if it's a little niche.",1,now(),now(),9,3);
 INSERT INTO personality_quiz.answers(answer,points,createdAt,updatedAt,questionId,personalityId) VALUES("I'm just happy there's so much pokemon content out there!",1,now(),now(),9,1);
 
+-- Answers Seed - Question 10
 INSERT INTO personality_quiz.answers(answer,points,createdAt,updatedAt,questionId,personalityId) VALUES("I'm going to keep it and show it off!",1,now(),now(),10,2);
 INSERT INTO personality_quiz.answers(answer,points,createdAt,updatedAt,questionId,personalityId) VALUES("I'm going to trade it for a PVP optimized pokemon!",1,now(),now(),10,4);
 INSERT INTO personality_quiz.answers(answer,points,createdAt,updatedAt,questionId,personalityId) VALUES("Why does anyone care about shinies anyway?",1,now(),now(),10,1);
 INSERT INTO personality_quiz.answers(answer,points,createdAt,updatedAt,questionId,personalityId) VALUES("What is a shiny?",1,now(),now(),10,3);
 
+-- Answers Seed - Question 11
 INSERT INTO personality_quiz.answers(answer,points,createdAt,updatedAt,questionId,personalityId) VALUES("Time to complete the pokedex!",1,now(),now(),11,2);
 INSERT INTO personality_quiz.answers(answer,points,createdAt,updatedAt,questionId,personalityId) VALUES("What's the post-game story like?",1,now(),now(),11,3);
 INSERT INTO personality_quiz.answers(answer,points,createdAt,updatedAt,questionId,personalityId) VALUES("Competitive battles, here I come!",1,now(),now(),11,4);
