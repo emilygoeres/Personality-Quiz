@@ -25,7 +25,7 @@ router.get("/", function (req, res) {
 
 // Display a quiz by ID
 router.get("/quiz/:id", function (req, res) {
-    let quiz = db.quiz.findOne({
+    db.quiz.findOne({
         where: {
             id: req.params.id
         }
@@ -34,7 +34,7 @@ router.get("/quiz/:id", function (req, res) {
             return res.status(500).send("EEP Doesnt exist");
         }
         let resultJSON = result.toJSON();
-        let Quiz = { Quiz: resultJSON.quiz_name }
+        let Quiz = { quiz: resultJSON.quiz_name, quizID: req.params.id }
         res.render("quiz", Quiz)
     }).catch(err => {
         res.status(500).end();

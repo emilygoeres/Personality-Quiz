@@ -1,6 +1,7 @@
 <form id="searchQuiz">
     <h2>SEARCH FOR A QUIZ</h2>
-    <textarea id="quizSearch"></textarea>
+    <input type="text" id="quizSearch"></input type="text">
+    <button>Search</button>
 </form>
 
 {{!-- a tags should link to appropriate quiz route --}}
@@ -22,4 +23,10 @@
     {{/each}}
 </ul>
 
-<ul id="searchedQuizzes" style="display: none;"></ul>
+<div id="searchedQuizzes" style="display: none; background-color:aqua">
+    <h2>Search results:</h2>
+    <ul></ul>
+</div>
+<button id="normalViewToggle" style="display: none; background-color:aqua">Back</button>
+
+<script src="/assets/js/home.js"></script>

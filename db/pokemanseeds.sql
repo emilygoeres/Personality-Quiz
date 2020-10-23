@@ -1,6 +1,6 @@
 -- USE personality_quiz;
 
---Archetypes Seed - 12 Archetypes:
+-- Archetypes Seed - 12 Archetypes:
 INSERT INTO personality_quiz.archetypes(archetype, archetype_description,createdAt,updatedAt) 
 VALUES ("Warrior","The warrior appreciates the fight--whether or not they actually enjoy conflict and competition, they create strife wherever they go. Most of the time, it's for a good cause, but the less empathetic can be terrifying to innocent passerby. Their strengths are courage and drive, their weaknesses are overconfidence and pride.",now(),now());
 INSERT INTO personality_quiz.archetypes(archetype, archetype_description,createdAt,updatedAt) 
@@ -24,7 +24,7 @@ VALUES ("Rebel","Rebels fight back. When someone tries to tell them what to do, 
 INSERT INTO personality_quiz.archetypes(archetype, archetype_description,createdAt,updatedAt) 
 VALUES ("Romantic","The romantic prioritizes love and romantic relationships above all else. While their love makes them interesting people and of great service to the object of their attentions, they can become callous to other concerns in their obsession.  Their strengths are passion and loyalty, their weaknesses are willingness to sacrifice other concerns and an over-investment in a love not guaranteed to be returned.",now(),now());
 
---User Seed --
+-- User Seed --
 INSERT INTO personality_quiz.users(user_name, first_name, last_name, password, email, archetype_1, archetype_2, archetype_3, archetype_4, archetype_5, archetype_6, archetype_7, archetype_8, archetype_9, archetype_10, archetype_11, archetype_12, createdAt, updatedAt) 
 VALUES ("SrLucky", "Joshua", "Jainga","password", "jjainga@gmail.com",0,0,0,0,0,0,0,0,0,0,0,0, now(), now());
 
@@ -35,8 +35,7 @@ VALUES ("SrLucky", "Joshua", "Jainga","password", "jjainga@gmail.com",0,0,0,0,0,
 
 -- Quiz Seed --
 INSERT INTO personality_quiz.quizzes(quiz_name, quiz_category, image_tile,createdAt, updatedAt,userId) 
-VALUES ("Pokemon Quiz", "tv show", "https://images.app.goo.gl/Bm1btRA8eKASoRCa6", now(),now(),1);
-
+VALUES ("Pokemon Quiz", "tv show", "https://o.aolcdn.com/images/dims?thumbnail=640%2C&quality=95&image_uri=https%3A%2F%2Fs.yimg.com%2Fuu%2Fapi%2Fres%2F1.2%2Ft_lP6tcQ0CJbJTeV8mrV2g--%7EB%2FaD00OTA7dz05ODA7YXBwaWQ9eXRhY2h5b24-%2Fhttps%3A%2F%2Fo.aolcdn.com%2Fhss%2Fstorage%2Fmidas%2F6623d5a6ae583f81ee3515b6b3615c7f%2F204855766%2Flandscape-1456483171-pokemon2.jpg&client=amp-blogside-v2&signature=9caaede705caa7d6cdaee28196bfefe03c5b1d3b", now(),now(),1);
 -- Questions Seed
 INSERT INTO personality_quiz.questions(question,createdAt, updatedAt,quizId)
 VALUES("Which pokemon is your favorite?",now(), now(),1);

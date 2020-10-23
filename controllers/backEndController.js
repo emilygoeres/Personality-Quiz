@@ -40,7 +40,7 @@ router.get("/api/quiz", function (req, res) {
 router.get("/api/quizzes/:search", function (req, res) {
     // var search = quiz.quiz_name.replace(/\s+/g, "").toLowerCase();
     db.quiz.findAll({
-        where: {
+        where:{
             [Op.or]: [
                 { quiz_name: req.params.search },
                 { quiz_category: req.params.search },
@@ -49,6 +49,7 @@ router.get("/api/quizzes/:search", function (req, res) {
     }).then(result => {
         res.json(result);
     }).catch(err => {
+        console.log(err);
         res.status(500).end();
     })
 })
