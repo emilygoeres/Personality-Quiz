@@ -21,7 +21,7 @@ router.get("/", function (req, res) {
 
 // Display a quiz by ID
 router.get("/quiz/:id", function (req, res) {
-    let quiz = db.quiz.findOne({
+    db.quiz.findOne({
         where: {
             id: req.params.id
         }
@@ -30,7 +30,7 @@ router.get("/quiz/:id", function (req, res) {
             return res.status(500).send("EEP Doesnt exist");
         }
         let resultJSON = result.toJSON();
-        let Quiz = { Quiz: resultJSON.quiz_name }
+        let Quiz = { quiz: resultJSON.quiz_name, quizID: req.params.id }
         res.render("quiz", Quiz)
     }).catch(err => {
         res.status(500).end();
@@ -51,14 +51,14 @@ router.get("/profile/:id", function (req, res) {
             where: {
                 userId: req.params.id
             },
-            include: {model: db.personality}
+            include: [{model: db.personality},{model: db.quiz}]
         }).then(quizHistory => {
             let quizHistoryJSON = quizHistory.map(obj => obj.toJSON());
-                let userObj = {
-                    user:userJSON,
-                    quizHistory: quizHistoryJSON
-                }
-            console.log(userObj);
+            let userObj = {
+                user:userJSON,
+                quizHistory: quizHistoryJSON
+            }
+            console.log(userObj.quizHistory[0]);
             res.render("profile", userObj);
         }).catch(err => {
             console.log(err)
@@ -67,16 +67,6 @@ router.get("/profile/:id", function (req, res) {
     }).catch(err => {
         res.status(500).end();
     })
-    // db.quizTaken.findAll({
-    //     where: {
-    //         userId: req.params.id
-    //     },
-    //     include: [{ models: db.answer, include: {models: db.archetype, include: {models:db.personality}}}, {models: db.quiz}]
-    // }).then(profile => {
-    //     let profileJSON = profile.map(obj => obj.toJSON());
-    //     console.log(profileJSON);
-    //     // res.render("profile", profileJSON);
-    // })
 });
 
 
