@@ -1,6 +1,7 @@
 <h2>PERSONALITY COMPOSITE</h2>
 
 <ul>
+    {{!-- TODO: We need to pick which archetype corresponds  --}}
     <li>Joker: {{this.user.archetype_1}}</li>
     <li>{{this.user.archetype_2}}</li>
     <li>{{this.user.archetype_3}}</li>
@@ -21,7 +22,8 @@
     {{#each this.quizHistory}}
     <li>
         {{!-- We will need to replace the personality id with the personality using a join --}}
-        <p>Quiz NAME PERSONALITY ID:{{this.personalityId}}</p>
+        <p>QUIZ NAME: {{this.quiz.quiz_name}}</p>
+        <p>PERSONALITY: {{this.personality.personality_type}}</p>
         <button data-next = "retakeButton" data-quizID={{this.id}}>RETAKE</button>
         <button data-next= "deleterButton" data-quizID={{this.id}}>DELETE</button>
     </li>

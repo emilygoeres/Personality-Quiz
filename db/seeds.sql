@@ -28,6 +28,11 @@ VALUES ("Romantic","The romantic prioritizes love and romantic relationships abo
 INSERT INTO personality_quiz.users(user_name, first_name, last_name, password, email, archetype_1, archetype_2, archetype_3, archetype_4, archetype_5, archetype_6, archetype_7, archetype_8, archetype_9, archetype_10, archetype_11, archetype_12, createdAt, updatedAt) 
 VALUES ("SrLucky", "Joshua", "Jainga","password", "jjainga@gmail.com",0,0,0,0,0,0,0,0,0,0,0,0, now(), now());
 
+-- =====================================================================================
+-- QUIZ #1 POKEMON QUIZ
+-- Questions: 11
+-- =====================================================================================
+
 -- Quiz Seed --
 INSERT INTO personality_quiz.quizzes(quiz_name, quiz_category, image_tile,createdAt, updatedAt,userId) 
 VALUES ("Pokemon Quiz", "tv show", "https://images.app.goo.gl/Bm1btRA8eKASoRCa6", now(),now(),1);
