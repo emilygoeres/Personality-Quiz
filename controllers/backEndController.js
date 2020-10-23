@@ -1,5 +1,6 @@
 const express = require("express");
 const { sequelize } = require("../models");
+const { Op } = require("sequelize");
 const router = express.Router();
 const db = require("../models");
 
@@ -13,13 +14,13 @@ router.get("/api/quiz", function(req, res){
 })
 
 // GET featured quiz
-router.get('/api/quiz/featured', function(req,res) {
-    db.quiz_taken.findAndCountAll({
-        include:[db.quiz]
-    }).then(function(result) {
-        res.json(result)
-    })
-})
+// router.get('/api/quiz/featured', function(req,res) {
+//     db.quiz_taken.findAndCountAll({
+//         include:[db.quiz]
+//     }).then(function(result) {
+//         res.json(result)
+//     })
+// })
 
 // GET quizzes name based on their specific id (GET specific quiz)
 // router.get("/api/quiz/:id", function(req, res){
@@ -40,12 +41,15 @@ router.get("/api/quizzes/:search", function(req, res){
     // var search = quiz.quiz_name.replace(/\s+/g, "").toLowerCase();
     db.quiz.findAll({
         where:{
-            quiz_name: req.params.search,
-            // $or: [{category: req.params.search}]
+            [Op.or]: [
+                { quiz_name: req.params.search },
+                { quiz_category: req.params.search },
+            ]
         }
     }).then(result => {
         res.json(result);
     }).catch(err => {
+        console.log(err);
         res.status(500).end();
     })
 })
