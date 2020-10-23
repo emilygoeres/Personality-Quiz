@@ -1,0 +1,78 @@
+{{!-- SEARCH FOR A QUIZ / HERO IMAGE --}}
+<section class="hero is-medium home-bkg-img has-text-white">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title has-text-white">Who needs love when you have personality quizzes?</h1>
+            <div class="field">
+                <form id="searchQuiz">
+                    <p>Search for a quiz or select from one of the options below!</p>
+                    <br>
+                    <div class="field has-addons">
+                        <div class="control">
+                            <input class="input" type="text" id="quizSearch" placeholder="Find a Quiz"></input>
+                        </div>
+                        <div class="control">
+                            <button class="button is-personify-purple">Search</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+{{!-- PAGE CONTENT --}}
+<div class="container">
+    {{!-- FEATURED QUIZZES --}}
+    <div class="section" id="featuredQuizzes">
+        <h2 class="title">FEATURED QUIZZES</h2>
+        <div class="columns">
+            {{#each featuredQuizzes}}
+            <div class="column is-4">
+                <a href="/quiz/{{this.id}}">
+                    <div class="card featuredQuizCard">
+                        <div class="card-image">
+                            <figure class="image is-4by3">
+                                <img src="{{this.image_tile}}" alt="Placeholder image">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="content">
+                                <p class="is-size-4">{{this.quiz_name}}</p>
+                                <time datetime="2016-1-1">POSTED: {{this.createdAt}}</time>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+
+
+    {{!-- ALL QUIZZES --}}
+    <div class="section" id="allQuizzes">
+        <h2 class="title">ALL QUIZZES</h2>
+        {{#each allQuizzes}}
+        <a href="/quiz/{{this.id}}">
+            <div class="card mb-1 allQuizzesCard">
+                <div class="card-content">
+                    <p class="is-size-5">{{this.quiz_name}}</p>
+                </div>
+            </div>
+        </a>
+        {{/each}}
+    </div>
+
+
+    {{!-- SEARCH RESULTS --}}
+    <div class="section">
+        <div id="searchedQuizzes" style="display: none;">
+            <h2 class="title">Search results:</h2>
+            <ul></ul>
+            <button id="normalViewToggle" class="button" style="display: none;">Back</button>
+        </div>
+    </div>
+</div>
+
+<script src="/assets/js/home.js"></script>
