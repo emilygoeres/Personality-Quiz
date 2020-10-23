@@ -1,5 +1,6 @@
 const express = require("express");
 const { sequelize } = require("../models");
+const { Op } = require("sequelize");
 const router = express.Router();
 const db = require("../models");
 
@@ -13,13 +14,13 @@ router.get("/api/quiz", function(req, res){
 })
 
 // GET featured quiz
-router.get('/api/quiz/featured', function(req,res) {
-    db.quiz_taken.findAndCountAll({
-        include:[db.quiz]
-    }).then(function(result) {
-        res.json(result)
-    })
-})
+// router.get('/api/quiz/featured', function(req,res) {
+//     db.quiz_taken.findAndCountAll({
+//         include:[db.quiz]
+//     }).then(function(result) {
+//         res.json(result)
+//     })
+// })
 
 // GET quizzes name based on their specific id (GET specific quiz)
 // router.get("/api/quiz/:id", function(req, res){
@@ -40,12 +41,15 @@ router.get("/api/quizzes/:search", function(req, res){
     // var search = quiz.quiz_name.replace(/\s+/g, "").toLowerCase();
     db.quiz.findAll({
         where:{
-            quiz_name: req.params.search,
-            // $or: [{category: req.params.search}]
+            [Op.or]: [
+                { quiz_name: req.params.search },
+                { quiz_category: req.params.search },
+            ]
         }
     }).then(result => {
         res.json(result);
     }).catch(err => {
+        console.log(err);
         res.status(500).end();
     })
 })
@@ -326,18 +330,6 @@ router.post("/api/quizTaken", function(req, res){
         res.status(500).end();
     })
 })
-
-
-// TODO: route that takes a quizId and returns an object with all the questions and answers and personalities for that quiz 
-// router.get("/api/quizrequest/:id") or something. Maybe think of something better than quizrequest :)
-// NOTE: This could be 2 different routes if needed
-// ex: search for a quiz id 1
-// returns:
-// quizObj {
-//     Personalities: [],
-//     Questions: [],
-//     Answers: []
-// }
 
 
 module.exports = router;
