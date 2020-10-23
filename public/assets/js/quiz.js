@@ -7,15 +7,7 @@ let current;
 const personalityResults = {};
 
 //
-const personalities = {
-    "Confident":"You are like Pikachu!",
-    "Calm":"You are like Bulbasaur!",
-    "Quirky": "You are like Squirtle!",
-    "Sad": "You are like Charmander!",
-    "Fierce": "You are like Pidgeotto!",
-    "Spooky": "You are like Psyduck!",
-    "Proud": "You are like Caterpie!"
-};
+let personalities;
 
 
 
@@ -23,7 +15,7 @@ const quiz = [
     {
         question: "Which pokemon is your favorite?",
         answers: ["Pikachu","Bulbasaur","Squirtle","Charmander"],
-        type: ["Confident","Calm","Quirky","Sad"],
+        type: ["Confident passionate","Calm confident","Quirky energetic","serious intent"],
         points: [1,1,1,1]
     },
     {
