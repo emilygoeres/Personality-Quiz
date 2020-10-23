@@ -180,7 +180,7 @@ router.post("/api/profile", function(req, res){
 // })
 
 // GET route for quiz question
-router.get("/api/quizQuestion/:id", function(req, res){
+router.get("/api/quizQuestions/:id", function(req, res){
     db.quiz.findOne({
         where:{
             id: req.params.id
