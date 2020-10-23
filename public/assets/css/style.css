@@ -1,3 +1,38 @@
 /* body{
     background-color: salmon;
 } */
+
+.allQuizzesCard{
+    border: 1px solid lightgray;
+}
+
+.allQuizzesCard:hover{
+    box-sizing: border-box;
+    background: rgb(240, 240, 240);
+    border: 1px solid darkgray;
+}
+
+.featuredQuizCard{
+    border: 1px solid lightgray;
+}
+
+.featuredQuizCard:hover{
+    box-sizing: border-box;
+    background: rgb(240, 240, 240);
+    border: 1px solid darkgray;
+}
+
+.is-personify-purple{
+    background-color: #662D91;
+    color:white;
+}
+
+.is-personify-purple:hover{
+    background-color: #57267c;
+    color:white;
+}
+
+.home-bkg-img {
+    background: rgb(74,34,105);
+    background: linear-gradient(133deg, rgba(74,34,105,1) 0%, rgba(102,45,145,1) 59%, rgba(140,63,199,1) 100%);
+}
