@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+    <div id="quizBlock">
     <h1>Create a quiz, wizard!</h1>
     <form action="submit" id="quizCreation">
         <label for="qName">Quiz Name: </label>
@@ -17,18 +10,34 @@
         <button>Submit</button>
     </form>
 
-    <script>/*
+    </div>
+
+    <div id="personalityBlock">
     <h2>Create a new personality result!</h2>
-    <form action="submit">
+    <form action="submit" id = "personalityCreation">
         <label for="pName">New Personality result: </label>
         <input type="text" id="pName" name= "pName">
-        <!-- Archetype association is currently text for ease of testing, but should eventually be a list -->
-        <label for="pArchetype">Archetype association: </label>
-        <input type="text" id="pArchetype" name= "pArchetype">
         <label for="pDescription">Personality Result Description: </label>
-        <input type="text" id="pDescription" name= "pDescription">
+        <textarea id="pDescription"></textarea>
+        <label for="pArchetype">Archetype association: </label>
+        <select id="pArchetype" name= "pArchetype"> 
+            <option value="1">Warrior</option>
+            <option value="2">Child</option>
+            <option value="3">Orphan</option>
+            <option value="4">Creator</option>
+            <option value="5">Caregiver</option>
+            <option value="6">Mentor</option>
+            <option value="7">Joker</option>
+            <option value="8">Magician</option>
+            <option value="9">Ruler</option>
+            <option value="10">Rebel</option>
+            <option value="11">Romantic</option>
+        </select>
+        <button>Submit</button>
     </form>
-
+    <button id="personalitiesFinished">Done Create personalities</button>
+    </div>
+<script>/*
     <h2>Create a new question!</h2>
     <form action="submit">
         <label for="questionText">Question: </label>
@@ -87,7 +96,6 @@
         
     </form>
     */</script>
+    {{!-- Create a  bulma modal with archetype explanations--}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="js/userQuiz.js"></script>
-</body>
-</html>
+    <script src="/assets/js/userQuiz.js"></script>

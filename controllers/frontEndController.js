@@ -81,4 +81,8 @@ router.get("/signup", (req, res) => {
     res.render("signup", { user: req.session.user })
 })
 
+router.get("/create-a-quiz", (req, res) => {
+    res.render("createAQuiz", {})
+})
+
 module.exports = router;
