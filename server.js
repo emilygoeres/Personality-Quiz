@@ -1,5 +1,7 @@
 var express = require("express");
 
+require("dotenv").config();
+
 var PORT = process.env.PORT || 8080;
 
 var app = express();
@@ -20,13 +22,40 @@ var handlebar = require("express-handlebars");
 app.engine("handlebars", handlebar({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-// Import routes and give the server access to them.
-// var frontEndRoutes = require("./controllers/frontEndController");
-// app.use(frontEndRoutes);
+var session = require("express-session");
 
-// Import routes and give the server access to them.
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: true,
+  cookie: {
+      maxAge: 2 * 60 * 60 * 1000
+  }
+}))
+
+// Import routes
+var frontEndRoutes = require("./controllers/frontEndController");
+app.use(frontEndRoutes);
+
+// Import routes
 var backEndRoutes = require("./controllers/backEndController");
 app.use(backEndRoutes);
+
+// Import routes
+var userAuthRoutes = require("./controllers/userAuthController");
+app.use(userAuthRoutes);
+
+// Routes to GET personality
+app.get("/api/samplePersonality", function(req, res){
+  res.json({personalities: personalities})
+})
+
+// Routes to GET quiz
+app.get("/api/sampleQuiz", function(req, res){
+  res.json({quiz: quiz})
+})
+
+// ==================================================================
 
 // Start our server so that it can begin listening to client requests.
 db.sequelize.sync({force: false}).then(function() {

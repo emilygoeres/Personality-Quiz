@@ -3,6 +3,10 @@ module.exports = function(sequelize, DataTypes) {
       personality_type: {
         type: DataTypes.STRING,
         allowNull: false
+      },
+      personality_description: {
+        type: DataTypes.TEXT,
+        allowNull: false
       }
     });
 
@@ -12,6 +16,16 @@ module.exports = function(sequelize, DataTypes) {
           allowNull: false
         }
       } )
+      personality.belongsTo(models.archetype, {
+        foreignKey: {
+          allowNull: false
+        }
+      })
+      personality.hasMany(models.quizTaken, {
+        foreignKey: {
+          allowNull: true
+        }
+      })
     }
     return personality;
   };

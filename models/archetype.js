@@ -17,11 +17,11 @@ module.exports = function(sequelize, DataTypes) {
         }
       } )
     
-    archetype.hasMany(models.answer, {
-      foreignKey: {
-        allowNull: false
-      }
-    })
+    // archetype.hasMany(models.answer, {
+    //   foreignKey: {
+    //     allowNull: false
+    //   }
+    // })
     }
     return archetype;
   }

@@ -1,22 +1,134 @@
-<h2>PERSONALITY COMPOSITE</h2>
+{{!-- PERSONALITY COMPOSITE --}}
+<div class="container">
+    <div class="section">
+        <h2 class="title">PERSONALITY COMPOSITE</h2>
 
-<ul>
-    {{#each archetypes}}
-    <li>
-        <p>TRAIT{{this.trait}}</p>
-        <div>Number of results/Number of Tests{{this.results}} {{this.test}}</div>
-    </li>
-    {{/each}}
-</ul>
+        {{!-- TODO: Sum up all the archetype counts. set value = to each archetype count and max = to total --}}
 
-<h2>QUIZ HISTORY</h2>
+        {{!-- ARCHETYPE PROGRESS COUNTS --}}
+        <div class="columns is-multiline">
+            {{!-- Archetype 1: Warrior --}}
+            <div class="column is-2">
+                <p class="title is-size-4">WARRIOR</p>
+            </div>
+            <div class="column is-10">
+                <progress class="progress" value="15" max="100">{{this.user.archetype_1}}</progress>
+            </div>
+            {{!-- Archetype 2: Child --}}
+            <div class="column is-2">
+                <p class="title is-size-4">CHILD</p>
+            </div>
+            <div class="column is-10">
+                <progress class="progress" value="15" max="100">{{this.user.archetype_2}}</progress>
+            </div>
+            {{!-- Archetype 3: Orphan --}}
+            <div class="column is-2">
+                <p class="title is-size-4">ORPHAN</p>
+            </div>
+            <div class="column is-10">
+                <progress class="progress" value="15" max="100">{{this.user.archetype_3}}</progress>
+            </div>
+            {{!-- Archetype 4: Creator --}}
+            <div class="column is-2">
+                <p class="title is-size-4">CREATOR</p>
+            </div>
+            <div class="column is-10">
+                <progress class="progress" value="15" max="100">{{this.user.archetype_4}}</progress>
+            </div>
+            {{!-- Archetype 5: Caregiver --}}
+            <div class="column is-2">
+                <p class="title is-size-4">CAREGIVER</p>
+            </div>
+            <div class="column is-10">
+                <progress class="progress" value="15" max="100">{{this.user.archetype_5}}</progress>
+            </div>
+            {{!-- Archetype 6: Mentor --}}
+            <div class="column is-2">
+                <p class="title is-size-4">MENTOR</p>
+            </div>
+            <div class="column is-10">
+                <progress class="progress" value="15" max="100">{{this.user.archetype_6}}</progress>
+            </div>
+            {{!-- Archetype 7: Joker --}}
+            <div class="column is-2">
+                <p class="title is-size-4">JOKER</p>
+            </div>
+            <div class="column is-10">
+                <progress class="progress" value="15" max="100">{{this.user.archetype_7}}</progress>
+            </div>
+            {{!-- Archetype 8: Magician --}}<div class="column is-2">
+                <p class="title is-size-4">MAGICIAN</p>
+            </div>
+            <div class="column is-10">
+                <progress class="progress" value="15" max="100">{{this.user.archetype_8}}</progress>
+            </div>
+            {{!-- Archetype 9: Ruler --}}
+            <div class="column is-2">
+                <p class="title is-size-4">RULER</p>
+            </div>
+            <div class="column is-10">
+                <progress class="progress" value="15" max="100">{{this.user.archetype_9}}</progress>
+            </div>
+            {{!-- Archetype 10: Rebel --}}
+            <div class="column is-2">
+                <p class="title is-size-4">REBEL</p>
+            </div>
+            <div class="column is-10">
+                <progress class="progress" value="15" max="100">{{this.user.archetype_10}}</progress>
+            </div>
+            {{!-- Archetype 11: Romantic --}}
+            <div class="column is-2">
+                <p class="title is-size-4">ROMANTIC</p>
+            </div>
+            <div class="column is-10">
+                <progress class="progress" value="15" max="100">{{this.user.archetype_11}}</progress>
+            </div>
+            {{!-- Archetype 12: PLACEHOLDER FOR ARCHETYPE12 --}}
+            <div class="column is-2">
+                <p class="title is-size-4">PLACEHOLDER</p>
+            </div>
+            <div class="column is-10">
+                <progress class="progress" value="15" max="100">{{this.user.archetype_12}}</progress>
+            </div>
+        </div>
+    </div>
 
-<ul id="history">
-    {{#each quizHistory}}
-    <li>
-        <p>Quiz{{this.history}} {{this.personalityResult}}</p>
-        <button data-next = "retakeButton" data-quizID={{this.quizID}}>RETAKE</button>
-        <button data-next= "deleterButton" data-quizID={{this.quizID}}>DELETE</button>
-    </li>
-    {{/each}}
-</ul>
+
+    {{!-- USER'S QUIZ HISTORY --}}
+    <div class="section">
+        <h2 class="title">QUIZ HISTORY</h2>
+
+        {{!-- TODO: Add styling to the quizHistory cards --}}
+        <ul id="history">
+            {{#each this.quizHistory}}
+            <div class="card mb-1">
+                <div class="card-content">
+                    <div class="columns">
+                        <div class="column is-8">
+                            <div class="columns">
+                                <div class="column is-half">
+                                    <p class="subtitle is-size-6">QUIZ NAME:</p>
+                                    <p class="title is-size-5">{{this.quiz.quiz_name}}</p>
+                                </div>
+                                <div class="column is-half">
+                                    <p class="subtitle is-size-6">YOU GOT:</p>
+                                    <p class="title is-size-5">{{this.personality.personality_type}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column is-4 has-text-right">
+                            <button class="button is-primary" data-next="retakeButton"
+                                data-quizID={{this.id}}>RETAKE</button>
+                            <button class="button is-danger" data-next="deleterButton"
+                                data-quizID={{this.id}}>DELETE</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{else}}
+            {{!-- If the user has not taken a quiz, display this text --}}
+            <p>You have no history at this time. Please take a quiz to see some history!</p>
+            {{/each}}
+        </ul>
+    </div>
+</div>

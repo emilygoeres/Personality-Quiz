@@ -4,7 +4,7 @@ module.exports = function(sequelize, DataTypes) {
         type: DataTypes.STRING,
         allowNull: false
       },
-      quiz_catergory: DataTypes.STRING,
+      quiz_category: DataTypes.STRING,
       image_tile: {
         type: DataTypes.TEXT,
       }
@@ -13,7 +13,7 @@ module.exports = function(sequelize, DataTypes) {
     quiz.associate = function(models) {
       quiz.belongsTo(models.user, {
       foreignKey: {
-        allowNull: false
+        allowNull: true
       }
       })
       quiz.hasMany(models.quizTaken, {
@@ -22,8 +22,7 @@ module.exports = function(sequelize, DataTypes) {
         }
       });
 
-      quiz.hasMany(models.question,
-      {
+      quiz.hasMany(models.question,{
         foreignKey: {
           allowNull: false
         }
