@@ -36,3 +36,13 @@
     background: rgb(74,34,105);
     background: linear-gradient(133deg, rgba(74,34,105,1) 0%, rgba(102,45,145,1) 59%, rgba(140,63,199,1) 100%);
 }
+
+.quizBlock {
+    height: 70vh;
+}
+
+.answerChoice:hover{
+    background-color:  #662D91;
+    color: white;
+    cursor: pointer;
+}

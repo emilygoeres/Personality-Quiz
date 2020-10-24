@@ -8,7 +8,9 @@ router.get("/", function (req, res) {
         let resultJSON = result.map(obj => obj.toJSON());
         let homeObj = {
             // Find All quizzes that match our featured criteria
-            featuredQuizzes: resultJSON.slice(resultJSON.length - 4, 3),
+            // Current Featured Criteria: 3 Most Recent Quizzes
+            // TODO: Develop a better way to show featured quizzes 
+            featuredQuizzes: resultJSON.slice(resultJSON.length - 4, -1),
             // All Quizzes
             // Maybe future release (exlcude the featured quizzes from All Quizzes)
             allQuizzes: resultJSON
