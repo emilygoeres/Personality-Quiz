@@ -1,8 +1,29 @@
-<h1>login</h1>
-<a href="/signup"></a>
-<form action="/login" method="POST">
-    <input type="text" name="email" placeholder="email">
-    <input type="password" name="password" placeholder="password">
-    <input type="submit" value="Login!">
-    <a href="/signup"><button>Create an Account</button></a>
-</form>
+<div class="container loginForm">
+    <div class="row">
+        <div class="column is-align-items-center">
+            <form action="/login" method="POST">
+                <h3>Please login below!</h3>
+
+                <h4>Email</h4>
+                <div class="row is-align-content-center">
+                    <input type="text" name="email" placeholder="email">
+                </div>
+
+                <h4>Password</h4>
+                <div class="row">
+                    <input type="password" name="password" placeholder="password">  
+                </div>
+
+                <div class="row">
+                    <input type="submit" value="Login!">
+                </div>
+
+                <p>Don't have account with us?</p>
+
+                <div class="row">
+                    <a href="/signup"><button>Create an Account</button></a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
