@@ -59,7 +59,7 @@ router.post("/login", (req, res) => {
                 email: result.email,
                 id: result.id
             }
-            return res.json(result)
+            return res.redirect("/profile")
             // res.redirect("/myprofile")
         }
         else {

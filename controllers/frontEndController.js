@@ -40,11 +40,11 @@ router.get("/quiz/:id", function (req, res) {
 })
 
 // Display the profile page
-router.get("/profile/:id", function (req, res) {
+router.get("/profile", function (req, res) {
     if (req.session.user) {
         db.user.findOne({
             where: {
-                id: req.params.id
+                id: req.session.user.id
             }
         }).then(user => {
             let userJSON = user.toJSON();
@@ -63,7 +63,7 @@ router.get("/profile/:id", function (req, res) {
 
             db.quizTaken.findAll({
                 where: {
-                    userId: req.params.id
+                    userId:  req.session.user.id
                 },
                 include: [{ model: db.personality }, { model: db.quiz }]
             }).then(quizHistory => {
@@ -92,6 +92,10 @@ router.get("/login", (req, res) => {
 
 router.get("/signup", (req, res) => {
     res.render("signup", { user: req.session.user })
+})
+
+router.get("/create-a-quiz", (req, res) => {
+    res.render("createAQuiz", {})
 })
 
 module.exports = router;
