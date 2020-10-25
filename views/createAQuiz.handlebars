@@ -1,3 +1,4 @@
+{{!-- Create quiz name/category section --}}
 <div id="quizBlock">
     <h1>Create a quiz, wizard!</h1>
     <form action="submit" id="quizCreation">
@@ -12,11 +13,13 @@
 
 </div>
 
+{{!-- User confirmation for posting a test --}}
 <div id="completeBlock">
     <h2>Please take a moment to review your quiz. Do you want finish creating this quiz?</h2>
     <button id="postQuiz">Post my quiz!</button>
 </div>
 
+{{!-- User confirmation that a test has been posted to the website --}}
 <div id="creationSuccessful">
     <h2>Your quiz has been entirely created! Please check out our list of featured quizzes.</h2>
 </div>
@@ -24,6 +27,7 @@
 <div class="columns">
     <div class="column">
         <div class="container">
+            {{!-- Create personality results section --}}
             <div id="personalityBlock">
                 <h2>Create a new personality result!</h2>
                 <form action="submit" id="personalityCreation">
@@ -50,6 +54,7 @@
                 <button id="personalitiesFinished">Done Create personalities</button>
             </div>
 
+            {{!-- create question and answer sets section --}}
             <div id="QAndABlock">
                 <button id="questionsFinished">Done Entering questions</button>
 
@@ -231,6 +236,8 @@
         </div>
 
     </div>
+
+    {{!-- Shows users what they have entered thus far --}}
     <div class="column" id="allEnteredInformation">
         <h2 id="quizTitle"></h2>
         <h2 id="quizCategory"></h2>
