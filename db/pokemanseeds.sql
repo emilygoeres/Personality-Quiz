@@ -58,7 +58,7 @@ VALUES("Which do you prefer: anime, manga, or game?",now(), now(),1);
 INSERT INTO personality_quiz.questions(question,createdAt, updatedAt,quizId)
 VALUES("You caught a shiny pokemon! What next?",now(), now(),1);
 INSERT INTO personality_quiz.questions(question,createdAt, updatedAt,quizId)
-VALUES("You beat the game! What now?P",now(), now(),1);
+VALUES("You beat the game! What now?",now(), now(),1);
 
 -- Personality Seed 
 INSERT INTO personality_quiz.personalities(personality_type, personality_description,createdAt,updatedAt,archetypeId)

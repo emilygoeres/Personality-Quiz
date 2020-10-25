@@ -1,26 +1,26 @@
-    <div id="quizBlock">
+<div id="quizBlock">
     <h1>Create a quiz, wizard!</h1>
     <form action="submit" id="quizCreation">
         <label for="qName">Quiz Name: </label>
-        <input type="text" id="qName" name= "qName">
+        <input type="text" id="qName" name="qName">
         <label for="qCategory">Quiz category: </label>
-        <input type="text" id="qCategory" name= "qCategory">
+        <input type="text" id="qCategory" name="qCategory">
         <label for="qPicture">Please provide an URL link to the image you want to use with your quiz. </label>
-        <input type="text" id="qPicture" name= "qPicture">
+        <input type="text" id="qPicture" name="qPicture">
         <button>Submit</button>
     </form>
 
-    </div>
+</div>
 
-    <div id="personalityBlock">
+<div id="personalityBlock">
     <h2>Create a new personality result!</h2>
-    <form action="submit" id = "personalityCreation">
+    <form action="submit" id="personalityCreation">
         <label for="pName">New Personality result: </label>
-        <input type="text" id="pName" name= "pName">
+        <input type="text" id="pName" name="pName">
         <label for="pDescription">Personality Result Description: </label>
         <textarea id="pDescription"></textarea>
         <label for="pArchetype">Archetype association: </label>
-        <select id="pArchetype" name= "pArchetype"> 
+        <select id="pArchetype" name="pArchetype">
             <option value="1">Warrior</option>
             <option value="2">Child</option>
             <option value="3">Orphan</option>
@@ -36,66 +36,188 @@
         <button>Submit</button>
     </form>
     <button id="personalitiesFinished">Done Create personalities</button>
-    </div>
-<script>/*
-    <h2>Create a new question!</h2>
-    <form action="submit">
-        <label for="questionText">Question: </label>
-        <input type="text" id="questionText" name= "questionText">
+</div>
+
+<div id="QAndABlock">
+
+    <form action="submit" id="allAnswers">
+        <div id="questionBlock">
+            <h2>Create a new question!</h2>
+
+            <label for="questionText">Question: </label>
+            <textarea id="questionText" name="questionText"> </textarea>
+
+        </div>
+        <br><br>
+        <div>
+
+            <input type="checkbox" id="answer1" name="answer1" checked>
+            <label for="answer1"> Include answer</label>
+            <h2>Answer 1</h2>
+            <div id="a1">
+                <label for="answerText1">Answer text: </label>
+                <textarea id="answerText1" name="answerText1"></textarea>
+
+                <label for="aPersonality1">Which personality result does this answer support? </label>
+                <select name="aPersonality1" id="aPersonality1" class="personalityList"></select>
+
+                <label for="aPoints1">How strongly does this answer support this personality result?</label>
+                <select name="aPoints1" id="aPoints1">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+            </div>
+            <br>
+            <input type="checkbox" id="answer2" name="answer2" checked>
+            <label for="answer2"> Include answer</label>
+            <br>
+            <h2>Answer 2</h2>
+            <div id="a2">
+                <label for="answerText2">Answer text: </label>
+                <textarea id="answerText2" name="answerText2"></textarea>
+
+                <label for="aPersonality2">Which personality result does this answer support? </label>
+                <select name="aPersonality2" id="aPersonality2" class="personalityList"></select>
+
+                <label for="aPoints2">How strongly does this answer support this personality result?</label>
+                <select name="aPoints2" id="aPoints2">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+            </div>
+            <br>
+
+            <input type="checkbox" id="answer3" name="answer3" checked>
+            <label for="answer3"> Include answer</label>
+            <br>
+            <h2>Answer 3</h2>
+            <div id="a3">
+                <label for="answerText3">Answer text: </label>
+                <textarea id="answerText3" name="answerText3"></textarea>
+
+                <label for="aPersonality3">Which personality result does this answer support? </label>
+                <select name="aPersonality3" id="aPersonality3" class="personalityList"></select>
+
+                <label for="aPoints3">How strongly does this answer support this personality result?</label>
+                <select name="aPoints3" id="aPoints3">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+            </div>
+            <br>
+
+            <input type="checkbox" id="answer4" name="answer4" checked>
+            <label for="answer4"> Include answer</label>
+            <br>
+            <h2>Answer 4</h2>
+            <div id="a4">
+                <label for="answerText4">Answer text: </label>
+                <textarea id="answerText4" name="answerText4"></textarea>
+
+                <label for="aPersonality4">Which personality result does this answer support? </label>
+                <select name="aPersonality4" id="aPersonality4" class="personalityList"></select>
+
+                <label for="aPoints4">How strongly does this answer support this personality result?</label>
+                <select name="aPoints4" id="aPoints4">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+            </div>
+            <br>
+
+            <input type="checkbox" id="answer5" name="answer5">
+            <label for="answer5"> Include answer</label>
+            <br>
+            <h2>Answer 5</h2>
+            <div id="a5">
+                <label for="answerText5">Answer text: </label>
+                <textarea id="answerText5" name="answerText5"></textarea>
+
+                <label for="aPersonality5">Which personality result does this answer support? </label>
+                <select name="aPersonality5" id="aPersonality5" class="personalityList"></select>
+
+                <label for="aPoints5">How strongly does this answer support this personality result?</label>
+                <select name="aPoints5" id="aPoints5">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+            </div>
+            <br>
+
+
+            <input type="checkbox" id="answer6" name="answer6">
+            <label for="answer6"> Include answer</label>
+            <br>
+            <h2>Answer 6</h2>
+            <div id="a6">
+                <label for="answerText6">Answer text: </label>
+                <textarea id="answerText6" name="answerText6"></textarea>
+
+                <label for="aPersonality6">Which personality result does this answer support? </label>
+                <select name="aPersonality6" id="aPersonality6" class="personalityList"></select>
+
+                <label for="aPoints6">How strongly does this answer support this personality result?</label>
+                <select name="aPoints6" id="aPoints6">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+            </div>
+            <br>
+
+            <input type="checkbox" id="answer7" name="answer7">
+            <label for="answer7"> Include answer</label>
+            <br>
+            <h2>Answer 7</h2>
+            <div id="a7">
+                <label for="answerText7">Answer text: </label>
+                <textarea id="answerText7" name="answerText7"></textarea>
+
+                <label for="aPersonality7">Which personality result does this answer support? </label>
+                <select name="aPersonality7" id="aPersonality7" class="personalityList"></select>
+
+                <label for="aPoints7">How strongly does this answer support this personality result?</label>
+                <select name="aPoints7" id="aPoints7">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+            </div>
+            <br>
+
+            <input type="checkbox" id="answer8" name="answer8">
+            <label for="answer8"> Include answer</label>
+            <br>
+            <h2>Answer 8</h2>
+            <div id="a8">
+                <label for="answerText8">Answer text: </label>
+                <textarea id="answerText8" name="answerText8"></textarea>
+
+                <label for="aPersonality8">Which personality result does this answer support? </label>
+                <select name="aPersonality8" id="aPersonality8" class="personalityList"></select>
+
+                <label for="aPoints8">How strongly does this answer support this personality result?</label>
+                <select name="aPoints8" id="aPoints8">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+            </div>
+            <br>
+
+
+            <button>Question Complete</button>
     </form>
 
-    <h2>Answer 1</h2>
-    <form action="submit">
-        <label for="answerText1">Answer text: </label>
-        <input type="text" id="answerText1" name= "answerText1">
-        <!-- personality association is currently text for ease of testing, but should eventually be a list of all previously defined personalities -->
-        <!-- Eventually, can choose "I'll figure it out later" option, but don't allow users to finish their test until it's updated -->
-        <label for="aPersonality1">Which personality result does this answer support? </label>
-        <input type="text" id="aPersonality1" name= "aPersonality1">
-        <label for="aPoints1">How strongly does this answer support this personality result? Please type an integer. </label>
-        <input type="text" id="aPoints1" name= "aPoints1">
-        
-    </form>
+    <button id="questionsFinished">Done Entering questions</button>
+</div>
 
-    <h2>Answer 2</h2>
-    <form action="submit">
-        <label for="answerText2">Answer text: </label>
-        <input type="text" id="answerText2" name= "answerText2">
-        <!-- personality association is currently text for ease of testing, but should eventually be a list of all previously defined personalities -->
-        <!-- Eventually, can choose "I'll figure it out later" option, but don't allow users to finish their test until it's updated -->
-        <label for="aPersonality2">Which personality result does this answer support? </label>
-        <input type="text" id="aPersonality2" name= "aPersonality2">
-        <label for="aPoints2">How strongly does this answer support this personality result? Please type an integer. </label>
-        <input type="text" id="aPoints2" name= "aPoints2">
-        
-    </form>
-
-    <h2>Answer 3</h2>
-    <form action="submit">
-        <label for="answerText3">Answer text: </label>
-        <input type="text" id="answerText3" name= "answerText3">
-        <!-- personality association is currently text for ease of testing, but should eventually be a list of all previously defined personalities -->
-        <!-- Eventually, can choose "I'll figure it out later" option, but don't allow users to finish their test until it's updated -->
-        <label for="aPersonality3">Which personality result does this answer support? </label>
-        <input type="text" id="aPersonality3" name= "aPersonality3">
-        <label for="aPoints3">How strongly does this answer support this personality result? Please type an integer. </label>
-        <input type="text" id="aPoints3" name= "aPoints3">
-        
-    </form>
-
-    <h2>Answer 4</h2>
-    <form action="submit">
-        <label for="answerText4">Answer text: </label>
-        <input type="text" id="answerText4" name= "answerText4">
-        <!-- personality association is currently text for ease of testing, but should eventually be a list of all previously defined personalities -->
-        <!-- Eventually, can choose "I'll figure it out later" option, but don't allow users to finish their test until it's updated -->
-        <label for="aPersonality4">Which personality result does this answer support? </label>
-        <input type="text" id="aPersonality4" name= "aPersonality4">
-        <label for="aPoints4">How strongly does this answer support this personality result? Please type an integer. </label>
-        <input type="text" id="aPoints4" name= "aPoints4">
-        
-    </form>
-    */</script>
-    {{!-- Create a  bulma modal with archetype explanations--}}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="/assets/js/userQuiz.js"></script>
+</div>
+{{!-- Create a  bulma modal with archetype explanations--}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="/assets/js/userQuiz.js"></script>
