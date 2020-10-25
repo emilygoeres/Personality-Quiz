@@ -1,25 +1,29 @@
+//These elements are flipped from hidden to visible depending how how far the user has progressed in their quiz creation.
 const quizBlock = $("#quizBlock");
 const personalityBlock = $("#personalityBlock");
 const QAndABlock = $("#QAndABlock");
 const completeBlock = $("#completeBlock");
 const creationSuccessful = $("#creationSuccessful");
 
+//Stores the name/category of the quiz globally, and grabs the current quiz if the user has been working on it when the page reloads
 let quizInfo;
 if (localStorage.getItem("quizInfo")) {
     quizInfo = JSON.parse(localStorage.getItem("quizInfo"));
 }
 
+//Stores all created personalities (including name, description, and archetype association) of the quiz globally, and grabs all created personalities if the user has been working on it when the page reloads
 let allPersonalityInfo = [];
 if (localStorage.getItem("allPersonalityInfo")) {
     allPersonalityInfo = JSON.parse(localStorage.getItem("allPersonalityInfo"));
 }
 
-
+//Stores all created question (just question text) and answer (answer text, personality association) sets of the quiz globally, and grabs all created sets if the user has been working on it when the page reloads
 let QAndA = [[], []];
 if (localStorage.getItem("QAndA")) {
     QAndA = JSON.parse(localStorage.getItem("QAndA"));
 }
 
+//This information, as of 10/24/2020, is not currently in use. The idea is that while creating personalities, users can see the explanations of the archetypes.
 let archetypeDefinitions;
 $.ajax({
     method: "GET",
@@ -28,15 +32,40 @@ $.ajax({
     archetypeDefinitions = result;
 });
 
+//This is only used in posting the entire question to the server.
 let personalityIds = [];
 
-
+//Controls what sections are shown at any given point in time by flipping display from "block" to "none" and vice versa. Additionally, populates the sidebar with a history of user inputs.
 if (localStorage.getItem("quizInfo")) {
     quizBlock.hide();
     $("#quizTitle").text(`Quiz: ${quizInfo.quiz_name}`)
     $("#quizCategory").text(`Quiz: ${quizInfo.quiz_category}`)
+    if (allPersonalityInfo.length) {
+        allPersonalityInfo.forEach(element => {
+            const newList = $("<ul>");
+            const liPersonality = $("<li>").text(`Personality: ${element.personality_type}`);
+            const liPDescription = $("<li>").text(`Description:${element.personality_description}`)
+            newList.append(liPersonality, liPDescription);
+            $("#quizPersonalities").append(newList)
+        });
+    }
     if (localStorage.getItem("personalitiesComplete") === "true") {
         personalityBlock.hide();
+        if (QAndA[0].length) {
+            for (let i = 0; i < QAndA[1].length; i++) {
+                const questionDisplay = $("<h3>").text(`Question: ${QAndA[0][i].question}`);
+                const newList = $("<ul>");
+                console.log(QAndA[1][i]);
+                QAndA[1][i].forEach(element => {
+                    console.log(element)
+                    const liPDescription = $("<li>").text(`Answer:${element.answer}`)
+                    newList.append(liPDescription);
+                });
+
+                $("#quizQuestions").append(questionDisplay,newList)
+            }
+
+        }
         if (localStorage.getItem("questionsComplete") === "true") {
             completeBlock.show()
             QAndABlock.hide();
@@ -62,7 +91,7 @@ if (localStorage.getItem("quizInfo")) {
 }
 
 
-
+//Stores quiz name and category for later submission to the database
 $("#quizCreation").on("submit", function (event) {
     event.preventDefault();
     const quizInfo = {
@@ -71,29 +100,12 @@ $("#quizCreation").on("submit", function (event) {
         image_tile: $("#qPicture").val().trim()
     }
     localStorage.setItem("quizInfo", JSON.stringify(quizInfo));
-    quizBlock.hide();
-    personalityBlock.show();
+    
+    location.reload();
 
 })
 
-$("#quizCreation").on("submit", function (event) {
-    event.preventDefault();
-    const quizInfo = {
-        quiz_name: $("#qName").val().trim(),
-        quiz_category: $("#qCategory").val().trim(),
-        image_tile: $("#qPicture").val().trim()
-    }
-    localStorage.setItem("quizInfo", JSON.stringify(quizInfo));
-    quizBlock.hide();
-    personalityBlock.show();
-    // $.ajax("/api/quiz",{
-    //     type: 'POST',
-    //     data: quizInfo
-    // }).then(function(response){
-    //     console.log("Created a new quiz with id of " + response.id);
-    // }).catch(err => console.log(err));
-})
-
+//Stores personalities for later submission to the database
 $("#personalityCreation").on("submit", function (event) {
     event.preventDefault();
     const personalityInfo = {
@@ -104,14 +116,11 @@ $("#personalityCreation").on("submit", function (event) {
     allPersonalityInfo.push(personalityInfo);
     localStorage.setItem("allPersonalityInfo", JSON.stringify(allPersonalityInfo));
 
-    $("#pName").val("");
-    $("#pDescription").val("");
-    $("#pArchetype").val(1);
+    location.reload();
 })
 
+//Indicates the user is finished creating personality results
 $("#personalitiesFinished").on("click", function (event) {
-
-
     personalityBlock.hide();
     QAndABlock.show();
 
@@ -119,6 +128,7 @@ $("#personalitiesFinished").on("click", function (event) {
     populateAnswerPersonalities();
 })
 
+//The user can only shoose personality results for each answer from a dropdown list of previously defined personality results.
 function populateAnswerPersonalities() {
     for (let i = 0; i < allPersonalityInfo.length; i++) {
 
@@ -134,15 +144,14 @@ function populateAnswerPersonalities() {
     $("#a8").hide();
 }
 
+//Toggles answer forms when the checkbox is ticked
 $(':checkbox').on('click', function (event) {
     const num = $(event.target).data("num")
     const str = "#a" + num;
     $(`${str}`).toggle();
 });
 
-
-
-
+//Grabs the current question-answer set and stores it for later referral, if and only if the answer checkboxes are ticked
 $("#allAnswers").on("submit", function (event) {
     event.preventDefault();
     const questionInfo = {
@@ -171,12 +180,14 @@ $("#allAnswers").on("submit", function (event) {
 
 })
 
+//Finishes inputting questions and asks the user for confirmation to proceed
 $("#questionsFinished").on("click", function (event) {
     localStorage.setItem("questionsComplete", "true");
     QAndABlock.hide();
     completeBlock.show();
 })
 
+//Posts the quiz in its entirety to the server, and thus, the database
 $("#postQuiz").on("click", function (event) {
     $.ajax("/api/quiz", {
         type: 'POST',
