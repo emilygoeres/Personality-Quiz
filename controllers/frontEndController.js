@@ -46,6 +46,7 @@ router.get("/quiz/:id", function (req, res) {
             }
             let resultJSON = result.toJSON();
             let Quiz = { quiz: resultJSON.quiz_name, quizID: req.params.id }
+            Quiz.user = true;
             res.render("quiz", Quiz)
         }).catch(err => {
             res.status(500).end();
