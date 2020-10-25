@@ -20,14 +20,25 @@ $("#searchQuiz").on("submit", function (event) {
         method: "GET"
     }
     ).then(function (result) {
-        // console.log(result);
         result.forEach(element => {
-            const liEl = $("<li>");
+            // Create elements for search results
             const link = $("<a>");
-            link.text(element.quiz_name);
-            link.attr("href", "/quiz/1")
-            liEl.append(link)
-            searchBlock.append(liEl);
+            const newCard = $("<div>");
+            const newCardContent = $("<div>")
+            const newP = $("<p>")
+
+            // Style and give data to those elements
+            link.attr("href", `/quiz/${element.id}`)
+            newCard.addClass("card mb-1 allQuizzesCard")
+            newCardContent.addClass("card-content")
+            newP.addClass("is-size-5")
+            newP.text(element.quiz_name);
+
+            // Append those elements to the page
+            newCardContent.append(newP);
+            newCard.append(newCardContent);
+            link.append(newCard);
+            searchBlock.append(link);
         })
         $("#featuredQuizzes").hide();
         $("#allQuizzes").hide();

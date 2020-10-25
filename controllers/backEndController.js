@@ -25,12 +25,12 @@ router.get("/api/quiz", function (req, res) {
 
 // GET quizzes name based on search 
 router.get("/api/quizzes/:search", function (req, res) {
-    // var search = quiz.quiz_name.replace(/\s+/g, "").toLowerCase();
     db.quiz.findAll({
         where:{
             [Op.or]: [
-                { quiz_name: req.params.search },
-                { quiz_category: req.params.search },
+                // Return any quizzes where the title or the category contain the string in search
+                { quiz_name: sequelize.where(sequelize.fn('LOWER', sequelize.col('quiz_name')), 'LIKE', '%' + req.params.search + '%')},
+                { quiz_category: sequelize.where(sequelize.fn('LOWER', sequelize.col('quiz_category')), 'LIKE', '%' + req.params.search + '%')}
             ]
         }
     }).then(result => {
