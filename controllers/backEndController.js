@@ -124,7 +124,7 @@ router.get("/api/profile/:id", function (req, res) {
     }).then(result => {
         res.json(result);
     }).catch(err => {
-        console.log("are we here though?")
+        // console.log("are we here though?")
         res.status(500).end();
     })
     // } else {
@@ -213,7 +213,7 @@ router.get("/api/quizQuestions/:id", function (req, res) {
     }).then(result => {
         res.json(result);
     }).catch(err => {
-        console.log(err);
+        // console.log(err);
         res.status(500).end();
     })
 })
@@ -254,7 +254,7 @@ router.post("/api/answer", function (req, res) {
     }).then(result => {
         res.json(result);
     }).catch(err => {
-        console.log(err);
+        // console.log(err);
         res.status(500).end();
     })
 })
@@ -308,7 +308,7 @@ router.put("/api/user/:id", function (req, res) {
         ).then(result => {
             res.json(result);
         }).catch(err => {
-            console.log(err);
+            // console.log(err);
             res.status(500).end();
         })
     }

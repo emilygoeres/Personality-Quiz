@@ -29,10 +29,10 @@ router.post("/signup", (req, res) => {
             email: result.email,
             id: result.id
         }
-        res.json(result);
-        // res.redirect("/myprofile")
+        // res.json(result);
+        res.redirect("/")
     }).catch(err => {
-        console.log(err);
+        // console.log(err);
         res.status(500).end();
     })
 })
@@ -48,7 +48,7 @@ router.post("/login", (req, res) => {
             email: req.body.email 
         }
     }).then(result => {
-        console.log("req.session", req.session)
+        // console.log("req.session", req.session)
         // check if user entered password matches db password
         if (!result) {
             req.session.destroy();
@@ -68,7 +68,7 @@ router.post("/login", (req, res) => {
         }
         // res.json(result);
     }).catch(err => {
-        console.log(err)
+        // console.log(err)
         res.status(500).end();
     })
 })
@@ -76,7 +76,7 @@ router.post("/login", (req, res) => {
 // Route for user to logout
 router.get('/logout', (req, res) => {
     req.session.destroy();
-    res.send('You have successfully logged out!')
+    res.redirect("/")
 })
 
 module.exports = router;

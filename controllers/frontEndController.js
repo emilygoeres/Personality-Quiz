@@ -23,20 +23,24 @@ router.get("/", function (req, res) {
 
 // Display a quiz by ID
 router.get("/quiz/:id", function (req, res) {
-    db.quiz.findOne({
-        where: {
-            id: req.params.id
-        }
-    }).then(result => {
-        if (!result) {
-            return res.status(500).send("EEP Doesnt exist");
-        }
-        let resultJSON = result.toJSON();
-        let Quiz = { quiz: resultJSON.quiz_name, quizID: req.params.id }
-        res.render("quiz", Quiz)
-    }).catch(err => {
-        res.status(500).end();
-    })
+    if(req.session.user){
+        db.quiz.findOne({
+            where: {
+                id: req.params.id
+            }
+        }).then(result => {
+            if (!result) {
+                return res.status(500).send("EEP Doesnt exist");
+            }
+            let resultJSON = result.toJSON();
+            let Quiz = { quiz: resultJSON.quiz_name, quizID: req.params.id }
+            res.render("quiz", Quiz)
+        }).catch(err => {
+            res.status(500).end();
+        })
+    } else {
+        res.status(401).redirect("/login")
+    }
 })
 
 // Display the profile page
@@ -72,10 +76,10 @@ router.get("/profile", function (req, res) {
                     user: userJSON,
                     quizHistory: quizHistoryJSON
                 }
-                console.log(userObj.quizHistory[0]);
+                // console.log(userObj.quizHistory[0]);
                 res.render("profile", userObj);
             }).catch(err => {
-                console.log(err)
+                // console.log(err)
                 res.status(500).end();
             })
         }).catch(err => {
