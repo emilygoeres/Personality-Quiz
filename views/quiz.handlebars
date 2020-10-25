@@ -1,12 +1,32 @@
-<h1 data-quizid = "{{quizID}}" id = "questionBlock">{{quiz}}</h1>
+<div class="container has-text-centered">
+
+    <div class="box is-vcentered has-background-grey-lighter quizBlock">
+        <div class="content">
+            <div class="box">
+
+                {{!-- Question Block, this is where the questions will be rendered --}}
+                <div id="questionBlock">
+                    <h1 class="title" data-quizid="{{quizID}}" id="questionText">{{quiz}}</h1>
+                    <p id="quizDescription">Welcome to the <strong>"{{quiz}}"</strong> quiz! Click "start" to begin your quiz.</p>
+                </div>
+            </div>
+
+            {{!-- Answer Block, this is where the answer choices are rendered --}}
+            <div id="answerBlock"></div>
+
+            {{!-- Result Block, this is where the results will be rendered after quiz completion --}}
+            <div id="resultBlock"></div>
+
+            {{!-- Start Button, rendered on initial screen, hidden after click --}}
+            <button class="button is-personify-purple" id="nextButton">START</button>
+        </div>
+    </div>
 
 
-<ul id ="answerBlock">
-    <li>
-        <p>Welcome to the {{quiz}} quiz! Click "next" to get started.</p>
-    </li>
-</ul>
 
-    <button id = "nextButton">Next</button>
+</div>
+
+
+
 
 <script src="/assets/js/quiz.js"></script>
