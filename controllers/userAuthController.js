@@ -48,7 +48,7 @@ router.post("/login", (req, res) => {
             email: req.body.email 
         }
     }).then(result => {
-        console.log("req.session", req.session)
+        // console.log("req.session", req.session)
         // check if user entered password matches db password
         if (!result) {
             req.session.destroy();
@@ -59,8 +59,8 @@ router.post("/login", (req, res) => {
                 email: result.email,
                 id: result.id
             }
-            // return res.json(result)
-            res.redirect("/")
+            return res.redirect("/profile")
+            // res.redirect("/myprofile")
         }
         else {
             req.session.destroy();

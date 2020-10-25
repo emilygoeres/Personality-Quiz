@@ -22,19 +22,6 @@ router.get("/api/quiz", function (req, res) {
 //     })
 // })
 
-// GET quizzes name based on their specific id (GET specific quiz)
-// router.get("/api/quiz/:id", function(req, res){
-//     db.quiz.findOne({
-//         where:{
-//             id: req.params.id
-//         },
-//         include:[db.quizTaken]
-//     }).then(result => {
-//         res.json(result);
-//     }).catch(err => {
-//         res.status(500).end();
-//     })
-// })
 
 // GET quizzes name based on search 
 router.get("/api/quizzes/:search", function (req, res) {
@@ -59,7 +46,8 @@ router.post("/api/quiz", function (req, res) {
     db.quiz.create({
         quiz_name: req.body.quiz_name,
         quiz_category: req.body.quiz_category,
-        userId: req.body.userId,
+        //Get user id from session after all updates
+        // userId: req.body.userId,
         image_tile: req.body.image_tile,
     }).then(result => {
         res.json(result);
@@ -145,32 +133,32 @@ router.get("/api/profile/:id", function (req, res) {
 })
 
 // POST profile to our database (Create profile)
-// router.post("/api/profile", function(req, res){
-//     db.user.create({
-//         user_name: req.body.user_name,
-//         password: req.body.password,
-//         first_name: req.body.first_name,
-//         last_name: req.body.last_name,
-//         email: req.body.email,
-//         archetype_1: 0,
-//         archetype_2: 0,
-//         archetype_3: 0,
-//         archetype_4: 0,
-//         archetype_5: 0,
-//         archetype_6: 0,
-//         archetype_7: 0,
-//         archetype_8: 0,
-//         archetype_9: 0,
-//         archetype_10: 0,
-//         archetype_11: 0,
-//         archetype_12: 0
-//     }).then(result => {
-//         res.json(result);
-//     }).catch(err => {
-//         console.log(err);
-//         res.status(500).end();
-//     })
-// })
+router.post("/api/profile", function(req, res){
+    db.user.create({
+        user_name: req.body.user_name,
+        password: req.body.password,
+        first_name: req.body.first_name,
+        last_name: req.body.last_name,
+        email: req.body.email,
+        archetype_1: 0,
+        archetype_2: 0,
+        archetype_3: 0,
+        archetype_4: 0,
+        archetype_5: 0,
+        archetype_6: 0,
+        archetype_7: 0,
+        archetype_8: 0,
+        archetype_9: 0,
+        archetype_10: 0,
+        archetype_11: 0,
+        archetype_12: 0
+    }).then(result => {
+        res.json(result);
+    }).catch(err => {
+        console.log(err);
+        res.status(500).end();
+    })
+})
 
 // UPDATE profile in database
 // router.put("/api/profile", function(req, res){
@@ -186,6 +174,15 @@ router.get("/api/profile/:id", function (req, res) {
 //         res.status(500).end();
 //     })
 // })
+
+router.get("/api/archetypes", function(req,res) {
+    db.archetype.findAll()
+    .then(result => {
+        res.json(result);
+    }).catch(err => {
+        res.status(500).end();
+    })
+})
 
 // GET route for quiz question
 router.get("/api/quizQuestions/:id", function (req, res) {
@@ -203,10 +200,10 @@ router.get("/api/quizQuestions/:id", function (req, res) {
 
                         include:
                             [{
-                                model: db.personality,
+                                model: db.personality
 
-                                include:
-                                    [{ model: db.archetype }]
+                                // include:
+                                //     [{ model: db.archetype }]
                             }
                             ]
                     }

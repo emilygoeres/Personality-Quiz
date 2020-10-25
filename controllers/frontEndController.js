@@ -8,7 +8,9 @@ router.get("/", function (req, res) {
         let resultJSON = result.map(obj => obj.toJSON());
         let homeObj = {
             // Find All quizzes that match our featured criteria
-            featuredQuizzes: resultJSON.slice(resultJSON.length - 4, 3),
+            // Current Featured Criteria: 3 Most Recent Quizzes
+            // TODO: Develop a better way to show featured quizzes 
+            featuredQuizzes: resultJSON.slice(resultJSON.length - 4, -1),
             // All Quizzes
             // Maybe future release (exlcude the featured quizzes from All Quizzes)
             allQuizzes: resultJSON
@@ -42,19 +44,30 @@ router.get("/quiz/:id", function (req, res) {
 })
 
 // Display the profile page
-router.get("/profile/:id", function (req, res) {
+router.get("/profile", function (req, res) {
     if (req.session.user) {
         db.user.findOne({
             where: {
-                id: req.params.id
+                id: req.session.user.id
             }
         }).then(user => {
-
             let userJSON = user.toJSON();
+            userJSON.archetypeSum = userJSON.archetype_1
+                + userJSON.archetype_2
+                + userJSON.archetype_3
+                + userJSON.archetype_4
+                + userJSON.archetype_5
+                + userJSON.archetype_6
+                + userJSON.archetype_7
+                + userJSON.archetype_8
+                + userJSON.archetype_9
+                + userJSON.archetype_10
+                + userJSON.archetype_11
+                + userJSON.archetype_12;
 
             db.quizTaken.findAll({
                 where: {
-                    userId: req.params.id
+                    userId:  req.session.user.id
                 },
                 include: [{ model: db.personality }, { model: db.quiz }]
             }).then(quizHistory => {
@@ -83,6 +96,10 @@ router.get("/login", (req, res) => {
 
 router.get("/signup", (req, res) => {
     res.render("signup", { user: req.session.user })
+})
+
+router.get("/create-a-quiz", (req, res) => {
+    res.render("createAQuiz", {})
 })
 
 module.exports = router;

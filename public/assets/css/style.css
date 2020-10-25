@@ -40,3 +40,13 @@
 .loginForm, .signupForm {
     border: 1px solid black;
 }
+
+.quizBlock {
+    height: 70vh;
+}
+
+.answerChoice:hover{
+    background-color:  #662D91;
+    color: white;
+    cursor: pointer;
+}
