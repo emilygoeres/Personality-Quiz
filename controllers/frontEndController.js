@@ -4,26 +4,38 @@ const db = require("../models");
 
 // Display Home Page
 router.get("/", function (req, res) {
+    // Create homeObj to pass to the render
+    let homeObj = {};
+
+    // If there is a user logged in, pass true for user. 
+    // This is for displaying the log in buttons or profile
+    if (req.session.user) {
+        homeObj = { user: true }
+    }
+
+    // retrieve quiz data to populate page
     db.quiz.findAll({}).then(result => {
         let resultJSON = result.map(obj => obj.toJSON());
-        let homeObj = {
-            // Find All quizzes that match our featured criteria
-            // Current Featured Criteria: 3 Most Recent Quizzes
-            // TODO: Develop a better way to show featured quizzes 
-            featuredQuizzes: resultJSON.slice(resultJSON.length - 4, -1),
-            // All Quizzes
-            // Maybe future release (exlcude the featured quizzes from All Quizzes)
-            allQuizzes: resultJSON
-        }
+
+        // Find All quizzes that match our featured criteria
+        // Current Featured Criteria: 3 Most Recent Quizzes
+        // TODO: Develop a better way to show featured quizzes 
+        homeObj.featuredQuizzes = resultJSON.slice(resultJSON.length - 4, -1);
+
+        // All Quizzes
+        // Maybe future release (exlcude the featured quizzes from All Quizzes)
+        homeObj.allQuizzes = resultJSON;
+
         res.render("home", homeObj)
     }).catch(err => {
         res.status(500).end();
     })
 })
 
+
 // Display a quiz by ID
 router.get("/quiz/:id", function (req, res) {
-    if(req.session.user){
+    if (req.session.user) {
         db.quiz.findOne({
             where: {
                 id: req.params.id
@@ -34,6 +46,7 @@ router.get("/quiz/:id", function (req, res) {
             }
             let resultJSON = result.toJSON();
             let Quiz = { quiz: resultJSON.quiz_name, quizID: req.params.id }
+            Quiz.user = true;
             res.render("quiz", Quiz)
         }).catch(err => {
             res.status(500).end();
@@ -67,7 +80,7 @@ router.get("/profile", function (req, res) {
 
             db.quizTaken.findAll({
                 where: {
-                    userId:  req.session.user.id
+                    userId: req.session.user.id
                 },
                 include: [{ model: db.personality }, { model: db.quiz }]
             }).then(quizHistory => {

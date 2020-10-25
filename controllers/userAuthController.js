@@ -52,6 +52,7 @@ router.post("/login", (req, res) => {
         // check if user entered password matches db password
         if (!result) {
             req.session.destroy();
+            // TODO: Dont redirect to signup, display something like "You didnt enter"
             return res.status(401).redirect("/signup")
 
         } else if (bcrypt.compareSync(req.body.password, result.password)) {

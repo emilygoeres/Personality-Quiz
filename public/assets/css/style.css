@@ -27,8 +27,14 @@
     color:white;
 }
 
+
 .is-personify-purple:hover{
     background-color: #57267c;
+    color:white;
+}
+
+.is-personify-purple-lighter{
+    background-color: #e5c4ff;
     color:white;
 }
 
@@ -38,11 +44,12 @@
 }
 
 .loginForm, .signupForm {
-    border: 1px solid black;
+    height: 90vh;
+    background: linear-gradient(133deg, rgba(74,34,105,1) 0%, rgba(102,45,145,1) 59%, rgba(140,63,199,1) 100%);
 }
 
 .quizBlock {
-    height: 70vh;
+    height: 85vh;
 }
 
 .answerChoice:hover{
