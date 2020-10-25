@@ -1,38 +1,90 @@
-<div class="container signupForm">
-    <div class="row">
-        <div class="column is-justify-content-center">
-            <form action="/signup" method="POST">
-                <h3>Please create an account below to take our quizzes!</h3>
+<section class="hero is-medium home-bkg-img">
+    <div class="hero-body">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column card is-5-tablet is-4-desktop is-4-widescreen">
+                    <form action="/signup" method="POST">
+                        <h3 class="title has-text-centered">Create an Account</h3>
 
-                <h4>User Name</h4>
-                <div class="row">
-                    <input type="text" name="user_name" placeholder="username">
-                </div>
+                        <div class="field">
+                            <label for="" class="label">User Name</label>
+                            <div class="control has-icons-left">
+                                <input class="input" type="text" name="user_name" placeholder="username" required>
+                                <span class="icon is-small is-left">
+                                    <i class="fa fa-user"></i>
+                                </span>
+                            </div>
+                        </div>
 
-                <h4>First Name</h4>
-                <div class="row">
-                    <input type="text" name="first_name" placeholder="firstname">
-                </div>
+                        <div class="field">
+                            <label for="" class="label">First Name</label>
+                            <div class="control has-icons-left">
+                                <input class="input" type="text" name="first_name" placeholder="Johnny" required>
+                                <span class="icon is-small is-left">
+                                    <i class="fa fa-info-circle"></i>
+                                </span>
+                            </div>
+                        </div>
 
-                <h4>Last Name</h4>
-                <div class="row">
-                    <input type="text" name="last_name" placeholder="lastname">
-                </div>
+                        <div class="field">
+                            <label for="" class="label">Last Name</label>
+                            <div class="control has-icons-left">
+                                <input class="input" type="text" name="last_name" placeholder="Appleseed" required>
+                                <span class="icon is-small is-left">
+                                    <i class="fa fa-info-circle"></i>
+                                </span>
+                            </div>
+                        </div>
 
-                <h4>Email</h4>
-                <div class="row">
-                    <input type="text" name="email" placeholder="email">
-                </div>
+                        <div class="field">
+                            <label for="" class="label">Email</label>
+                            <div class="control has-icons-left">
+                                <input class="input" type="text" name="email" placeholder="johnnyappleseed@acme.com" required>
+                                <span class="icon is-small is-left">
+                                    <i class="fa fa-envelope"></i>
+                                </span>
+                            </div>
+                        </div>
 
-                <h4>Password</h4>
-                <div class="row">
-                    <input type="password" name="password" placeholder="password">  
-                </div>
+                        <div class="field">
+                            <label for="" class="label">Password</label>
+                            <div class="control has-icons-left">
+                                <input class="input" type="password" name="password" placeholder="********" required>
+                                <span class="icon is-small is-left">
+                                    <i class="fa fa-lock"></i>
+                                </span>
+                            </div>
+                        </div>
 
-                <div class="row">
-                    <input type="submit" value="Sign up!">
+                        {{!-- <h4>User Name</h4>
+                        <div class="row">
+                            <input type="text" name="user_name" placeholder="username">
+                        </div> --}}
+
+                        {{!-- <h4>First Name</h4>
+                        <div class="row">
+                            <input type="text" name="first_name" placeholder="firstname">
+                        </div> --}}
+
+                        {{!-- <h4>Last Name</h4>
+                        <div class="row">
+                            <input type="text" name="last_name" placeholder="lastname">
+                        </div> --}}
+
+                        {{!-- <h4>Email</h4>
+                        <div class="row">
+                            <input type="text" name="email" placeholder="email">
+                        </div> --}}
+
+                        {{!-- <h4>Password</h4>
+                        <div class="row">
+                            <input type="password" name="password" placeholder="password">
+                        </div> --}}
+
+                            <input class="button is-personify-purple" type="submit" value="Sign up!">
+                    </form>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
-</div>
+</section>

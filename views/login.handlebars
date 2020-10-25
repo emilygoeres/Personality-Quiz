@@ -1,29 +1,37 @@
-<div class="container loginForm">
-    <div class="row">
-        <div class="column is-align-items-center">
-            <form action="/login" method="POST">
-                <h3>Please login below!</h3>
+<section class="hero is-medium home-bkg-img">
+    <div class="hero-body">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column card is-5-tablet is-4-desktop is-4-widescreen">
+                    <form action="/login" method="POST">
+                        <h3 class="title has-text-centered has-text-black">Personify Login</h3>
+                        <div class="field">
+                            <label for="" class="label">Email</label>
+                            <div class="control has-icons-left">
+                                <input class="input" type="text" name="email" placeholder="email" required>
+                                <span class="icon is-small is-left">
+                                    <i class="fa fa-envelope"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label for="" class="label">Password</label>
+                            <div class="control has-icons-left">
+                                <input class="input" type="password" name="password" placeholder="********" required>
+                                <span class="icon is-small is-left">
+                                    <i class="fa fa-lock"></i>
+                                </span>
+                            </div>
+                        </div>
 
-                <h4>Email</h4>
-                <div class="row is-align-content-center">
-                    <input type="text" name="email" placeholder="email">
+                        <input class="button is-personify-purple" type="submit" value="Login!">
+                        <hr>
+                        <p class="label">New to Personify?</p>
+                        <a href="/signup">Create an Account</a>
+
+                    </form>
                 </div>
-
-                <h4>Password</h4>
-                <div class="row">
-                    <input type="password" name="password" placeholder="password">  
-                </div>
-
-                <div class="row">
-                    <input type="submit" value="Login!">
-                </div>
-
-                <p>Don't have account with us?</p>
-
-                <div class="row">
-                    <a href="/signup"><button>Create an Account</button></a>
-                </div>
-            </form>
+            </div>
         </div>
     </div>
-</div>
+</section>

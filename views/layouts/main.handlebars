@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
         integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
     <link rel="stylesheet" href="/assets/css/style.css" type="text/css" />
-    
-		<script src="https://code.jquery.com/jquery.js"></script>
+
+    <script src="https://code.jquery.com/jquery.js"></script>
 </head>
 
 <body>
@@ -32,23 +32,24 @@
         <div id="navbarBasicExample" class="navbar-menu">
             {{!-- Items to display next to LOGO --}}
             <div class="navbar-start">
-            </div>
-
-            {{!-- Items to display on right side of page --}}
-            <div class="navbar-end mr-1">
                 <a class="navbar-item" href="/">
                     Explore
                 </a>
                 <a class="navbar-item">
                     About
                 </a>
+            </div>
+
+            {{!-- Items to display on right side of page --}}
+            <div class="navbar-end mr-1">
+                {{#if user}}
                 <div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link">
                         Profile
                     </a>
+
                     <div class="navbar-dropdown">
-                        {{!-- TODO: Update this to direct to user profile --}}
-                        <a class="navbar-item" href="/profile/1">
+                        <a class="navbar-item" href="/profile">
                             <span class="icon">
                                 <i class="fas fa-user"></i>
                             </span>
@@ -61,21 +62,25 @@
                         </a>
 
                         {{!-- Add login/logout feature to main page TODO: !!!!--}}
-                        {{#if user}}
                         <a class="navbar-item" href="/logout">
-                            <i class="fas fa-cog"></i>
+                            <i class="fas fa-sign-out-alt"></i>
                             Logout
                         </a>
-                        {{/if}}
-                        {{#unless user}}
-                        <a class="navbar-item" href="/login">
-                            <i class="fas fa-cog"></i>
-                            Login
-                        </a>
-                        {{/unless}}
                     </div>
                 </div>
+                {{/if}}
+                {{#unless user}}
+                <div class="buttons">
+                    <a class="button is-personify-purple" href="/signup">
+                        <strong>Sign up</strong>
+                    </a>
+                    <a class="button is-light" href="/login">
+                        Log in
+                    </a>
+                </div>
+                {{/unless}}
             </div>
+        </div>
         </div>
     </nav>
 
