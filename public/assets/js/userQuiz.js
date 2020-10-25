@@ -23,7 +23,7 @@ if (localStorage.getItem("personalityIds")) {
     personalityIds = JSON.parse(localStorage.getItem("personalityIds"));
 }
 
-let QAndA = [];
+let QAndA = [[],[]];
 if (localStorage.getItem("QAndA")) {
     QAndA = JSON.parse(localStorage.getItem("QAndA"));
 }
@@ -108,18 +108,18 @@ $("#personalityCreation").on("submit", function (event) {
 
 $("#personalitiesFinished").on("click", function (event) {
     personalityIds = [];
-    // allPersonalityInfo.forEach(element => {
-    //     $.ajax("/api/personalities", {
-    //         type: 'POST',
-    //         data: element
-    //     }).then(function (response) {
-    //         console.log("Created a new personality with id of " + response.id);
+    allPersonalityInfo.forEach(element => {
+        // $.ajax("/api/personalities", {
+        //     type: 'POST',
+        //     data: element
+        // }).then(function (response) {
+        //     console.log("Created a new personality with id of " + response.id);
 
-    //         personalityIds.push(response.id);
-    //         localStorage.setItem("personalityIds", JSON.stringify(personalityIds))
-    //     }).catch(err => console.log(err));
+        //     personalityIds.push(response.id);
+        //     localStorage.setItem("personalityIds", JSON.stringify(personalityIds))
+        // }).catch(err => console.log(err));
 
-    // })
+    })
 
     personalityBlock.hide();
     QAndABlock.show();
@@ -131,63 +131,54 @@ function populateAnswerPersonalities() {
     for (let i = 0; i < personalityIds.length; i++) {
 
         const liEl = $("<option>");
-        liEl.val(personalityIds[i])
+        liEl.val(i)
         liEl.text(allPersonalityInfo[i].personality_type);
         $(".personalityList").append(liEl);
     }
 
     $("#a5").hide();
-    
+
     $("#a6").hide();
-    
+
     $("#a7").hide();
-    
+
     $("#a8").hide();
 }
 
-$("#questionText").on("submit", function (event) {
+$(':checkbox').on('click', function (event) {
+    const num = $(event.target).data("num")
+    const str = "#a" + num;
+    $(`${str}`).toggle();
+});
+
+
+
+
+$("#allAnswers").on("submit", function (event) {
     event.preventDefault();
     const questionInfo = {
-        question: $("#pName").val().trim(),
+        question: $("#questionText").val().trim(),
         //need to grab quiz id and insert it in here after posting quiz
         quizId: 7
     }
-    allPersonalityInfo.push(personalityInfo);
-    localStorage.setItem("allPersonalityInfo", JSON.stringify(allPersonalityInfo));
 
-    $("#pName").val("");
-    $("#pDescription").val("");
-    $("#pArchetype").val(1);
-})
+    let answersInfo = [];
+    for (let i = 1; i <= 8; i++) {
+        const str = "#answer"+i;
+        console.log($(`${str}`));
+        console.log($(`#answer1`).is(":checked"));
+        if ($(str).is(":checked")) {
+            let answerObj = {
+                answer: $(`#answerText${i}`).val(),
+                personalityIdProvisional: $(`#aPersonality${i}`).val(),
+                points: $(`#aPoints${i}`).val()
+            }
+            answersInfo.push(answerObj);
+        }
+    }
+    QAndA[0].push(questionInfo)
+    QAndA[1].push(answersInfo);
+    localStorage.setItem("QAndA",JSON.stringify(QAndA));
+    location.reload();
 
-$("#answer1").click(function() {
-    $("#a1").toggle();
-})
-
-$("#answer2").click(function() {
-    $("#a2").toggle();
-})
-
-$("#answer3").click(function() {
-    $("#a3").toggle();
-})
-
-$("#answer4").click(function() {
-    $("#a4").toggle();
-})
-
-$("#answer5").click(function() {
-    $("#a5").toggle();
-})
-
-$("#answer6").click(function() {
-    $("#a6").toggle();
-})
-
-$("#answer7").click(function() {
-    $("#a7").toggle();
-})
-
-$("#answer8").click(function() {
-    $("#a8").toggle();
 })
