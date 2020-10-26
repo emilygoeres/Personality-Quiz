@@ -44,12 +44,7 @@
 
             {{!-- Items to display on right side of page --}}
             <div class="navbar-end mr-1">
-                <a class="navbar-item" href="/create-a-quiz">
-                    <span class="icon">
-                        <i class="fas fa-plus"></i>
-                    </span>
-                    Create Quiz
-                </a>
+
                 {{!-- If there is a user logged in, the profile options will be displayed --}}
                 {{!-- If there is not a user logged in, there will be log in, sign up buttons --}}
                 {{#if user}}
@@ -65,7 +60,12 @@
                             </span>
                             My Profile
                         </a>
-
+                        <a class="navbar-item" href="/create-a-quiz">
+                            <span class="icon">
+                                <i class="fas fa-plus"></i>
+                            </span>
+                            Create Quiz
+                        </a>
                         <a class="navbar-item" href="/logout">
                             <i class="fas fa-sign-out-alt"></i>
                             Logout
