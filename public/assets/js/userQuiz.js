@@ -248,3 +248,16 @@ $("#postQuiz").on("click", function (event) {
     }).catch(err => console.log(err));
 
 })
+
+
+$(".modalStart.about").on("click", function(event){
+    $(".modal#about").toggleClass("is-active")
+})
+
+$(".modal-background.about").on("click", function(event){
+    $(".modal#about").toggleClass("is-active")
+})
+
+$(".delete.about").on("click", function(event){
+    $(".modal#about").toggleClass("is-active")
+})

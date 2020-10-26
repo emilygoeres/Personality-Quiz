@@ -29,7 +29,12 @@
         <div class="columns">
             {{#each featuredQuizzes}}
             <div class="column is-4">
+                {{#if ../user}}
                 <a href="/quiz/{{this.id}}">
+                {{/if}}
+                {{#unless ../user}}
+                <a class="modalStart continue" data-quizid="{{this.id}}">
+                {{/unless}}
                     <div class="card featuredQuizCard">
                         <div class="card-image">
                             <figure class="image is-4by3">
@@ -57,7 +62,9 @@
         {{#if ../user}}
         <a href="/quiz/{{this.id}}">
         {{/if}}
-        {{#unless ../user}}<a class="modalStart" data-quizid="{{this.id}}">{{/unless}}
+        {{#unless ../user}}
+        <a class="modalStart continue" data-quizid="{{this.id}}">
+        {{/unless}}
             <div class="card mb-1 allQuizzesCard">
                 <div class="card-content">
                     <p class="is-size-5">{{this.quiz_name}}</p>
@@ -79,11 +86,11 @@
 </div>
 
 <div class="modal" id="continue">
-  <div class="modal-background"></div>
+  <div class="modal-background continue"></div>
   <div class="modal-card">
     <header class="modal-card-head">
       <p class="modal-card-title">You aren't logged in!</p>
-      <button class="delete" aria-label="close"></button>
+      <button class="delete continue" aria-label="close"></button>
     </header>
     <section class="modal-card-body">
       <p class="is-size-5">This site is best when you are logged in! Please consider logging in or creating an account.</p>
@@ -92,6 +99,19 @@
       <button class="button is-success"><a href="/login">Log In</a></button>
       <button class="button"><a href="#" id="quizLink"> Take quiz!</a></button>
     </footer>
+  </div>
+</div>
+
+<div class="modal" id="about">
+  <div class="modal-background about"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title has-text-centered">How to use Personify</p>
+      <button class="delete about" aria-label="close"></button>
+    </header>
+    <section class="modal-card-body">
+       <p class="is-size-5">Personify is unique: it gives personality information in two different ways. First, the result of whatever personality tests you take. Second, our copyright personality composite. The personality composite is effected by every answer you have ever given, and gives the user of a breakdown of how often they answer in particular ways. <br> <br> Users must be logged in to see that composite on their profile or have their composite updated after a test!</p>
+    </section>
   </div>
 </div>
 

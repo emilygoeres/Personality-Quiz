@@ -61,18 +61,28 @@ viewToggle.on("click", function(event) {
     }
 })
 
-$(".modalStart").on("click", function(event){
-    $(".modal").toggleClass("is-active")
+$(".modalStart.continue").on("click", function(event){
+    $(".modal#continue").toggleClass("is-active")
     const quizId = $(this).data("quizid");
     $("#quizLink").attr("href",`/quiz/${quizId}`)
 })
 
-$(".modal-background").on("click", function(event){
-    console.log("clicked!")
-    $(".modal").toggleClass("is-active")
+$(".modal-background.continue").on("click", function(event){
+    $(".modal#continue").toggleClass("is-active")
 })
 
-$(".delete").on("click", function(event){
-    console.log("clicked!")
-    $(".modal").toggleClass("is-active")
+$(".delete.continue").on("click", function(event){
+    $(".modal#continue").toggleClass("is-active")
+})
+
+$(".modalStart.about").on("click", function(event){
+    $(".modal#about").toggleClass("is-active")
+})
+
+$(".modal-background.about").on("click", function(event){
+    $(".modal#about").toggleClass("is-active")
+})
+
+$(".delete.about").on("click", function(event){
+    $(".modal#about").toggleClass("is-active")
 })

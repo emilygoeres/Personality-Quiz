@@ -135,3 +135,15 @@ function accrueResults(type, points, archetype) {
     archetype = parseInt(archetype);
     archetypeResults[archetype - 1]++;
 }
+
+$(".modalStart.about").on("click", function(event){
+    $(".modal#about").toggleClass("is-active")
+})
+
+$(".modal-background.about").on("click", function(event){
+    $(".modal#about").toggleClass("is-active")
+})
+
+$(".delete.about").on("click", function(event){
+    $(".modal#about").toggleClass("is-active")
+})

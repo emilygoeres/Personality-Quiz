@@ -23,7 +23,7 @@
             <div class="column is-2">
                 <div class="columns is-vcentered">
                     <div class="column is-one-quarter">
-                        <div class="modalStart" data-archid="1">
+                        <div class="modalStart archetypeDefinition" data-archid="1">
                             <span class="icon">
                                 <i class="fas fa-question-circle"></i>
                             </span>
@@ -42,7 +42,7 @@
             <div class="column is-2">
                 <div class="columns is-vcentered">
                     <div class="column is-one-quarter">
-                        <div class="modalStart" data-archid="2">
+                        <div class="modalStart archetypeDefinition" data-archid="2">
                             <span class="icon">
                                 <i class="fas fa-question-circle"></i>
                             </span>
@@ -61,7 +61,7 @@
             <div class="column is-2">
                 <div class="columns is-vcentered">
                     <div class="column is-one-quarter">
-                        <div class="modalStart" data-archid="3">
+                        <div class="modalStart archetypeDefinition" data-archid="3">
                             <span class="icon">
                                 <i class="fas fa-question-circle"></i>
                             </span>
@@ -80,7 +80,7 @@
             <div class="column is-2">
                 <div class="columns is-vcentered">
                     <div class="column is-one-quarter">
-                        <div class="modalStart" data-archid="4">
+                        <div class="modalStart archetypeDefinition" data-archid="4">
                             <span class="icon">
                                 <i class="fas fa-question-circle"></i>
                             </span>
@@ -99,7 +99,7 @@
             <div class="column is-2">
                 <div class="columns is-vcentered">
                     <div class="column is-one-quarter">
-                        <div class="modalStart" data-archid="5">
+                        <div class="modalStart archetypeDefinition" data-archid="5">
                             <span class="icon">
                                 <i class="fas fa-question-circle"></i>
                             </span>
@@ -118,7 +118,7 @@
             <div class="column is-2">
                 <div class="columns is-vcentered">
                     <div class="column is-one-quarter">
-                        <div class="modalStart" data-archid="6">
+                        <div class="modalStart archetypeDefinition" data-archid="6">
                             <span class="icon">
                                 <i class="fas fa-question-circle"></i>
                             </span>
@@ -137,7 +137,7 @@
             <div class="column is-2">
                 <div class="columns is-vcentered">
                     <div class="column is-one-quarter">
-                        <div class="modalStart" data-archid="7">
+                        <div class="modalStart archetypeDefinition" data-archid="7">
                             <span class="icon">
                                 <i class="fas fa-question-circle"></i>
                             </span>
@@ -156,7 +156,7 @@
             <div class="column is-2">
                 <div class="columns is-vcentered">
                     <div class="column is-one-quarter">
-                        <div class="modalStart" data-archid="8">
+                        <div class="modalStart archetypeDefinition" data-archid="8">
                             <span class="icon">
                                 <i class="fas fa-question-circle"></i>
                             </span>
@@ -175,7 +175,7 @@
             <div class="column is-2">
                 <div class="columns is-vcentered">
                     <div class="column is-one-quarter">
-                        <div class="modalStart" data-archid="9">
+                        <div class="modalStart archetypeDefinition" data-archid="9">
                             <span class="icon">
                                 <i class="fas fa-question-circle"></i>
                             </span>
@@ -194,7 +194,7 @@
             <div class="column is-2">
                 <div class="columns is-vcentered">
                     <div class="column is-one-quarter">
-                        <div class="modalStart" data-archid="10">
+                        <div class="modalStart archetypeDefinition" data-archid="10">
                             <span class="icon">
                                 <i class="fas fa-question-circle"></i>
                             </span>
@@ -213,7 +213,7 @@
             <div class="column is-2">
             <div class="columns is-vcentered">
                 <div class="column is-one-quarter">
-                    <div class="modalStart" data-archid="1">
+                    <div class="modalStart archetypeDefinition" data-archid="1">
                         <span class="icon">
                             <i class="fas fa-question-circle"></i>
                         </span>
@@ -231,7 +231,7 @@
         {{!-- <div class="column is-2">
                 <div class="columns is-vcentered">
                     <div class="column is-one-quarter">
-                        <div class="modalStart" data-archid="1">
+                        <div class="modalStart archetypeDefinition" data-archid="1">
                             <span class="icon">
                                 <i class="fas fa-question-circle"></i>
                             </span>
@@ -291,16 +291,29 @@
 
 {{!-- Description of Archetypes --}}
 <div class="modal" id="archetypeDefinition">
-    <div class="modal-background"></div>
+    <div class="modal-background aDef"></div>
     <div class="modal-card">
         <header class="modal-card-head has-text-centered">
             <p class="modal-card-title" id="archetypeName"></p>
-            <button class="delete" aria-label="close"></button>
+            <button class="delete aDef" aria-label="close"></button>
         </header>
         <section class="modal-card-body">
             <p class="is-size-5" id="archetypeDescription"></p>
         </section>
     </div>
+</div>
+
+<div class="modal" id="about">
+  <div class="modal-background about"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title has-text-centered">How to use Personify</p>
+      <button class="delete about" aria-label="close"></button>
+    </header>
+    <section class="modal-card-body">
+       <p class="is-size-5">Personify is unique: it gives personality information in two different ways. First, the result of whatever personality tests you take. Second, our copyright personality composite. The personality composite is effected by every answer you have ever given, and gives the user of a breakdown of how often they answer in particular ways. <br> <br> Users must be logged in to see that composite on their profile or have their composite updated after a test!</p>
+    </section>
+  </div>
 </div>
 
 <script src="/assets/js/profile.js"></script>
