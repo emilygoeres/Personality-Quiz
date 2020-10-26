@@ -68,6 +68,16 @@ router.post("/api/quiz", function (req, res) {
 //     })
 // })
 
+router.delete("/api/quizTaken/:id", function(req,res){
+    db.quizTaken.destroy({
+        where: {
+            id: req.params.id
+        }
+    }).then(function(result){
+        res.json(result)
+    })
+})
+
 // UPDATE specific quiz based on their ID (Retaking) Visit this later
 // router.put("/api/quiz", function(req, res){
 //     db.quiz.update({

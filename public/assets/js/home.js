@@ -60,3 +60,19 @@ viewToggle.on("click", function(event) {
         view = true;
     }
 })
+
+$(".modalStart").on("click", function(event){
+    $(".modal").toggleClass("is-active")
+    const quizId = $(this).data("quizid");
+    $("#quizLink").attr("href",`/quiz/${quizId}`)
+})
+
+$(".modal-background").on("click", function(event){
+    console.log("clicked!")
+    $(".modal").toggleClass("is-active")
+})
+
+$(".delete").on("click", function(event){
+    console.log("clicked!")
+    $(".modal").toggleClass("is-active")
+})

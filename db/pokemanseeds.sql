@@ -25,8 +25,8 @@ INSERT INTO personality_quiz.archetypes(archetype, archetype_description,created
 VALUES ("Romantic","The romantic prioritizes love and romantic relationships above all else. While their love makes them interesting people and of great service to the object of their attentions, they can become callous to other concerns in their obsession.  Their strengths are passion and loyalty, their weaknesses are willingness to sacrifice other concerns and an over-investment in a love not guaranteed to be returned.",now(),now());
 
 -- User Seed --
-INSERT INTO personality_quiz.users(user_name, first_name, last_name, password, email, archetype_1, archetype_2, archetype_3, archetype_4, archetype_5, archetype_6, archetype_7, archetype_8, archetype_9, archetype_10, archetype_11, archetype_12, createdAt, updatedAt) 
-VALUES ("SrLucky", "Joshua", "Jainga","password", "jjainga@gmail.com",0,0,0,0,0,0,0,0,0,0,0,0, now(), now());
+-- INSERT INTO personality_quiz.users(user_name, first_name, last_name, password, email, archetype_1, archetype_2, archetype_3, archetype_4, archetype_5, archetype_6, archetype_7, archetype_8, archetype_9, archetype_10, archetype_11, archetype_12, createdAt, updatedAt) 
+-- VALUES ("SrLucky", "Joshua", "Jainga","password", "jjainga@gmail.com",0,0,0,0,0,0,0,0,0,0,0,0, now(), now());
 
 -- =====================================================================================
 -- QUIZ #1 POKEMON QUIZ
