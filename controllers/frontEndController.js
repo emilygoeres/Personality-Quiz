@@ -27,7 +27,6 @@ router.get("/", function (req, res) {
         // Maybe future release (exlcude the featured quizzes from All Quizzes)
         homeObj.allQuizzes = resultJSON;
 
-        console.log(homeObj)
         res.render("home", homeObj)
     }).catch(err => {
         res.status(500).end();

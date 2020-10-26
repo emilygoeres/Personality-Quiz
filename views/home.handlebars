@@ -54,10 +54,10 @@
     <div class="section" id="allQuizzes">
         <h2 class="title">ALL QUIZZES</h2>
         {{#each allQuizzes}}
-        {{!-- {{#if user}} --}}
+        {{#if ../user}}
         <a href="/quiz/{{this.id}}">
-        {{!-- {{/if}} --}}
-        {{!-- {{#unless user}}<a class="modalStart" data-quizid="{{this.id}}">{{/unless}} --}}
+        {{/if}}
+        {{#unless ../user}}<a class="modalStart" data-quizid="{{this.id}}">{{/unless}}
             <div class="card mb-1 allQuizzesCard">
                 <div class="card-content">
                     <p class="is-size-5">{{this.quiz_name}}</p>
