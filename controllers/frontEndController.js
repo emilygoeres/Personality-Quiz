@@ -27,7 +27,6 @@ router.get("/", function (req, res) {
         // Maybe future release (exlcude the featured quizzes from All Quizzes)
         homeObj.allQuizzes = resultJSON;
 
-        console.log(homeObj)
         res.render("home", homeObj)
     }).catch(err => {
         res.status(500).end();
@@ -37,7 +36,6 @@ router.get("/", function (req, res) {
 
 // Display a quiz by ID
 router.get("/quiz/:id", function (req, res) {
-    // if (req.session.user) {
         db.quiz.findOne({
             where: {
                 id: req.params.id
@@ -48,14 +46,13 @@ router.get("/quiz/:id", function (req, res) {
             }
             let resultJSON = result.toJSON();
             let Quiz = { quiz: resultJSON.quiz_name, quizID: req.params.id }
-            Quiz.user = true;
+            if (req.session.user) {
+                Quiz.user = true;
+            }
             res.render("quiz", Quiz)
         }).catch(err => {
             res.status(500).end();
         })
-    // } else {
-    //     res.status(401).redirect("/login")
-    // }
 })
 
 // Display the profile page
@@ -65,8 +62,8 @@ router.get("/profile", function (req, res) {
             where: {
                 id: req.session.user.id
             }
-        }).then(user => {
-            let userJSON = user.toJSON();
+        }).then(userInfo => {
+            let userJSON = userInfo.toJSON();
             userJSON.archetypeSum = userJSON.archetype_1
                 + userJSON.archetype_2
                 + userJSON.archetype_3
@@ -88,7 +85,8 @@ router.get("/profile", function (req, res) {
             }).then(quizHistory => {
                 let quizHistoryJSON = quizHistory.map(obj => obj.toJSON());
                 let userObj = {
-                    user: userJSON,
+                    user:true,
+                    userInfo: userJSON,
                     quizHistory: quizHistoryJSON
                 }
                 // console.log(userObj.quizHistory[0]);
@@ -106,7 +104,11 @@ router.get("/profile", function (req, res) {
 });
 
 router.get("/login", (req, res) => {
-    res.render("login", { user: req.session.user })
+    if (req.session.user) {
+        res.redirect("/profile")
+    } else {
+        res.render("login", { user: req.session.user })
+    }
 })
 
 router.get("/signup", (req, res) => {
@@ -114,7 +116,12 @@ router.get("/signup", (req, res) => {
 })
 
 router.get("/create-a-quiz", (req, res) => {
-    res.render("createAQuiz", {})
+    if (req.session.user) {
+        res.render("createAQuiz", {user: true})
+    } else {
+        res.status(401).redirect("/login")
+    }
+    
 })
 
 module.exports = router;
