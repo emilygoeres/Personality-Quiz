@@ -38,13 +38,13 @@ let personalityIds = [];
 //Controls what sections are shown at any given point in time by flipping display from "block" to "none" and vice versa. Additionally, populates the sidebar with a history of user inputs.
 if (localStorage.getItem("quizInfo")) {
     quizBlock.hide();
-    $("#quizTitle").text(`Quiz: ${quizInfo.quiz_name}`)
-    $("#quizCategory").text(`Quiz: ${quizInfo.quiz_category}`)
+    $("#quizTitle").text(`Quiz Title: ${quizInfo.quiz_name}`)
+    $("#quizCategory").text(`Quiz Description: ${quizInfo.quiz_category}`)
     if (allPersonalityInfo.length) {
         allPersonalityInfo.forEach(element => {
             const newList = $("<ul>");
             const liPersonality = $("<li>").text(`Personality: ${element.personality_type}`);
-            const liPDescription = $("<li>").text(`Description:${element.personality_description}`)
+            const liPDescription = $("<li>").text(`Description: ${element.personality_description}`)
             newList.append(liPersonality, liPDescription);
             $("#quizPersonalities").append(newList)
         });
