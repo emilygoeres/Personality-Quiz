@@ -9,7 +9,7 @@ INSERT INTO personality_quiz.users(user_name, first_name, last_name, password, e
 VALUES ("Mr Mime", "Art", "G","password", "art@gmail.com",0,0,0,0,0,0,0,0,0,0,0,0, now(), now());
 -- Insert quiz --
 INSERT INTO personality_quiz.quizzes(quiz_name, quiz_category, image_tile,createdAt, updatedAt,userId) 
-VALUES ("Bread Quiz", "food", "http://www.blissfullydelicious.com/wp-content/uploads/2011/04/white-bread-2.jpg", now(),now(),1);
+VALUES ("Bread Quiz", "food", "https://static.parade.com/wp-content/uploads/2015/07/bread-recipe-ftr.jpg", now(),now(),1);
 -- Questions
 INSERT INTO personality_quiz.questions(question,createdAt, updatedAt,quizId)
 VALUES("Which bread is your favorite?",now(), now(),2);

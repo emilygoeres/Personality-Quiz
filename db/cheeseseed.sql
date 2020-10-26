@@ -7,7 +7,7 @@
 
 -- Insert quiz --
 INSERT INTO personality_quiz.quizzes(quiz_name, quiz_category, image_tile,createdAt, updatedAt,userId) 
-VALUES ("Cheese Quiz", "food", "https://cdn2.harryanddavid.com/wcsstore/HarryAndDavid/images/catalog/19_28607_30GM_01ec.jpg?width=545&height=597&quality=80&auto=webp&optimze={medium}", now(),now(),1);
+VALUES ("Cheese Quiz", "food", "https://cheese.com/media/uploads/cheese.com/2020/10/versions/Pecorino-cropped-343x225.webp", now(),now(),1);
 -- Questions
 INSERT INTO personality_quiz.questions(question,createdAt, updatedAt,quizId)
 VALUES("Which cheese is your favorite?",now(), now(),3);
