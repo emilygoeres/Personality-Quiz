@@ -22,13 +22,13 @@ VALUES("Where is your favorite place to eat a sandwhich?",now(), now(),2);
 
 
 INSERT INTO personality_quiz.personalities(personality_type, personality_description,createdAt,updatedAt,archetypeId)
-VALUES("Twisted Pretzel","You are confident, passionate, and wrestle WAY above your weight class. Your bread type is Twisted Pretzel!",now(),now(),7);
+VALUES("Twisted Pretzel","You are confident, social and are always the life of the party. Your bread type is Twisted Pretzel!",now(),now(),7);
 INSERT INTO personality_quiz.personalities(personality_type, personality_description,createdAt,updatedAt,archetypeId)
-VALUES("Corn Bread", "You are calm, confident, and ready to smack some sense into anyone who needs a reality check. Your bread type is Corn Bread!",now(),now(),6);
+VALUES("Corn Bread", "You are self giving, nurturing and always welcoming anyone to your table for a fresh hot meal. Your bread type is Corn Bread!",now(),now(),6);
 INSERT INTO personality_quiz.personalities(personality_type, personality_description,createdAt,updatedAt,archetypeId)
-VALUES("Bagel","You are quirky, energetic, and always ready for a good shiding! Your bread type is Bagel!",now(),now(),10);
+VALUES("Bagel","You are loyal, determined, and always know the path you want to take in life to achieve your goals. Your bread type is Bagel!",now(),now(),10);
 INSERT INTO personality_quiz.personalities(personality_type, personality_description,createdAt,updatedAt,archetypeId)
-VALUES("Banana Bread","You are serious, intent, and laser focused on your goals. Your bread type is Banana Bread!",now(),now(),11);
+VALUES("Banana Bread","You are flexible, you have faith in life and always look at life with the glass half full. Your bread type is Banana Bread!",now(),now(),11);
 
 INSERT INTO personality_quiz.answers(answer,points,createdAt,updatedAt,questionId,personalityId) VALUES("Breadsticks",1,now(),now(),12,7);
 INSERT INTO personality_quiz.answers(answer,points,createdAt,updatedAt,questionId,personalityId) VALUES("Craissant",1,now(),now(),12,6);

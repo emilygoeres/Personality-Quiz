@@ -9,7 +9,7 @@ VALUES("Which cheese is your favorite?",now(), now(),3);
 INSERT INTO personality_quiz.questions(question,createdAt, updatedAt,quizId)
 VALUES("What is your favorite cheese shop?",now(), now(),3);
 INSERT INTO personality_quiz.questions(question,createdAt, updatedAt,quizId)
-VALUES("What is your favorite cheese meal",now(), now(),3);
+VALUES("What is your favorite cheesey meal",now(), now(),3);
 INSERT INTO personality_quiz.questions(question,createdAt, updatedAt,quizId)
 VALUES("Who is your favorite cheese producer",now(), now(),3);
 INSERT INTO personality_quiz.questions(question,createdAt, updatedAt,quizId)
@@ -17,13 +17,13 @@ VALUES("Where is your favorite place to eat cheese?",now(), now(),3);
 
 
 INSERT INTO personality_quiz.personalities(personality_type, personality_description,createdAt,updatedAt,archetypeId)
-VALUES("Blue Cheese","You are confident, passionate, and wrestle WAY above your weight class. Your cheese type is Blue Cheese!",now(),now(),3);
+VALUES("Blue Cheese","You are humble, devoted and never take anything in life for granted, you nver ignore the fine details. Your cheese type is Blue Cheese!",now(),now(),3);
 INSERT INTO personality_quiz.personalities(personality_type, personality_description,createdAt,updatedAt,archetypeId)
-VALUES("Cheddar Cheese", "You are calm, confident, and ready to smack some sense into anyone who needs a reality check. Your cheese type is Cheddar Cheese!",now(),now(),2);
+VALUES("Cheddar Cheese", "You are hard working, sincere, nothing has come easy to you but through perseverance, you always come out on the top. Your cheese type is Cheddar Cheese!",now(),now(),2);
 INSERT INTO personality_quiz.personalities(personality_type, personality_description,createdAt,updatedAt,archetypeId)
-VALUES("Swiss Cheese","You are quirky, energetic, and always ready for a good shiding! Your cheese type is Swiss Cheese!",now(),now(),4);
+VALUES("Swiss Cheese","You are cheerful, optimistic and always build your friends back up when they need it most. Your cheese type is Swiss Cheese!",now(),now(),4);
 INSERT INTO personality_quiz.personalities(personality_type, personality_description,createdAt,updatedAt,archetypeId)
-VALUES("Cottage Cheese","You are serious, intent, and laser focused on your goals. Your cheese type is Cottage Cheese!",now(),now(),9);
+VALUES("Cottage Cheese","You are mature, accecpts what's given and are always in the shadows of others but you always make sure your voice is heard. Your cheese type is Cottage Cheese!",now(),now(),9);
 
 INSERT INTO personality_quiz.answers(answer,points,createdAt,updatedAt,questionId,personalityId) VALUES("Ghost Pepper Cheese",1,now(),now(),18,3);
 INSERT INTO personality_quiz.answers(answer,points,createdAt,updatedAt,questionId,personalityId) VALUES("String Cheese",1,now(),now(),18,9);

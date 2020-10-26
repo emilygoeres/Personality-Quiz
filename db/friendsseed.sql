@@ -17,13 +17,13 @@ VALUES("What is the funniest parts of the show?",now(), now(),4);
 
 
 INSERT INTO personality_quiz.personalities(personality_type, personality_description,createdAt,updatedAt,archetypeId)
-VALUES("Monica","You are confident, passionate, and wrestle WAY above your weight class. Your character type is Monica!",now(),now(),9);
+VALUES("Monica","You are a type A, always the host and everything in life needs to have a list. Your character type is Monica!",now(),now(),9);
 INSERT INTO personality_quiz.personalities(personality_type, personality_description,createdAt,updatedAt,archetypeId)
-VALUES("Ross", "You are calm, confident, and ready to smack some sense into anyone who needs a reality check. Your character type is Ross!",now(),now(),2);
+VALUES("Ross", "You are introverted, intelligent and is always seeking to be loved and to love. Your character type is Ross!",now(),now(),2);
 INSERT INTO personality_quiz.personalities(personality_type, personality_description,createdAt,updatedAt,archetypeId)
-VALUES("Phoebe","You are quirky, energetic, and always ready for a good shiding! Your character type is Chandler!",now(),now(),3);
+VALUES("Phoebe","You are quirky, energetic and noone will ever know your next thought! Your character type is Chandler!",now(),now(),3);
 INSERT INTO personality_quiz.personalities(personality_type, personality_description,createdAt,updatedAt,archetypeId)
-VALUES("Joey","You are serious, intent, and laser focused on your goals. Your character type is Joey!",now(),now(),7);
+VALUES("Joey","You are relaxed, womanizer and in life you tend to roll with the punches. Your character type is Joey!",now(),now(),7);
 
 INSERT INTO personality_quiz.answers(answer,points,createdAt,updatedAt,questionId,personalityId) VALUES("Joey",1,now(),now(),23,9);
 INSERT INTO personality_quiz.answers(answer,points,createdAt,updatedAt,questionId,personalityId) VALUES("Rachel",1,now(),now(),23,2);

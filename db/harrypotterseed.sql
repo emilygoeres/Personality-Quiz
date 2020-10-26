@@ -16,13 +16,13 @@ INSERT INTO personality_quiz.questions(question,createdAt, updatedAt,quizId)
 VALUES("Who is your favorite Weasley family member?",now(), now(),5);
 
 INSERT INTO personality_quiz.personalities(personality_type, personality_description,createdAt,updatedAt,archetypeId)
-VALUES("Harry Potter","You are confident, passionate, and wrestle WAY above your weight class. Your character type is Harry Potter!",now(),now(),8);
+VALUES("Harry Potter","You are serious, logical and always stop and think before you act. Your character type is Harry Potter!",now(),now(),8);
 INSERT INTO personality_quiz.personalities(personality_type, personality_description,createdAt,updatedAt,archetypeId)
-VALUES("Ron Weasley", "You are calm, confident, and ready to smack some sense into anyone who needs a reality check. Your character type is Ron Weasley!",now(),now(),1);
+VALUES("Ron Weasley", "You are warm hearted, cooperative and ready to take down anyone that crosses your path or your friends path. Your character type is Ron Weasley!",now(),now(),1);
 INSERT INTO personality_quiz.personalities(personality_type, personality_description,createdAt,updatedAt,archetypeId)
-VALUES("Draco Malfoy","You are quirky, energetic, and always ready for a good shiding! Your character type is Draco Malfoy!",now(),now(),5);
+VALUES("Draco Malfoy","You are forceful, well informed and always take lead in every aspect of your life. Your character type is Draco Malfoy!",now(),now(),5);
 INSERT INTO personality_quiz.personalities(personality_type, personality_description,createdAt,updatedAt,archetypeId)
-VALUES("Hermione Granger","You are serious, intent, and laser focused on your goals. Your character type is Hermione Granger!",now(),now(),10);
+VALUES("Hermione Granger","You are realistic, matter-of-fact and you're always two steps of everyone else. Your character type is Hermione Granger!",now(),now(),10);
 
 INSERT INTO personality_quiz.answers(answer,points,createdAt,updatedAt,questionId,personalityId) VALUES("Harry Potter",1,now(),now(),28,8);
 INSERT INTO personality_quiz.answers(answer,points,createdAt,updatedAt,questionId,personalityId) VALUES("Luna Lovegood",1,now(),now(),28,1);
