@@ -49,6 +49,12 @@
                 {{!-- If there is not a user logged in, there will be log in, sign up buttons --}}
                 {{#if user}}
                 <div class="navbar-item has-dropdown is-hoverable">
+                        <a class="navbar-item" href="/create-a-quiz">
+                            <span class="icon">
+                                <i class="fas fa-plus"></i>
+                            </span>
+                            Create Quiz
+                        </a>
                     <a class="navbar-link">
                         Profile
                     </a>
@@ -59,12 +65,6 @@
                                 <i class="fas fa-user"></i>
                             </span>
                             My Profile
-                        </a>
-                        <a class="navbar-item" href="/create-a-quiz">
-                            <span class="icon">
-                                <i class="fas fa-plus"></i>
-                            </span>
-                            Create Quiz
                         </a>
                         <a class="navbar-item" href="/logout">
                             <i class="fas fa-sign-out-alt"></i>
