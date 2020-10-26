@@ -1,15 +1,15 @@
 {{!-- PERSONALITY COMPOSITE --}}
 <section class="hero is-medium home-bkg-img">
-  <div class="hero-body">
-    <div class="container">
-      <h1 class="title has-text-white">
-        Let's get personal.
-      </h1>
-      <h2 class="subtitle has-text-white">
-        Check out your personality composite below.
-      </h2>
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title has-text-white">
+                Let's get personal.
+            </h1>
+            <h2 class="subtitle has-text-white">
+                Check out your personality composite below.
+            </h2>
+        </div>
     </div>
-  </div>
 </section>
 
 <div class="container">
@@ -18,129 +18,289 @@
 
         {{!-- ARCHETYPE BARS --}}
         {{!-- The archetype progress bars take the sum of users archetype points and spread them out across each bar --}}
-        <div class="columns is-multiline">
+        <div class="columns is-multiline is-vcentered">
             {{!-- Archetype 1: Warrior --}}
             <div class="column is-2">
-                <p class="title is-size-4">WARRIOR</p>
-            </div>
-            <div class="column is-10">
-                <progress class="progress" value="{{this.user.archetype_1}}" max="{{this.user.archetypeSum}}"></progress>
-            </div>
-            {{!-- Archetype 2: Child --}}
-            <div class="column is-2">
-                <p class="title is-size-4">CHILD</p>
-            </div>
-            <div class="column is-10">
-                <progress class="progress" value="{{this.user.archetype_2}}" max="{{this.user.archetypeSum}}"></progress>
-            </div>
-            {{!-- Archetype 3: Orphan --}}
-            <div class="column is-2">
-                <p class="title is-size-4">ORPHAN</p>
-            </div>
-            <div class="column is-10">
-                <progress class="progress" value="{{this.user.archetype_3}}" max="{{this.user.archetypeSum}}"></progress>
-            </div>
-            {{!-- Archetype 4: Creator --}}
-            <div class="column is-2">
-                <p class="title is-size-4">CREATOR</p>
-            </div>
-            <div class="column is-10">
-                <progress class="progress" value="{{this.user.archetype_4}}" max="{{this.user.archetypeSum}}"></progress>
-            </div>
-            {{!-- Archetype 5: Caregiver --}}
-            <div class="column is-2">
-                <p class="title is-size-4">CAREGIVER</p>
-            </div>
-            <div class="column is-10">
-                <progress class="progress" value="{{this.user.archetype_5}}" max="{{this.user.archetypeSum}}"></progress>
-            </div>
-            {{!-- Archetype 6: Mentor --}}
-            <div class="column is-2">
-                <p class="title is-size-4">MENTOR</p>
-            </div>
-            <div class="column is-10">
-                <progress class="progress" value="{{this.user.archetype_6}}" max="{{this.user.archetypeSum}}"></progress>
-            </div>
-            {{!-- Archetype 7: Joker --}}
-            <div class="column is-2">
-                <p class="title is-size-4">JOKER</p>
-            </div>
-            <div class="column is-10">
-                <progress class="progress" value="{{this.user.archetype_7}}" max="{{this.user.archetypeSum}}"></progress>
-            </div>
-            {{!-- Archetype 8: Magician --}}<div class="column is-2">
-                <p class="title is-size-4">MAGICIAN</p>
-            </div>
-            <div class="column is-10">
-                <progress class="progress" value="{{this.user.archetype_8}}" max="{{this.user.archetypeSum}}"></progress>
-            </div>
-            {{!-- Archetype 9: Ruler --}}
-            <div class="column is-2">
-                <p class="title is-size-4">RULER</p>
-            </div>
-            <div class="column is-10">
-                <progress class="progress" value="{{this.user.archetype_9}}" max="{{this.user.archetypeSum}}"></progress>
-            </div>
-            {{!-- Archetype 10: Rebel --}}
-            <div class="column is-2">
-                <p class="title is-size-4">REBEL</p>
-            </div>
-            <div class="column is-10">
-                <progress class="progress" value="{{this.user.archetype_10}}" max="{{this.user.archetypeSum}}"></progress>
-            </div>
-            {{!-- Archetype 11: Romantic --}}
-            <div class="column is-2">
-                <p class="title is-size-4">ROMANTIC</p>
-            </div>
-            <div class="column is-10">
-                <progress class="progress" value="{{this.user.archetype_11}}" max="{{this.user.archetypeSum}}"></progress>
-            </div>
-            {{!-- Archetype 12: PLACEHOLDER FOR ARCHETYPE12 --}}
-            <div class="column is-2">
-                <p class="title is-size-4">PLACEHOLDER</p>
-            </div>
-            <div class="column is-10">
-                <progress class="progress" value="{{this.user.archetype_12}}" max="{{this.user.archetypeSum}}"></progress>
-            </div>
-        </div>
-    </div>
-
-
-    {{!-- USER'S QUIZ HISTORY --}}
-    <div class="section">
-        <h2 class="title">QUIZ HISTORY</h2>
-
-        {{!-- TODO: Add styling to the quizHistory cards --}}
-        <ul id="history">
-            {{#each this.quizHistory}}
-            <div class="card mb-1">
-                <div class="card-content">
-                    <div class="columns">
-                        <div class="column is-8">
-                            <div class="columns">
-                                <div class="column is-half">
-                                    <p class="subtitle is-size-6">QUIZ NAME:</p>
-                                    <p class="title is-size-5">{{this.quiz.quiz_name}}</p>
-                                </div>
-                                <div class="column is-half">
-                                    <p class="subtitle is-size-6">YOU GOT:</p>
-                                    <p class="title is-size-5">{{this.personality.personality_type}}</p>
-                                </div>
-                            </div>
+                <div class="columns is-vcentered">
+                    <div class="column is-one-quarter">
+                        <div class="modalStart" data-archid="1">
+                            <span class="icon">
+                                <i class="fas fa-question-circle"></i>
+                            </span>
                         </div>
-                        <div class="column is-4 has-text-right">
-                            <button class="button is-primary" data-next="retakeButton"
-                                data-quizID={{this.id}}>RETAKE</button>
-                            <button class="button is-danger" data-next="deleterButton"
-                                data-quizID={{this.id}}>DELETE</button>
-                        </div>
+                    </div>
+                    <div class="colummn">
+                        <p class="title is-size-4">WARRIOR</p>
                     </div>
                 </div>
             </div>
-            {{else}}
-            {{!-- If the user has not taken a quiz, display this text --}}
-            <p>You have no history at this time. Please take a quiz to see some history!</p>
-            {{/each}}
-        </ul>
+            <div class="column is-10">
+                <progress class="progress" value="{{this.user.archetype_1}}"
+                    max="{{this.user.archetypeSum}}"></progress>
+            </div>
+            {{!-- Archetype 2: Child --}}
+            <div class="column is-2">
+                <div class="columns is-vcentered">
+                    <div class="column is-one-quarter">
+                        <div class="modalStart" data-archid="2">
+                            <span class="icon">
+                                <i class="fas fa-question-circle"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="colummn">
+                        <p class="title is-size-4">CHILD</p>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-10">
+                <progress class="progress" value="{{this.user.archetype_2}}"
+                    max="{{this.user.archetypeSum}}"></progress>
+            </div>
+            {{!-- Archetype 3: Orphan --}}
+            <div class="column is-2">
+                <div class="columns is-vcentered">
+                    <div class="column is-one-quarter">
+                        <div class="modalStart" data-archid="3">
+                            <span class="icon">
+                                <i class="fas fa-question-circle"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="colummn">
+                        <p class="title is-size-4">ORPHAN</p>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-10">
+                <progress class="progress" value="{{this.user.archetype_3}}"
+                    max="{{this.user.archetypeSum}}"></progress>
+            </div>
+            {{!-- Archetype 4: Creator --}}
+            <div class="column is-2">
+                <div class="columns is-vcentered">
+                    <div class="column is-one-quarter">
+                        <div class="modalStart" data-archid="4">
+                            <span class="icon">
+                                <i class="fas fa-question-circle"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="colummn">
+                        <p class="title is-size-4">CREATOR</p>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-10">
+                <progress class="progress" value="{{this.user.archetype_4}}"
+                    max="{{this.user.archetypeSum}}"></progress>
+            </div>
+            {{!-- Archetype 5: Caregiver --}}
+            <div class="column is-2">
+                <div class="columns is-vcentered">
+                    <div class="column is-one-quarter">
+                        <div class="modalStart" data-archid="5">
+                            <span class="icon">
+                                <i class="fas fa-question-circle"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="colummn">
+                        <p class="title is-size-4">CAREGIVER</p>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-10">
+                <progress class="progress" value="{{this.user.archetype_5}}"
+                    max="{{this.user.archetypeSum}}"></progress>
+            </div>
+            {{!-- Archetype 6: Mentor --}}
+            <div class="column is-2">
+                <div class="columns is-vcentered">
+                    <div class="column is-one-quarter">
+                        <div class="modalStart" data-archid="6">
+                            <span class="icon">
+                                <i class="fas fa-question-circle"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="colummn">
+                        <p class="title is-size-4">MENTOR</p>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-10">
+                <progress class="progress" value="{{this.user.archetype_6}}"
+                    max="{{this.user.archetypeSum}}"></progress>
+            </div>
+            {{!-- Archetype 7: Joker --}}
+            <div class="column is-2">
+                <div class="columns is-vcentered">
+                    <div class="column is-one-quarter">
+                        <div class="modalStart" data-archid="7">
+                            <span class="icon">
+                                <i class="fas fa-question-circle"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="colummn">
+                        <p class="title is-size-4">JOKER</p>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-10">
+                <progress class="progress" value="{{this.user.archetype_7}}"
+                    max="{{this.user.archetypeSum}}"></progress>
+            </div>
+            {{!-- Archetype 8: Magician --}}
+            <div class="column is-2">
+                <div class="columns is-vcentered">
+                    <div class="column is-one-quarter">
+                        <div class="modalStart" data-archid="8">
+                            <span class="icon">
+                                <i class="fas fa-question-circle"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="colummn">
+                        <p class="title is-size-4">MAGICIAN</p>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-10">
+                <progress class="progress" value="{{this.user.archetype_8}}"
+                    max="{{this.user.archetypeSum}}"></progress>
+            </div>
+            {{!-- Archetype 9: Ruler --}}
+            <div class="column is-2">
+                <div class="columns is-vcentered">
+                    <div class="column is-one-quarter">
+                        <div class="modalStart" data-archid="9">
+                            <span class="icon">
+                                <i class="fas fa-question-circle"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="colummn">
+                        <p class="title is-size-4">RULER</p>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-10">
+                <progress class="progress" value="{{this.user.archetype_9}}"
+                    max="{{this.user.archetypeSum}}"></progress>
+            </div>
+            {{!-- Archetype 10: Rebel --}}
+            <div class="column is-2">
+                <div class="columns is-vcentered">
+                    <div class="column is-one-quarter">
+                        <div class="modalStart" data-archid="10">
+                            <span class="icon">
+                                <i class="fas fa-question-circle"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="colummn">
+                        <p class="title is-size-4">REBEL</p>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-10">
+                <progress class="progress" value="{{this.user.archetype_10}}"
+                    max="{{this.user.archetypeSum}}"></progress>
+            </div>
+            {{!-- Archetype 11: Romantic --}}
+            <div class="column is-2">
+            <div class="columns is-vcentered">
+                <div class="column is-one-quarter">
+                    <div class="modalStart" data-archid="1">
+                        <span class="icon">
+                            <i class="fas fa-question-circle"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="colummn">
+                    <p class="title is-size-4">ROMANTIC</p>
+                </div>
+            </div>
+        </div>
+        <div class="column is-10">
+            <progress class="progress" value="{{this.user.archetype_11}}" max="{{this.user.archetypeSum}}"></progress>
+        </div>
+        {{!-- Archetype 12: PLACEHOLDER FOR ARCHETYPE12 --}}
+        {{!-- <div class="column is-2">
+                <div class="columns is-vcentered">
+                    <div class="column is-one-quarter">
+                        <div class="modalStart" data-archid="1">
+                            <span class="icon">
+                                <i class="fas fa-question-circle"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="colummn">
+                <p class="title is-size-4">PLACEHOLDER</p>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-10">
+                <progress class="progress" value="{{this.user.archetype_12}}"
+                    max="{{this.user.archetypeSum}}"></progress>
+            </div> --}}
     </div>
 </div>
+
+
+{{!-- USER'S QUIZ HISTORY --}}
+<div class="section">
+    <h2 class="title">QUIZ HISTORY</h2>
+
+    {{!-- TODO: Add styling to the quizHistory cards --}}
+    <ul id="history">
+        {{#each this.quizHistory}}
+        <div class="card mb-1">
+            <div class="card-content">
+                <div class="columns">
+                    <div class="column is-8">
+                        <div class="columns">
+                            <div class="column is-half">
+                                <p class="subtitle is-size-6">QUIZ NAME:</p>
+                                <p class="title is-size-5">{{this.quiz.quiz_name}}</p>
+                            </div>
+                            <div class="column is-half">
+                                <p class="subtitle is-size-6">YOU GOT:</p>
+                                <p class="title is-size-5">{{this.personality.personality_type}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column is-4 has-text-right">
+                        <button class="button is-primary" data-next="retakeButton"
+                            data-quizID={{this.quizId}}> RETAKE</button>
+                        <button class="button is-danger" data-next="deleterButton"
+                            data-quizID={{this.id}} data>DELETE</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{else}}
+        {{!-- If the user has not taken a quiz, display this text --}}
+        <p>You have no history at this time. Please take a quiz to see some history!</p>
+        {{/each}}
+    </ul>
+</div>
+</div>
+
+{{!-- Description of Archetypes --}}
+<div class="modal" id="archetypeDefinition">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+        <header class="modal-card-head has-text-centered">
+            <p class="modal-card-title" id="archetypeName"></p>
+            <button class="delete" aria-label="close"></button>
+        </header>
+        <section class="modal-card-body">
+            <p class="is-size-5" id="archetypeDescription"></p>
+        </section>
+    </div>
+</div>
+
+<script src="/assets/js/profile.js"></script>

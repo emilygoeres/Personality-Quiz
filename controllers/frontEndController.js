@@ -20,12 +20,14 @@ router.get("/", function (req, res) {
         // Find All quizzes that match our featured criteria
         // Current Featured Criteria: 3 Most Recent Quizzes
         // TODO: Develop a better way to show featured quizzes 
-        homeObj.featuredQuizzes = resultJSON.slice(resultJSON.length - 4, -1);
+        if(resultJSON.length <= 3) homeObj.featuredQuizzes = resultJSON;
+        else homeObj.featuredQuizzes = resultJSON.slice(resultJSON.length - 4, -1);
 
         // All Quizzes
         // Maybe future release (exlcude the featured quizzes from All Quizzes)
         homeObj.allQuizzes = resultJSON;
 
+        console.log(homeObj)
         res.render("home", homeObj)
     }).catch(err => {
         res.status(500).end();
@@ -35,7 +37,7 @@ router.get("/", function (req, res) {
 
 // Display a quiz by ID
 router.get("/quiz/:id", function (req, res) {
-    if (req.session.user) {
+    // if (req.session.user) {
         db.quiz.findOne({
             where: {
                 id: req.params.id
@@ -51,9 +53,9 @@ router.get("/quiz/:id", function (req, res) {
         }).catch(err => {
             res.status(500).end();
         })
-    } else {
-        res.status(401).redirect("/login")
-    }
+    // } else {
+    //     res.status(401).redirect("/login")
+    // }
 })
 
 // Display the profile page

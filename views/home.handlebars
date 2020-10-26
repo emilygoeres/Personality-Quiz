@@ -54,7 +54,10 @@
     <div class="section" id="allQuizzes">
         <h2 class="title">ALL QUIZZES</h2>
         {{#each allQuizzes}}
+        {{!-- {{#if user}} --}}
         <a href="/quiz/{{this.id}}">
+        {{!-- {{/if}} --}}
+        {{!-- {{#unless user}}<a class="modalStart" data-quizid="{{this.id}}">{{/unless}} --}}
             <div class="card mb-1 allQuizzesCard">
                 <div class="card-content">
                     <p class="is-size-5">{{this.quiz_name}}</p>
@@ -73,6 +76,23 @@
             <button id="normalViewToggle" class="button" style="display: none;">Back</button>
         </div>
     </div>
+</div>
+
+<div class="modal" id="continue">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">You aren't logged in!</p>
+      <button class="delete" aria-label="close"></button>
+    </header>
+    <section class="modal-card-body">
+      <p class="is-size-5">This site is best when you are logged in! Please consider logging in or creating an account.</p>
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button is-success"><a href="/login">Log In</a></button>
+      <button class="button"><a href="#" id="quizLink"> Take quiz!</a></button>
+    </footer>
+  </div>
 </div>
 
 <script src="/assets/js/home.js"></script>
