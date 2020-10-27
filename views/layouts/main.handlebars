@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PERSONIFY</title>
+    <link rel="icon" type="image/png" href="/assets/images/personify_icon_purple.png"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
         integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
@@ -47,13 +48,13 @@
                 {{!-- If there is a user logged in, the profile options will be displayed --}}
                 {{!-- If there is not a user logged in, there will be log in, sign up buttons --}}
                 {{#if user}}
-                <div class="navbar-item has-dropdown is-hoverable">
-                        <a class="navbar-item" href="/create-a-quiz">
+                        <a class="navbar-item is-hoverable" href="/create-a-quiz">
                             <span class="icon">
                                 <i class="fas fa-plus"></i>
                             </span>
                             Create Quiz
                         </a>
+                <div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link">
                         Profile
                     </a>
