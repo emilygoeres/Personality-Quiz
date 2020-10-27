@@ -21,7 +21,7 @@ router.get("/", function (req, res) {
         // Current Featured Criteria: 3 Most Recent Quizzes
         // TODO: Develop a better way to show featured quizzes 
         if(resultJSON.length <= 3) homeObj.featuredQuizzes = resultJSON;
-        else homeObj.featuredQuizzes = resultJSON.slice(resultJSON.length - 4, -1);
+        else homeObj.featuredQuizzes = resultJSON.slice(-3);
 
         // All Quizzes
         // Maybe future release (exlcude the featured quizzes from All Quizzes)
