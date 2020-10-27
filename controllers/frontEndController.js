@@ -89,10 +89,8 @@ router.get("/profile", function (req, res) {
                     userInfo: userJSON,
                     quizHistory: quizHistoryJSON
                 }
-                // console.log(userObj.quizHistory[0]);
                 res.render("profile", userObj);
             }).catch(err => {
-                // console.log(err)
                 res.status(500).end();
             })
         }).catch(err => {
@@ -103,6 +101,7 @@ router.get("/profile", function (req, res) {
     }
 });
 
+// Display login page
 router.get("/login", (req, res) => {
     if (req.session.user) {
         res.redirect("/profile")
@@ -111,10 +110,12 @@ router.get("/login", (req, res) => {
     }
 })
 
+// Display signup page
 router.get("/signup", (req, res) => {
     res.render("signup", { user: req.session.user })
 })
 
+// Display create a quiz page
 router.get("/create-a-quiz", (req, res) => {
     if (req.session.user) {
         res.render("createAQuiz", {user: true})
