@@ -33,7 +33,7 @@ router.post("/signup", (req, res) => {
         res.redirect("/")
     }).catch(err => {
         // console.log(err);
-        res.status(500).end();
+        res.status(500).redirect("/signup");
     })
 })
 

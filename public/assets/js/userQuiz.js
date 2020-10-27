@@ -58,7 +58,7 @@ if (localStorage.getItem("quizInfo")) {
                 console.log(QAndA[1][i]);
                 QAndA[1][i].forEach(element => {
                     console.log(element)
-                    const liPDescription = $("<li>").text(`Answer:${element.answer}`)
+                    const liPDescription = $("<li>").text(`Answer: ${element.answer}`)
                     newList.append(liPDescription);
                 });
 
