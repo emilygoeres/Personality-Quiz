@@ -33,27 +33,45 @@ app.use(session({
   }
 }))
 
-// Import routes
+// Import routes from frontEndController
 var frontEndRoutes = require("./controllers/frontEndController");
 app.use(frontEndRoutes);
 
-// Import routes
-var backEndRoutes = require("./controllers/backEndController");
-app.use(backEndRoutes);
+// Import routes from backEndController
+var answerRoutes = require("./controllers/answerController");
+app.use("/api/answer", answerRoutes);
 
-// Import routes
+// Import routes from userAuthController
 var userAuthRoutes = require("./controllers/userAuthController");
 app.use(userAuthRoutes);
 
-// Routes to GET personality
-app.get("/api/samplePersonality", function(req, res){
-  res.json({personalities: personalities})
-})
+// Import routes from quizController.js
+var quizRoutes = require("./controllers/quizController");
+app.use("/api", quizRoutes);
 
-// Routes to GET quiz
-app.get("/api/sampleQuiz", function(req, res){
-  res.json({quiz: quiz})
-})
+// Import routes from profileController.js
+var profileRoutes = require("./controllers/profileController");
+app.use("/api/profile", profileRoutes);
+
+// Import routes from quizTakenController.js
+var quizTakenRoutes = require("./controllers/quizTakenController");
+app.use("/api", quizTakenRoutes);
+
+// Import routes from questionsController.js
+var questionsRoutes = require("./controllers/questionsController");
+app.use("/api/questions", questionsRoutes);
+
+// Import routes from archetypesController.js
+var archetypesRoutes = require("./controllers/archetypesController");
+app.use("/api", archetypesRoutes);
+
+// Import routes from personalitiesController.js
+var personalitiesRoutes = require("./controllers/personalitiesController");
+app.use("/api/personalities", personalitiesRoutes);
+
+// Import routes from personalitiesController.js
+var userRoutes = require("./controllers/userController");
+app.use("/api/user", userRoutes);
 
 // ==================================================================
 
